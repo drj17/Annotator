@@ -16,7 +16,7 @@ By the end of week 9, this app will, at minimum, meet the following criteria.
 - [ ] Production ReadMe
 
 ## Design Docs
-* [Components](./component-hierarchy.md)
+* [Components](./components.md)
 * [Wireframes](./wireframes)
 * [Sample State](./sample_state.md)
 * [API-Endpoints](./api_endpoints.md)
