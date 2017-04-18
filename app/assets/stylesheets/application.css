@@ -13,3 +13,8 @@
  *= require_tree .
  *= require_self
  */
+
+body .login-modal {
+  width: 200px;
+  height: 100px;
+}
