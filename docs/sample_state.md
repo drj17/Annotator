@@ -4,13 +4,10 @@
     id: 1,
     username: "kdot"
   },
-  forms: {
-    signUp: {errors: []},
-    logIn: {errors: []},
-    createSong: {errors: [
-      "title can't be blank",
-      "artist can't be blank "
-    ]}
+  errors: {
+    signUp: ["Name Can't be blank"],
+    logIn: []
+    createSong: ["Artist can't be blank"]
   },
   songs: {
     1: {

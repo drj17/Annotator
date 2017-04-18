@@ -30,11 +30,11 @@
 
 ### Annotation
 
-- `GET /api/songs/:songId/annotations/:annotationId`
-- `POST /api/songs/:songId/annotations/`
-- `GET /api/songs/:songId/annotations/`
-- `DELETE /api/songs/:songId/annotations/:annotationId`
-- `GET /api/songs/:songId/annotations/:annotationId/comments` //Possible un-nest here
+- `GET /api/annotations/:id`ß
+- `POST /api/songs/:song_id/annotations/`
+- `GET /api/songs/:song_id/annotations/`
+- `DELETE /api/annotations/:id`
+- `GET /api/annotations/:annotationId/comments` //Possible un-nest here
   - Return all comments for specific annotation
 
 ### Tags
@@ -43,5 +43,5 @@
 - `GET /api/tags`
   - includes query param for typeahead suggestions
 - `POST /api/songs/:songId/tags`: add tag to song by name
-- `DELETE /api/songs/:songId/tags/:tag_name`: remove tag from song by
+- `DELETE tags/:tag_name`: remove tag from song by
   name

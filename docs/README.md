@@ -11,7 +11,7 @@ By the end of week 9, this app will, at minimum, meet the following criteria.
 - [ ] Account creation and login, as well as demo account login
 - [ ] Songs
 - [ ] Annotations
-- [ ] Tags
+- [ ] Voting
 - [ ] Search
 - [ ] Production ReadMe
 
@@ -43,9 +43,8 @@ Annotations appear only when clicked.  Annotations can be upvoted/downvoted.
 ### Phase 5: Implement Annotation Comment Model and API (1 day)
 **Objectives** User can create/update/edit/destroy comments on Annotations.
 
-## Phase 6: Tags (1 Day)
-**Objectives** Users are able to tag songs with genres (or potentially lyrical content).
-Users are also able to filter songs by specific tags.
+### Phase 6: Voting (1 Day)
+**Objectives** Users are able to vote on annotations, with upvotes or downvotes.
 
 ### Phase 7: Search (1 Day)
 **Objectives** Users are able to search for specific songs and be taken to their lyric page.
@@ -55,3 +54,4 @@ Users are also able to filter songs by specific tags.
 - [ ] Sort songs on homepage by number of views (hot songs).
 - [ ] Add user rankings based on their total annotation upvote count.
 - [ ] Refactor: Create new model, api, and components for Artists.
+- [ ] Tags: Allow users to add tags to songs and filter by the tags.
