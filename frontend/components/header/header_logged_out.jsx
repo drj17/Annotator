@@ -1,5 +1,6 @@
 import React from 'react';
 import Modal from 'react-modal';
+import { hashHistory } from 'react-router';
 
 class headerLoggedOut extends React.Component {
   constructor(props){
@@ -32,23 +33,21 @@ class headerLoggedOut extends React.Component {
              isOpen={this.props.open}
              onRequestClose={this.props.closeModal}
              contentLabel="Log In Modal"
-             class="login-modal"
+             className="login-modal"
            >
-           <h3>Log In!</h3>
+           <h1 class="left-item">Sign in to Annotator</h1>
              <form onSubmit={this.handleSubmit}>
-     						<label> Username:
      							<input type="text"
+                    placeholder="Username"
      								value={this.state.username}
      								onChange={this.update("username")}
-     								className="login-input" />
-     						</label>
-     						<label> Password:
+     								className="field" />
      							<input type="password"
+                    placeholder="Password"
      								value={this.state.password}
      								onChange={this.update("password")}
-     								className="login-input" />
-     						</label>
-     						<input type="submit" value="Submit" />
+     								className="field" />
+                  <input className="login" type="submit" value="Submit" />
      				</form>
           </Modal>
 

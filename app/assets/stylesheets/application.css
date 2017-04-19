@@ -14,7 +14,87 @@
  *= require_self
  */
 
+
+
+ * {
+         /*Reset's every elements apperance*/
+         background: none repeat scroll 0 0 transparent;
+         border: medium none;
+         border-spacing: 0;
+         color: #000000;
+         font-family: sans-serif;
+         font-size: 16px;
+         font-weight: normal;
+         line-height: 1.42rem;
+         list-style: none outside none;
+         margin: 0;
+         padding: 0;
+         text-align: left;
+         text-decoration: none;
+         text-indent: 0;
+ }
+
+
+*:focus {
+    outline: none;
+}
+
 body .login-modal {
-  width: 200px;
-  height: 100px;
+  width: 450px;
+  height: 180px;
+
+  margin: auto;
+  margin-top: 50px;
+  background-color: #E9E9E9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 420px;
+  height: 120px;
+  font-size: 20px;
+
+}
+
+
+
+.field {
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid #CCCCCC;
+  padding: 2px
+}
+
+.field:focus {
+  border: 2px solid #99A7EE;
+}
+
+.login-modal .login {
+  width: 60px;
+  height: 30px;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.login-modal .login:hover {
+  transition: .2s;
+  background-color: #CCCCCC;
+}
+
+.left-item {
+  margin-right: auto;
+}
+
+.login-modal h1 {
+  width: 93%;
+
+  color: #99A7EE;
+  border-bottom: 2px solid #99A7EE;
 }
