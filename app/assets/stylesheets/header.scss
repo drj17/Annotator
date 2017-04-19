@@ -12,12 +12,17 @@ body .login-modal {
   padding: 5px;
 }
 
+button {
+  cursor: pointer;
+}
+
 .login-modal form {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   width: 420px;
   font-size: 20px;
+  margin-top: 10px;
 
 }
 
@@ -58,7 +63,7 @@ body .login-modal {
   display: flex;
   justify-content: space-between;
   background-color: #FFFF64;
-  height: 50px;
+  height: 40px;
   align-items: center;
 }
 
@@ -67,16 +72,41 @@ body .login-modal {
 }
 
 .auth-section {
-
   display: flex;
   justify-content: space-between;
+  align-items: center;
+
+
 }
 
 .error{
   display: block;
 }
 
+.logo {
+  margin: 0px 20px;
+  padding-left: 70px;
+}
+
 .auth-buttons {
+  margin-top: 5px;
   display: flex;
   justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.nav-button:hover {
+  border-bottom: 3px solid rgb(236, 53, 100);
+  transition: .3s;
+
+}
+
+.nav-button {
+  padding-top: 3px;
+  border-bottom: 3px solid #FFFF64;
+}
+
+.modal-link {
+  color: #9A9A9A;
+  text-decoration: underline;
 }

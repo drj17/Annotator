@@ -1,10 +1,10 @@
 import React from 'react';
 
 const greeting = (props) => (
-  <div className="auth-section">
-    <h1>{props.user.username.toUpperCase()}</h1>
-    <button onClick={props.logout}>LOG OUT</button>
-  </div>
+  <section className="auth-section">
+    <button className="nav-button">{props.user.username.toUpperCase()}</button>
+    <button className="nav-button" onClick={props.logout}>LOG OUT</button>
+  </section>
 );
 
 export default greeting;
