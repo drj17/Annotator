@@ -89,12 +89,20 @@ body .login-modal {
 }
 
 .left-item {
-  margin-right: auto;
-}
-
-.login-modal h1 {
   width: 93%;
 
   color: #99A7EE;
   border-bottom: 2px solid #99A7EE;
+}
+
+.nav-header{
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFFF64;
+  height: 50px;
+  align-items: center;
+}
+
+.nav-header *{
+  padding: 0 8px;
 }

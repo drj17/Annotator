@@ -15,12 +15,8 @@ class Header extends React.Component {
     Modal.setAppElement('body');
   }
 
-  openModal(){
+  openModal(formType){
     this.setState({open: true});
-  }
-
-  componentWillReceiveProps(newProps) {
-    this.setState({currentUser: newProps.currentUser});
   }
 
   closeModal(){
@@ -28,20 +24,31 @@ class Header extends React.Component {
   }
 
   render(){
-
     if(this.props.currentUser){
-      return <HeaderLoggedIn
-        user={this.props.currentUser}
-        logout={this.props.logout}
-        />;
+      return(
+        <section className="nav-header">
+          <h1>SEARCH</h1>
+          <h1>ANNOTATOR</h1>
+          <HeaderLoggedIn
+            user={this.props.currentUser}
+            logout={this.props.logout}
+          />
+        </section>
+      );
     } else {
-      return <HeaderLoggedOut
-        open={this.state.open}
-        openModal={this.openModal}
-        closeModal={this.closeModal}
-        login={this.props.login}
-        update={this.update}
-        />;
+      return (
+        <section className="nav-header">
+          <h1>SEARCH</h1>
+          <h1>ANNOTATOR</h1>
+          <HeaderLoggedOut
+            open={this.state.open}
+            openModal={this.openModal}
+            closeModal={this.closeModal}
+            login={this.props.login}
+            update={this.update}
+          />
+        </section>
+      );
     }
   }
 }
