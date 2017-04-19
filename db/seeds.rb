@@ -7,3 +7,4 @@
 #   Character.create(name: 'Luke', movie: movies.first)
 User.destroy_all
 User.create(username: "demo_user", password: "password")
+Song.create(title: "DNA", lyrics: "I GOT I GOT I GOT", artist: "Kendrick Lamar", author_id: User.first.id)

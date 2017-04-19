@@ -17,7 +17,6 @@ title       | string    | not null
 body        | text      | not null
 author_id   | integer   | not null, foreign key (references users), indexed
 artist      | string    | not null, indexed
-archived    | boolean   | not null, default: false
 
 ## annotations
 column name | data type | details
