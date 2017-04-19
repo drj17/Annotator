@@ -19,7 +19,9 @@ class headerLoggedOut extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state;
-    this.props.login({user});
+    this.props.login({user})
+    .then(this.props.closeModal)
+    .then(hashHistory.push('/'));
   }
 
 

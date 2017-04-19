@@ -1,7 +1,7 @@
 # Annotator
-  [Heroku](www.heroku.com)
+  [Heroku](https://annotator-aa.herokuapp.com/)
 
-  [Trello](www.trello.com)
+  [Trello](https://trello.com/b/QmsORFAZ/annotator)
 ## Minimum Viable Product
 
 Annotator is a lyric annotation web application inspired by Genius. It is built on a Ruby on Rails backend with a React/Redux frontend.

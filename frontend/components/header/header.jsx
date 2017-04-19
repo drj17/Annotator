@@ -6,8 +6,7 @@ import Modal from 'react-modal';
 class Header extends React.Component {
   constructor(props){
     super(props);
-    this.state = {open: false};
-
+    this.state = {open: false, currentUser: null};
     this.openModal = this.openModal.bind(this);
     this.closeModal = this.closeModal.bind(this);
   }
@@ -18,6 +17,10 @@ class Header extends React.Component {
 
   openModal(){
     this.setState({open: true});
+  }
+
+  componentWillReceiveProps(newProps) {
+    this.setState({currentUser: newProps.currentUser});
   }
 
   closeModal(){
