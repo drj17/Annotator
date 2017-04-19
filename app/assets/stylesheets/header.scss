@@ -1,0 +1,82 @@
+body .login-modal {
+  width: 450px;
+  height: auto;
+
+  margin: auto;
+  margin-top: 50px;
+  background-color: #E9E9E9;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  padding: 5px;
+}
+
+.login-modal form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 420px;
+  font-size: 20px;
+
+}
+
+
+
+.field {
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid #CCCCCC;
+  padding: 2px;
+  margin: 5px 0px;
+}
+
+.field:focus {
+  border: 2px solid #99A7EE;
+}
+
+.login-modal .auth-button {
+  width: auto;
+  height: 30px;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.login-modal .auth-button:hover {
+  transition: .2s;
+  background-color: #CCCCCC;
+}
+
+.left-item {
+  width: 93%;
+
+  color: #99A7EE;
+  border-bottom: 2px solid #99A7EE;
+}
+
+.nav-header{
+  display: flex;
+  justify-content: space-between;
+  background-color: #FFFF64;
+  height: 50px;
+  align-items: center;
+}
+
+.nav-header *{
+  padding: 0 8px;
+}
+
+.auth-section {
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.error{
+  display: block;
+}
+
+.auth-buttons {
+  display: flex;
+  justify-content: space-between;
+}

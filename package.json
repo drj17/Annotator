@@ -33,6 +33,7 @@
     "babel-preset-react": "^6.24.1",
     "lodash": "^4.17.4",
     "react": "^15.5.4",
+    "react-addons-update": "^15.5.2",
     "react-dom": "^15.5.4",
     "react-modal": "^1.7.7",
     "react-redux": "^5.0.4",

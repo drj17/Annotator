@@ -1,9 +1,9 @@
 import React from 'react';
 
 const greeting = (props) => (
-  <div>
-    <h1>{props.user.username}</h1>
-    <button onClick={() => props.logout}>Log Out</button>
+  <div className="auth-section">
+    <h1>{props.user.username.toUpperCase()}</h1>
+    <button onClick={props.logout}>LOG OUT</button>
   </div>
 );
 
