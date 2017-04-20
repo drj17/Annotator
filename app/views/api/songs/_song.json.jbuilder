@@ -1,1 +1,1 @@
-json.extract! song, :title, :lyrics, :author_id, :artist
+json.extract! song, :id, :title, :lyrics, :author_id, :artist

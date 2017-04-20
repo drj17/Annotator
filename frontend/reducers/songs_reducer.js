@@ -8,9 +8,9 @@ import {
 import merge from 'lodash/merge';
 
 let defaultState = {
-  tracks: {},
+  tracks: [],
   errors: [],
-  currentTrack: null
+  currentTrack: {}
 };
 
 const SongsReducer = (state = defaultState, action) => {
@@ -26,7 +26,7 @@ const SongsReducer = (state = defaultState, action) => {
       return receiveSong;
     case REMOVE_SONG:
       const removeSong = Object.assign({}, state);
-      delete removeSong[action.track.id];
+      removeSong.tracks.filter(track => track.id === action.track.id);
       return removeSong;
     case RECEIVE_ERRORS:
       const errors = action.errors;

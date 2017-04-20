@@ -4,7 +4,6 @@ import { signup, login, logout, clearErrors } from '../../actions/session_action
 import Header from './header';
 
 const mapStateToProps = state => {
-
   return {
     currentUser: state.session.currentUser,
     errors: state.session.errors
