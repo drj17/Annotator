@@ -1,7 +1,13 @@
+.new-song-form-container h1 {
+  text-align: center;
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
 
 
 .new-song-form {
-  background-color: blue;
+  // background-color: blue;
   width: 60%;
   margin: auto;
   display: flex;
@@ -24,12 +30,32 @@
   border: 2px solid #CCCCCC;
   padding: 2px;
   margin: 15px 0px;
-  width: 40%;
+  width: 30%;
   margin-left: 15px;
+}
+
+.new-song-form input:focus {
+  border: 2px solid #99A7EE;
+}
+.new-song-form textarea:focus {
+  border: 2px solid #99A7EE;
 }
 
 .new-song-form textarea {
   background-color: white;
   padding: 15px;
   margin: 15px;
+  width: 60%;
+  border: 2px solid #F7F7F7;
+}
+
+.new-song-form .form-submit {
+  width: 100px;
+  border: 2px solid black;
+  padding: 3px;
+}
+
+.new-song-form .form-submit:hover {
+  transition: .2s;
+  background-color: #CCCCCC;
 }

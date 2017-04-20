@@ -73,8 +73,9 @@ button {
 
 .auth-section {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: center;
+  width: 300px;
 
 
 }
@@ -84,8 +85,13 @@ button {
 }
 
 .logo {
-  padding-right: 2px;
 
+  width: 300px;
+  text-align: center;
+}
+
+.search {
+  width: 300px;
 }
 
 .auth-buttons {
@@ -132,5 +138,5 @@ button {
 
 .header-navigation a + a:before {
   content: " | ";
-  padding: 0 10px;
+  padding-left: 5px;
 }

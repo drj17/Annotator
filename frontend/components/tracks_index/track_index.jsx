@@ -12,7 +12,8 @@ class TrackIndex extends React.Component {
   }
 
   render() {
-    const tracks = this.props.tracks.map(track => <TrackIndexItem
+    const tracks = this.props.tracks.map((track, index)=> <TrackIndexItem
+      index={index}
       key={track.id}
       track={track}
       fetchSong={this.props.fetchSong} />);

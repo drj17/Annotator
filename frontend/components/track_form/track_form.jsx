@@ -32,14 +32,14 @@ class TrackForm extends React.Component {
 
   render() {
     const { title, lyrics, artist } = this.state;
+    const errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
 
     return (
-      <section className="new-song-container">
         <section className="new-song-form-container">
-
           <h1>Add a New Song</h1>
-          <h2>{this.props.errors}</h2>
+
           <form className="new-song-form" onSubmit={this.handleSubmit}>
+            <ul>{errors}</ul>
             <label>Song Title
               <input onChange={this.update("title")} type="text"></input>
             </label>
@@ -49,13 +49,9 @@ class TrackForm extends React.Component {
             <label>Lyrics
               <textarea onChange={this.update("lyrics")}/>
             </label>
-            <input type="submit" value="Add Song"/>
+            <input className="form-submit" type="submit" value="Add Song"/>
           </form>
-
         </section>
-      </section>
-
-
     );
   }
 }

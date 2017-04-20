@@ -16,7 +16,7 @@ class Header extends React.Component {
       return(
         <section>
         <section className="nav-header">
-          <h1>SEARCH</h1>
+          <h1 className="search">SEARCH</h1>
           <Link to="/"><h1 className="logo">ANNOTATOR</h1></Link>
           <HeaderLoggedIn
             user={this.props.currentUser}
@@ -31,7 +31,7 @@ class Header extends React.Component {
       return (
         <section>
           <section className="nav-header">
-            <h1>SEARCH</h1>
+            <h1 className="search">SEARCH</h1>
             <h1 className="logo">ANNOTATOR</h1>
             <HeaderLoggedOut
               login={this.props.login}

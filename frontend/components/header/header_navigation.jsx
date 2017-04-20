@@ -18,7 +18,6 @@ class HeaderNavigation extends React.Component {
           {homeLink}
           {newSongLink}
         </section>
-        <h1>Navigation!</h1>
       </section>
     );
   }

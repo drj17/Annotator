@@ -8,9 +8,6 @@
 User.destroy_all
 Song.destroy_all
 User.create(username: "demo_user", password: "password")
-Song.create(title: "DNA", lyrics: "I GOT I GOT I GOT", artist: "Kendrick Lamar", author_id: User.first.id)
-Song.create(title: "HUMBLE", lyrics: "BE HUMBLE", artist: "Kendrick Lamar", author_id: User.first.id)
-Song.create(title: "XXX", lyrics: "AMERICA GOD BLESS YOU", artist: "Kendrick Lamar", author_id: User.first.id)
 
 Song.create(title: "Tidal", lyrics:
 "Awake, unfazed
@@ -90,3 +87,7 @@ What unknow face now breaks the silence?
 What tipping force disturbs the balance?
 Swift and sober comes a voice
 Offering a bitter choice", artist: "Protest The Hero", author_id: User.first.id);
+
+Song.create(title: "DNA", lyrics: "I GOT I GOT I GOT", artist: "Kendrick Lamar", author_id: User.first.id)
+Song.create(title: "HUMBLE", lyrics: "BE HUMBLE", artist: "Kendrick Lamar", author_id: User.first.id)
+Song.create(title: "XXX", lyrics: "AMERICA GOD BLESS YOU", artist: "Kendrick Lamar", author_id: User.first.id)
