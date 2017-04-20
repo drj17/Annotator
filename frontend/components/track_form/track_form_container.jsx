@@ -1,10 +1,11 @@
 import { connect } from 'react-redux';
-import { createSong, clearErrors } from '../../actions/songs_actions';
-import SongForm from './song_form';
+import { createSong, clearErrors } from '../../actions/song_actions';
+import TrackForm from './track_form';
 
 const mapStateToProps = state => {
+
   return {
-    currentSong: state.songs.currentSong
+    currentUser: state.session.currentUser
   };
 };
 
@@ -18,4 +19,4 @@ const mapDispatchToProps = dispatch => {
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(SongForm);
+)(TrackForm);
