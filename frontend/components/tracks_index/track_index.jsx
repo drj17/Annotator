@@ -12,11 +12,20 @@ class TrackIndex extends React.Component {
   }
 
   render() {
-    const tracks = this.props.tracks.map((track, index)=> <TrackIndexItem
-      index={index}
-      key={track.id}
-      track={track}
-      fetchSong={this.props.fetchSong} />);
+    const tracks = this.props.tracks.map((track, index) => {
+
+      let style = "";
+      if(index < 3){
+        style = "top";
+      }
+
+      return <TrackIndexItem
+        style={style}
+        index={index}
+        key={track.id}
+        track={track}
+        fetchSong={this.props.fetchSong} />;
+    });
     return (
       <section className="tracks-index">
         <ul>

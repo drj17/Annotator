@@ -21,10 +21,13 @@ body {
   border-bottom: 1px solid #CCCCCC;
 }
 
-.track-rank {
+.top .track-rank {
   font-size: 28px;
   text-align: center;
-  padding-top: 7px;
+}
+
+.track-rank {
+  padding-top: 10px;
 }
 
 .track-info {
@@ -33,10 +36,10 @@ body {
   margin-left: 15px;
 }
 
-.track-info h1 {
+.top h1 {
   font-size: 30px;
 }
 
-.track-listing span {
-    font-size: 18px;
+.top span {
+  font-size: 18px;
 }
