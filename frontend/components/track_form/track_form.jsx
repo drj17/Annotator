@@ -26,8 +26,8 @@ class TrackForm extends React.Component {
   handleSubmit(e){
     e.preventDefault();
 
-    this.props.createSong(this.state);
-    hashHistory.push('/');
+    this.props.createSong(this.state)
+      .then(() => hashHistory.push('/'));
   }
 
   render() {
@@ -38,7 +38,7 @@ class TrackForm extends React.Component {
         <section className="new-song-form-container">
 
           <h1>Add a New Song</h1>
-
+          <h2>{this.props.errors}</h2>
           <form className="new-song-form" onSubmit={this.handleSubmit}>
             <label>Song Title
               <input onChange={this.update("title")} type="text"></input>

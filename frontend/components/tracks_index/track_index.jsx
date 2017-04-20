@@ -1,5 +1,6 @@
 import React from 'react';
 import TrackIndexItem from './track_index_item';
+import { Link } from 'react-router';
 
 class TrackIndex extends React.Component {
   constructor(props){
@@ -11,9 +12,12 @@ class TrackIndex extends React.Component {
   }
 
   render() {
-    const tracks = this.props.tracks.map(track => <TrackIndexItem key={track.id} track={track}/>);
+    const tracks = this.props.tracks.map(track => <TrackIndexItem
+      key={track.id}
+      track={track}
+      fetchSong={this.props.fetchSong} />);
     return (
-      <section className="songs-index">
+      <section className="tracks-index">
         <ul>
           {tracks}
         </ul>

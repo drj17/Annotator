@@ -84,8 +84,8 @@ button {
 }
 
 .logo {
-  margin: 0px 20px;
-  padding-left: 70px;
+  padding-right: 2px;
+
 }
 
 .auth-buttons {
@@ -109,4 +109,28 @@ button {
 .modal-link {
   color: #9A9A9A;
   text-decoration: underline;
+}
+
+.header-navigation {
+  background-color: black;
+  height: 38px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  color: white;
+}
+
+.header-navigation a {
+  color: white;
+  margin: auto;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+}
+
+.header-navigation a + a:before {
+  content: " | ";
+  padding: 0 10px;
 }

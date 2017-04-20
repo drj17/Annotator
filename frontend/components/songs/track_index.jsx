@@ -11,13 +11,13 @@ class TrackIndex extends React.Component {
   }
 
   render() {
-    const tracks = this.props.tracks.map(track => <TrackIndexItem key={track.id} track={track}/>);
+    const tracks = this.props.tracks.map((track, index) => <TrackIndexItem index={index} key={track.id} track={track}/>);
     return (
       <section class="songs-index">
         <ul>
           {tracks}
         </ul>
-      </section>  
+      </section>
     );
   }
 

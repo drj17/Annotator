@@ -1,0 +1,35 @@
+
+
+.new-song-form {
+  background-color: blue;
+  width: 60%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: flex-start;
+
+}
+
+.new-song-form label {
+  font-size: 28px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.new-song-form input {
+  font-size: 20px;
+  background-color: white;
+  border: 2px solid #CCCCCC;
+  padding: 2px;
+  margin: 15px 0px;
+  width: 40%;
+  margin-left: 15px;
+}
+
+.new-song-form textarea {
+  background-color: white;
+  padding: 15px;
+  margin: 15px;
+}

@@ -1,0 +1,78 @@
+.track-page {
+  width: 100%;
+  margin: auto;
+  background-color: #F7F7F7;
+}
+
+.track-lyrics {
+  width: 60%;
+
+}
+
+.track-page-header {
+  display: flex;
+  height: 275px;
+  justify-content: center;
+  align-items: center;
+  padding: 25px;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(https://images.genius.com/549716999277f3f5f5f8b557578afb44.700x700x1.jpg);
+
+  background-size: cover;
+
+}
+
+
+.album-info {
+  width: 60%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.album-info img {
+  width: 150px;
+  height: 150px;
+}
+// .track-page-header span {
+//   display: block;
+// }
+
+.track-page-info {
+  display: flex;
+  flex-direction: column;
+  height: 140px;
+  padding: 15px;
+}
+
+.track-page-info h1 {
+  font-size: 38px;
+  color: #FFFF64;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.track-page-info span {
+  font-size: 20px;
+  color: white;
+}
+
+.track-annotations {
+  width: 40%;
+}
+
+.track-lyrics {
+  padding: 15px;
+  width: 60%;
+  display: flex;
+  justify-content: center;
+  margin: auto;
+}
+
+.track-lyrics h1 {
+  width: 50%;
+  margin: auto;
+  padding: 15px;
+  font-size: 22px;
+  white-space: pre-wrap;
+  background-color: white;
+  line-height: 28px;
+}

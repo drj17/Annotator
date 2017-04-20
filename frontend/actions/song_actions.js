@@ -5,6 +5,7 @@ export const RECEIVE_SONG = "RECEIVE_SONG";
 export const REMOVE_SONG = "REMOVE_SONG";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
+export const START_LOADING_SONG = "START_LOADING_SONG";
 
 const receiveAllSongs = (tracks) => {
   return {
@@ -40,28 +41,35 @@ export const clearErrors = () => {
   };
 };
 
+export const startLoadingSong = () => {
+  return {
+    type: START_LOADING_SONG
+  };
+};
+
 export const fetchSongs = () => dispatch => {
   return SongApiUtil.fetchSongs()
     .then(tracks => dispatch(receiveAllSongs(tracks)),
-          errors => dispatch(receiveErrors(errors)));
+          errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const fetchSong = (id) => dispatch => {
+  dispatch(startLoadingSong());
   return SongApiUtil.fetchSong(id)
     .then(track => dispatch(receiveSong(track)),
-          errors => dispatch(receiveErrors(errors)));
+          errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const deleteSong = (id) => dispatch => {
   return SongApiUtil.deleteSong(id)
     .then(track => dispatch(removeSong(track)),
-          errors => dispatch(receiveErrors(errors)));
+          errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const updateSong = (track) => dispatch => {
   return SongApiUtil.updateSong(track)
     .then(track => dispatch(receiveSong(track)),
-          errors => dispatch(receiveErrors(errors)));
+          errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const createSong = (track) => dispatch => {
   return SongApiUtil.createSong(track)
     .then(track => dispatch(receiveSong(track)),
-          errors => dispatch(receiveErrors(errors)));
+          errors => dispatch(receiveErrors(errors.responseJSON)));
 };

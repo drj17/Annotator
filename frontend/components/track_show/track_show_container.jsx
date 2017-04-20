@@ -1,20 +1,24 @@
 import { connect } from 'react-redux';
-import { deleteSong, updateSong } from '../../actions/song_actions';
+import { deleteSong, updateSong, fetchSong } from '../../actions/song_actions';
+import TrackShow from './track_show';
 
-const mapStateToProps = state => {
+
+const mapStateToProps = (state, ownProps) => {
   return {
-    currentTrack: state.tracks.currentTrack
+    currentTrack: state.songs.currentTrack,
+    loading: state.loading.loading,
+    trackId: ownProps.params.songId
   };
 };
 
 
-const mapDispatchToProps = (dispatch, ownProps) => {
+const mapDispatchToProps = dispatch => {
   return {
-
+    fetchSong: (id) => dispatch(fetchSong(id))
   };
 };
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-);
+)(TrackShow);

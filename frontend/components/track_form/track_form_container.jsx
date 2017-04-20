@@ -3,9 +3,9 @@ import { createSong, clearErrors } from '../../actions/song_actions';
 import TrackForm from './track_form';
 
 const mapStateToProps = state => {
-
   return {
-    currentUser: state.session.currentUser
+    currentUser: state.session.currentUser,
+    errors: state.songs.errors
   };
 };
 

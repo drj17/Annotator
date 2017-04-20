@@ -7,9 +7,9 @@ import TrackIndex from './track_index';
 
 const mapStateToProps = state => {
   return {
-    currentTrack: state.songs.currentTrack,
     tracks: state.songs.tracks,
-    errors: state.songs.errors
+    errors: state.songs.errors,
+    loading: state.loading
   };
 };
 
