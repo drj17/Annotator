@@ -6,6 +6,7 @@ import TrackShow from './track_show';
 const mapStateToProps = (state, ownProps) => {
   return {
     currentTrack: state.songs.currentTrack,
+    currentUser: state.session.currentUser,
     loading: state.loading.loading,
     trackId: ownProps.params.songId
   };
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
 
 const mapDispatchToProps = dispatch => {
   return {
-    fetchSong: (id) => dispatch(fetchSong(id))
+    fetchSong: (id) => dispatch(fetchSong(id)),
+    deleteSong: (id) => dispatch(deleteSong(id))
   };
 };
 

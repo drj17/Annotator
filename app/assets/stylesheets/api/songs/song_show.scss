@@ -41,12 +41,22 @@
   padding: 15px;
 }
 
-.track-page-info a {
+.user-controls a{
   color: white;
-  margin-top: auto;
   color: #FFFF64;
   text-decoration: underline;
+  margin-right: 5px;
+}
 
+#delete {
+  color: white;
+  color: #FFFF64;
+  text-decoration: underline;
+  margin-right: 5px;
+}
+
+.user-controls{
+  margin-top: auto;
 }
 
 .track-page-info h1 {

@@ -1,6 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router';
-
+import { Link, hashHistory } from 'react-router';
 class TrackShow extends React.Component {
   constructor(props){
     super(props);
@@ -18,6 +17,13 @@ class TrackShow extends React.Component {
 
   render(){
     let imgUrl = this.props.currentTrack.image_url;
+    let deleteButton = "";
+    if(this.props.currentTrack.author_id === this.props.currentUser.id){
+      deleteButton = <button id="delete" onClick={
+          () => this.props.deleteSong(this.props.currentTrack.id)
+                          .then(() => hashHistory.push('/'))
+        }>Delete Track</button>;
+    }
     let styles = {
       backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imgUrl + ')'
     };
@@ -34,7 +40,11 @@ class TrackShow extends React.Component {
             <section className="track-page-info">
               <h1>{this.props.currentTrack.title}</h1>
               <span>{this.props.currentTrack.artist}</span>
-              <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>
+              <section className="user-controls">
+                <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>
+                {deleteButton}
+
+              </section>
             </section>
           </section>
         </section>

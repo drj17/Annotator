@@ -8,17 +8,27 @@ import TrackShowContainer from './track_show/track_show_container';
 import App from './app';
 
 
-const Root = ({ store }) => (
-  <Provider store={ store }>
-    <Router history={ hashHistory }>
-      <Route path="/" component={ App }>
-        <IndexRoute component={TracksIndexContainer} />
-        <Route path="/new_song" component={TrackFormContainer} />
-        <Route path="/edit_song/:songId" component={TrackFormContainer} />
-        <Route path="/songs/:songId" component={TrackShowContainer} />
-      </Route>
-    </Router>
-  </Provider>
-);
+const Root = ({ store }) => {
+
+  const _ensureLoggedIn = (nextState, replace) => {
+    const currentUser = store.getState().session.currentUser;
+    if(!currentUser){
+      replace('/');
+    }
+  };
+
+  return (
+    <Provider store={ store }>
+      <Router history={ hashHistory }>
+        <Route path="/" component={ App }>
+          <IndexRoute component={TracksIndexContainer} />
+          <Route path="/new_song" component={TrackFormContainer} onEnter={_ensureLoggedIn} />
+          <Route path="/edit_song/:songId" component={TrackFormContainer} onEnter={_ensureLoggedIn} />
+          <Route path="/songs/:songId" component={TrackShowContainer} />
+        </Route>
+      </Router>
+    </Provider>
+  );
+};
 
 export default Root;
