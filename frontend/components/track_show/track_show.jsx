@@ -18,11 +18,15 @@ class TrackShow extends React.Component {
   render(){
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
-    if(this.props.currentTrack.author_id === this.props.currentUser.id){
-      deleteButton = <button id="delete" onClick={
-          () => this.props.deleteSong(this.props.currentTrack.id)
-                          .then(() => hashHistory.push('/'))
-        }>Delete Track</button>;
+    let editLink = "";
+    if(this.props.currentUser){
+      if(this.props.currentTrack.author_id === this.props.currentUser.id){
+        deleteButton = <button id="delete" onClick={
+            () => this.props.deleteSong(this.props.currentTrack.id)
+            .then(() => hashHistory.push('/'))
+          }>Delete Track</button>;
+        }
+        editLink = <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>;
     }
     let styles = {
       backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imgUrl + ')'
@@ -41,9 +45,8 @@ class TrackShow extends React.Component {
               <h1>{this.props.currentTrack.title}</h1>
               <span>{this.props.currentTrack.artist}</span>
               <section className="user-controls">
-                <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>
+                {editLink}
                 {deleteButton}
-
               </section>
             </section>
           </section>

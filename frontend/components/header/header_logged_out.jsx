@@ -64,7 +64,10 @@ class headerLoggedOut extends React.Component {
 
 
   render (){
-    const errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
+    let errors;
+    if(this.props.errors){
+      errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
+    }
     let formText;
     let oppositeModal;
     let buttonText;
