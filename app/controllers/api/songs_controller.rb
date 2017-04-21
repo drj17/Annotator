@@ -34,6 +34,7 @@ class Api::SongsController < ApplicationController
 
     if @song
       @song.destroy
+      render "/api/songs/show"
     else
       render json: ["No such song"], status: 404
     end
