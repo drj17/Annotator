@@ -6,6 +6,7 @@ const TrackIndexItem = ({ track, fetchSong, index, style }) => (
     <Link to={`/songs/${track.id}`} >
     <section className={`track-listing ${style}`}>
       <h1 className="track-rank">{index + 1}</h1>
+      <img className="thumbnail" src={track.image_url}/>
       <section className="track-info">
         <h1>{track.title}</h1>
         <span>{track.artist}</span>

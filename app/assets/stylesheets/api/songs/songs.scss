@@ -21,28 +21,44 @@ body {
   border-bottom: 1px solid #CCCCCC;
 }
 
-.top .track-rank {
-  font-size: 28px;
-
-  // padding-right: -1px;
+.track-listing img {
+  display: none;
 }
 
+
 .track-rank {
-  padding-top: 10px;
   width: 40px;
   text-align: center;
+  align-self: center;
+}
+
+.track-rank h1 {
+  margin: auto;
 }
 
 .track-info {
   display: flex;
   flex-direction: column;
   margin-left: 15px;
+  justify-content: center;
+}
+
+.thumbnail {
+  width: 100px;
+  height: 100px;
 }
 
 .top h1 {
   font-size: 30px;
+
 }
 
 .top span {
   font-size: 18px;
+}
+
+.top img {
+  height: 75px;
+  width: 75px;
+  display: block;
 }
