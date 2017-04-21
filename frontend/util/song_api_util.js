@@ -18,7 +18,7 @@ export const createSong = (song) => {
     url: 'api/songs',
     contentType: false,
     processData: false,
-    data: song 
+    data: song
   });
 };
 
@@ -28,12 +28,12 @@ export const deleteSong = (id) => {
     url: `api/songs/${id}`
   });
 };
-export const updateSong = (song) => {
+export const updateSong = (song, id) => {
   return $.ajax({
     method: 'patch',
-    url: `api/songs/${song.id}`,
+    url: `api/songs/${id}`,
     processData: false,
     contentType: false,
-    data: { song }
+    data: song
   });
 };

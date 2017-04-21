@@ -63,8 +63,8 @@ export const deleteSong = (id) => dispatch => {
     .then(track => dispatch(removeSong(track)),
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };
-export const updateSong = (track) => dispatch => {
-  return SongApiUtil.updateSong(track)
+export const updateSong = (track, id) => dispatch => {
+  return SongApiUtil.updateSong(track, id)
     .then(track => dispatch(receiveSong(track)),
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };

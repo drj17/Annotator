@@ -66,8 +66,10 @@ class TrackForm extends React.Component {
     formData.append("song[lyrics]", this.state.lyrics);
     formData.append("song[artist]", this.state.artist);
     formData.append("song[author_id]", this.state.author_id);
-    formData.append("song[image]", file);
-    this.props.action(formData)
+    if(this.state.imageFile){
+      formData.append("song[image]", file);
+    }
+    this.props.action(formData, this.props.currentTrack.id)
       .then(() => hashHistory.push('/'));
   }
 
@@ -77,7 +79,12 @@ class TrackForm extends React.Component {
     const submitText = this.props.formType === "new" ? "Add Song" : "Submit Edits";
     const errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
 
-    let img = this.state.imageFile ? <img className="preview-image" src={this.state.imageUrl}/> : "";
+    let img = "";
+    if(this.state.imageFile){
+      img = <img className="preview-image" src={this.state.imageUrl}/>;
+    } else if (this.props.currentTrack && this.props.formType !== "new"){
+      img = <img className="preview-image" src={this.props.currentTrack.image_url}/>;
+    }
 
     return (
         <section className="new-song-form-container">

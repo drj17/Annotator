@@ -20,7 +20,7 @@ const mapStateToProps = (state, ownProps) => {
 const mapDispatchToProps = (dispatch, ownProps) => {
   const action = ownProps.params.songId ? updateSong : createSong;
   return {
-    action: (song) => dispatch(action(song)),
+    action: (song, id) => dispatch(action(song, id)),
     clearErrors: () => dispatch(clearErrors()),
     fetchSong: (id) => dispatch(fetchSong(id))
   };

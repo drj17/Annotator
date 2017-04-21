@@ -16,6 +16,7 @@
   align-items: center;
   padding: 25px;
   background-size: cover;
+  background-position: center;
 
 }
 
@@ -42,24 +43,31 @@
 }
 
 .user-controls a{
-  color: white;
   color: #FFFF64;
-  text-decoration: underline;
   margin-right: 5px;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 3px;
-  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 6px 8px;
+  border: 2px solid black;
+
 }
 
 #delete {
   color: white;
   color: #FFFF64;
-  text-decoration: underline;
   margin-right: 5px;
-  background-color: rgba(0, 0, 0, 0.4);
-  padding: 4px;
-  line-height: 1;
-  border-radius: 1px;
+  background-color: rgba(0, 0, 0, 0.6);
+  padding: 4px 6px;
+  border: 2px solid black;
+}
+
+.user-controls a:hover {
+  color: white;
+  transition: .4s;
+}
+
+#delete:hover {
+  color: white;
+  transition: .4s;
 }
 
 .user-controls{
