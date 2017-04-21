@@ -30,8 +30,11 @@
   border: 2px solid #CCCCCC;
   padding: 2px;
   margin: 15px 0px;
-  width: 30%;
   margin-left: 15px;
+}
+
+.input-field {
+  width: 300px;
 }
 
 .new-song-form input:focus {
@@ -46,16 +49,23 @@
   padding: 15px;
   margin: 15px;
   width: 60%;
+  height: 400px;
   border: 2px solid #F7F7F7;
 }
 
 .new-song-form .form-submit {
-  width: 100px;
+  width: 125px;
   border: 2px solid black;
   padding: 3px;
+  text-align: center;
 }
 
 .new-song-form .form-submit:hover {
   transition: .2s;
   background-color: #CCCCCC;
+}
+
+.preview-image {
+  height: 150px;
+  width: 150px;
 }

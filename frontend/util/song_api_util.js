@@ -16,7 +16,9 @@ export const createSong = (song) => {
   return $.ajax({
     method: 'post',
     url: 'api/songs',
-    data: { song }
+    contentType: false,
+    processData: false,
+    data: song 
   });
 };
 
@@ -30,6 +32,8 @@ export const updateSong = (song) => {
   return $.ajax({
     method: 'patch',
     url: `api/songs/${song.id}`,
+    processData: false,
+    contentType: false,
     data: { song }
   });
 };

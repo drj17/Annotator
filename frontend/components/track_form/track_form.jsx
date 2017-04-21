@@ -1,21 +1,41 @@
 import React from 'react';
 import { hashHistory } from 'react-router';
 
+
 class TrackForm extends React.Component {
   constructor(props){
     super(props);
-
     this.state = {
       title: "",
       lyrics: "",
       artist: "",
-      author_id: props.currentUser.id
+      author_id: props.currentUser.id,
     };
+
 
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.uploadFile = this.uploadFile.bind(this);
+
 
   }
+
+  componentDidMount(){
+    if(this.props.formType === "edit"){
+      this.props.fetchSong(this.props.songId)
+      .then(() => this.setState(this.props.currentTrack));
+    }
+  }
+
+  componentWillReceiveProps(newProps){
+    if(!newProps.params.songId){
+      this.setState({title: "", artist: "", lyrics: "", author_id: this.props.currentUser.id});
+    } else if (parseInt(newProps.params.songId) !== this.props.currentTrack.id){
+      this.props.fetchSong(newProps.params.songId)
+      .then(() => this.setState(this.props.currentTrack));
+    }
+  }
+
 
   update(field){
     return e => this.setState({
@@ -23,33 +43,62 @@ class TrackForm extends React.Component {
     });
   }
 
+  uploadFile(e){
+    var reader = new FileReader();
+    var file = e.currentTarget.files[0];
+    reader.onloadend = function() {
+      this.setState({ imageUrl: reader.result, imageFile: file});
+    }.bind(this);
+    if (file) {
+      reader.readAsDataURL(file);
+    } else {
+      this.setState({ imageUrl: "", imageFile: null });
+    }
+
+  }
+
+
   handleSubmit(e){
     e.preventDefault();
-
-    this.props.createSong(this.state)
+    let file = this.state.imageFile;
+    let formData = new FormData();
+    formData.append("song[title]", this.state.title);
+    formData.append("song[lyrics]", this.state.lyrics);
+    formData.append("song[artist]", this.state.artist);
+    formData.append("song[author_id]", this.state.author_id);
+    formData.append("song[image]", file);
+    this.props.action(formData)
       .then(() => hashHistory.push('/'));
   }
 
   render() {
     const { title, lyrics, artist } = this.state;
+    const formText = this.props.formType === "new" ? "Add a New Song" : `Edit ${title}`;
+    const submitText = this.props.formType === "new" ? "Add Song" : "Submit Edits";
     const errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
+
+    let img = this.state.imageFile ? <img className="preview-image" src={this.state.imageUrl}/> : "";
 
     return (
         <section className="new-song-form-container">
-          <h1>Add a New Song</h1>
+          <h1>{formText}</h1>
 
           <form className="new-song-form" onSubmit={this.handleSubmit}>
             <ul>{errors}</ul>
             <label>Song Title
-              <input onChange={this.update("title")} type="text"></input>
+              <input className="input-field" onChange={this.update("title")} type="text" value={title}></input>
             </label>
             <label>Artist
-              <input onChange={this.update("artist")} type="text"></input>
+              <input className="input-field" onChange={this.update("artist")} type="text" value={artist}></input>
             </label>
             <label>Lyrics
-              <textarea onChange={this.update("lyrics")}/>
+              <textarea onChange={this.update("lyrics")} value={lyrics}/>
             </label>
-            <input className="form-submit" type="submit" value="Add Song"/>
+            <label>Artwork
+              <input type="file" onChange={this.uploadFile}></input>
+              {img}
+            </label>
+            <input className="form-submit" type="submit" value={submitText}/>
           </form>
         </section>
     );

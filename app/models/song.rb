@@ -14,6 +14,8 @@
 class Song < ApplicationRecord
   validates :title, :lyrics, :author_id, :artist, presence: true
   validates_uniqueness_of :title, scope: :artist
+  has_attached_file :image, default_url: "pacific_myth.jpg"
+  validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
 
   belongs_to :author,
     primary_key: :id,

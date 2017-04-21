@@ -1,18 +1,28 @@
 import { connect } from 'react-redux';
-import { createSong, clearErrors } from '../../actions/song_actions';
+import { createSong, clearErrors, updateSong, fetchSong } from '../../actions/song_actions';
 import TrackForm from './track_form';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
+  let formType = "edit";
+  if(ownProps.location.pathname.replace(/\//g, "") === "new_song"){
+    formType = "new";
+  }
+
   return {
     currentUser: state.session.currentUser,
-    errors: state.songs.errors
+    errors: state.songs.errors,
+    songId: ownProps.params.songId,
+    formType: formType,
+    currentTrack: state.songs.currentTrack
   };
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch, ownProps) => {
+  const action = ownProps.params.songId ? updateSong : createSong;
   return {
-    createSong: (song) => dispatch(createSong(song)),
-    clearErrors: () => dispatch(clearErrors())
+    action: (song) => dispatch(action(song)),
+    clearErrors: () => dispatch(clearErrors()),
+    fetchSong: (id) => dispatch(fetchSong(id))
   };
 };
 

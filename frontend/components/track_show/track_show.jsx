@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router';
 
 class TrackShow extends React.Component {
   constructor(props){
@@ -16,6 +17,10 @@ class TrackShow extends React.Component {
   }
 
   render(){
+    let imgUrl = this.props.currentTrack.image_url;
+    let styles = {
+      backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imgUrl + ')'
+    };
     if(this.props.loading || !this.props.currentTrack.id){
       return(
         <h1>Loading!</h1>
@@ -23,12 +28,13 @@ class TrackShow extends React.Component {
     } else {
     return(
       <section className="track-page">
-        <section className = "track-page-header">
+        <section className = "track-page-header" style={ styles }>
           <section className = "album-info">
-            <img src="https://images.genius.com/549716999277f3f5f5f8b557578afb44.700x700x1.jpg"/>
+            <img src={this.props.currentTrack.image_url}/>
             <section className="track-page-info">
               <h1>{this.props.currentTrack.title}</h1>
               <span>{this.props.currentTrack.artist}</span>
+              <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>
             </section>
           </section>
         </section>
