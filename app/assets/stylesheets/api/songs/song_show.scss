@@ -98,7 +98,7 @@
   margin: auto;
 }
 
-.track-lyrics h1 {
+.track-lyrics p{
   width: 50%;
   margin: auto;
   padding: 15px;
@@ -107,4 +107,16 @@
   background-color: white;
   line-height: 28px;
   font-weight: lighter;
+}
+
+.track-lyrics span{
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: lighter;
+  background-color: #E9E9E9;
+}
+
+.track-lyrics span:hover {
+  background-color: yellow;
+  transition: .3s;
 }

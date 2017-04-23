@@ -1,0 +1,32 @@
+# == Schema Information
+#
+# Table name: annotations
+#
+#  id          :integer          not null, primary key
+#  author_id   :integer          not null
+#  score       :integer          not null
+#  description :text             not null
+#  song_id     :integer          not null
+#  start_index :integer          not null
+#  end_index   :integer          not null
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author_id: 1
+  score: 1
+  description: MyText
+  song_id: 1
+  start_index: 1
+  end_index: 1
+
+two:
+  author_id: 1
+  score: 1
+  description: MyText
+  song_id: 1
+  start_index: 1
+  end_index: 1

@@ -7,7 +7,10 @@ Rails.application.routes.draw do
     resources :users, only: [:create] do
       resources :songs, only: [:index]
     end
-    resources :songs, only: [:index, :create, :show, :destroy, :update]
+    resources :songs, only: [:index, :create, :show, :destroy, :update] do
+      resources :annotations, only: [:index]
+    end
+    resources :annotations, only: [:create, :show, :destroy, :update]
   end
 
 end

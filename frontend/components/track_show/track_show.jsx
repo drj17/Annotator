@@ -1,21 +1,89 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
+import AnnotationContainer from '../annotations/annotation_container';
+
 class TrackShow extends React.Component {
   constructor(props){
     super(props);
+    this.getSelection = this.getSelection.bind(this);
+    this.state = {
+      annotationOpen: false,
+      annotationType: "new"
+    };
+
+    this.populateAnnotations = this.populateAnnotations.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchSong(this.props.trackId);
+    this.props.fetchSong(this.props.trackId)
+              .then(() => this.props.fetchAnnotations(this.props.trackId))
+              .then(() => this.populateAnnotations());
+
   }
 
-  componentWillReceiveProps(newProps){
-    if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
-      this.props.fetchSong(newProps.params.songId);
+  getSelection() {
+    let text = "";
+    let lyrics = document.getElementById("lyrics");
+    if (window.getSelection) {
+        let start = window.getSelection().focusOffset;
+        text = window.getSelection().toString();
+        let range = [start, start+text.length];
+        if(range[1] - range[0] > 0){
+          alert(range);
+        }
+        if(window.getSelection().anchorNode.parentNode.nodeName !== "SPAN"){
+          this.setState({annotationOpen: true, annotationType: "new"});
+        }
     }
   }
 
+
+  componentWillReceiveProps(newProps){
+    if(this.props.currentTrack){
+      if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
+        this.props.fetchSong(newProps.params.songId)
+        .then(() => this.props.fetchAnnotations(newProps.params.songId))
+        .then(() => this.populateAnnotations());
+      }
+    }
+  }
+
+  populateAnnotations() {
+    let lyrics = document.getElementById('lyrics');
+    let offset = 0;
+    if(lyrics.innerHTML.includes("</span>")){
+      return;
+    }
+      this.props.annotations.forEach(annotation => {
+        let text = lyrics.innerHTML;
+        var span = document.createElement('SPAN');
+        //grab text content to be replaced, grab text with offset;
+        span.textContent = lyrics.innerHTML.slice(annotation.start_index+offset, annotation.end_index+offset);
+        //replace inner html with new span element
+        lyrics.innerHTML = this.replaceAt(
+                                          text,
+                                          annotation.start_index + offset,
+                                          annotation.end_index + offset,
+                                          span.outerHTML
+                                        );
+        //indexes have changed due to span elements, offset by span length;
+        offset += span.outerHTML.length;
+      });
+  }
+
+
+
+  replaceAt(text, start, end, content){
+    return text.substring(0, start) + content + text.substring(end);
+  }
+
+
+
   render(){
+    let annotation = "";
+    if(this.state.annotationOpen){
+      annotation = <AnnotationContainer annotationType={this.state.annotationType}/>;
+    }
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
     let editLink = "";
@@ -52,8 +120,8 @@ class TrackShow extends React.Component {
           </section>
         </section>
         <section className="track-lyrics">
-          <h1>{this.props.currentTrack.lyrics}</h1>
-          <section className="track-annotations"></section>
+          <p id="lyrics" onMouseUp={() => this.getSelection()}>{this.props.currentTrack.lyrics}</p>
+          <section className="track-annotations">{annotation}</section>
         </section>
       </section>
     );}
