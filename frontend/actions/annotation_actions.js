@@ -6,6 +6,7 @@ export const REMOVE_ANNOTATION = "REMOVE_ANNOTATION";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const START_LOADING_ANNOTATION = "START_LOADING_ANNOTATION";
+export const FINISH_LOADING_ANNOTATIONS = "FINISH_LOADING_ANNOTATIONS";
 
 const receiveAllAnnotations = (annotations) => {
   return {
@@ -47,6 +48,12 @@ export const startLoadingAnnotation = () => {
   };
 };
 
+export const finishLoadingAnnotations = () => {
+  return {
+    type: FINISH_LOADING_ANNOTATIONS
+  };
+};
+
 
 export const fetchAnnotations = (songId) => dispatch => {
   return AnnotationApiUtil.fetchAnnotations(songId)
@@ -54,7 +61,6 @@ export const fetchAnnotations = (songId) => dispatch => {
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const fetchAnnotation = (id) => dispatch => {
-  dispatch(startLoadingAnnotation());
   return AnnotationApiUtil.fetchAnnotation(id)
     .then(annotation => dispatch(receiveAnnotation(annotation)),
           errors => dispatch(receiveErrors(errors.responseJSON)));

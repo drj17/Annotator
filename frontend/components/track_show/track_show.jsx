@@ -17,7 +17,6 @@ class TrackShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchSong(this.props.trackId)
-              .then(() => this.props.fetchAnnotations(this.props.trackId))
               .then(() => this.populateAnnotations());
 
   }
@@ -42,8 +41,7 @@ class TrackShow extends React.Component {
     if(newProps.params.songId){
       if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
         this.props.fetchSong(newProps.params.songId)
-        .then(() => this.props.fetchAnnotations(newProps.params.songId))
-        .then(() => this.populateAnnotations());
+                  .then(() => this.populateAnnotations());
       }
     }
   }
@@ -81,6 +79,7 @@ class TrackShow extends React.Component {
 
 
   render(){
+    debugger
     let annotation = "";
     if(this.state.annotationOpen){
       annotation = <AnnotationContainer annotationType={this.state.annotationType}/>;

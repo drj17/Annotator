@@ -1,4 +1,5 @@
 import * as SongApiUtil from '../util/song_api_util';
+import { fetchAnnotations, finishLoadingAnnotations } from './annotation_actions';
 
 export const RECEIVE_ALL_SONGS = "RECEIVE_ALL_SONGS";
 export const RECEIVE_SONG = "RECEIVE_SONG";
@@ -56,7 +57,9 @@ export const fetchSong = (id) => dispatch => {
   dispatch(startLoadingSong());
   return SongApiUtil.fetchSong(id)
     .then(track => dispatch(receiveSong(track)),
-          errors => dispatch(receiveErrors(errors.responseJSON)));
+          errors => dispatch(receiveErrors(errors.responseJSON)))
+    .then(() => dispatch(fetchAnnotations(id)))
+    .then(() => dispatch(finishLoadingAnnotations()));
 };
 export const deleteSong = (id) => dispatch => {
   return SongApiUtil.deleteSong(id)
