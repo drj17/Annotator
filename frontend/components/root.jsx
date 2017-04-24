@@ -23,7 +23,7 @@ const Root = ({ store }) => {
         <Route path="/" component={ App }>
           <IndexRoute component={TracksIndexContainer} />
           <Route path="/new_song" component={TrackFormContainer} onEnter={_ensureLoggedIn} />
-          <Route path="/edit_song/:songId" component={TrackFormContainer} onEnter={_ensureLoggedIn} />
+          // <Route path="/edit_song/:songId" component={TrackFormContainer} onEnter={_ensureLoggedIn} />
           <Route path="/songs/:songId" component={TrackShowContainer} />
         </Route>
       </Router>

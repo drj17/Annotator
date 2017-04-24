@@ -94,7 +94,7 @@ class TrackShow extends React.Component {
             .then(() => hashHistory.push('/'))
           }>Delete Track</button>;
         }
-        editLink = <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>;
+        // editLink = <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>;
     }
     let styles = {
       backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imgUrl + ')'
