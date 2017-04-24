@@ -15,6 +15,7 @@ class Api::SongsController < ApplicationController
   end
 
   def show
+    sleep(1)
     @song = Song.find(params[:id])
     render "/api/songs/show"
   end

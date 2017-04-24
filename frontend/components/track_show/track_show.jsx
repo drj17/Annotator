@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
 
+
 class TrackShow extends React.Component {
   constructor(props){
     super(props);
@@ -38,7 +39,7 @@ class TrackShow extends React.Component {
 
 
   componentWillReceiveProps(newProps){
-    if(this.props.currentTrack){
+    if(newProps.params.songId){
       if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
         this.props.fetchSong(newProps.params.songId)
         .then(() => this.props.fetchAnnotations(newProps.params.songId))
@@ -50,7 +51,8 @@ class TrackShow extends React.Component {
   populateAnnotations() {
     let lyrics = document.getElementById('lyrics');
     let offset = 0;
-    if(lyrics.innerHTML.includes("</span>")){
+
+    if(!lyrics || lyrics.innerHTML.includes("</span>")  || this.props.annotations.length === 0 ){
       return;
     }
       this.props.annotations.forEach(annotation => {
@@ -100,7 +102,7 @@ class TrackShow extends React.Component {
     };
     if(this.props.loading || !this.props.currentTrack.id){
       return(
-        <h1>Loading!</h1>
+        <div className="loader"></div>
       );
     } else {
     return(
