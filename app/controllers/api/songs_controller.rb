@@ -4,7 +4,7 @@ class Api::SongsController < ApplicationController
     if @song.save
       render "/api/songs/show"
     else
-      render json: @song.errors.full_messages, status: 422
+      render json: @song.errors, status: 422
     end
 
   end
@@ -21,7 +21,7 @@ class Api::SongsController < ApplicationController
 
   def update
     @song = Song.find(params[:id])
-    
+
     if @song.update_attributes(song_params)
       render "/api/songs/show"
     else

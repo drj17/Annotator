@@ -32,7 +32,7 @@ class Header extends React.Component {
         <section>
           <section className="nav-header">
             <h1 className="search">SEARCH</h1>
-            <h1 className="logo">ANNOTATOR</h1>
+            <Link to="/"><h1 className="logo">ANNOTATOR</h1></Link>
             <HeaderLoggedOut
               login={this.props.login}
               signup={this.props.signup}

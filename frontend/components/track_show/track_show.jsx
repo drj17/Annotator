@@ -29,10 +29,9 @@ class TrackShow extends React.Component {
         text = window.getSelection().toString();
         let range = [start, start+text.length];
         if(range[1] - range[0] > 0){
-          alert(range);
-        }
-        if(window.getSelection().anchorNode.parentNode.nodeName !== "SPAN"){
-          this.setState({annotationOpen: true, annotationType: "new"});
+          if(this.props.currentUser && window.getSelection().anchorNode.parentNode.nodeName !== "SPAN" ){
+            this.setState({annotationOpen: true, annotationType: "new"});
+          }
         }
     }
   }

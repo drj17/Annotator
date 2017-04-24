@@ -10,6 +10,7 @@ class TrackForm extends React.Component {
       lyrics: "",
       artist: "",
       author_id: props.currentUser.id,
+      errors: this.props.errors
     };
 
 
@@ -29,7 +30,7 @@ class TrackForm extends React.Component {
 
   componentWillReceiveProps(newProps){
     if(!newProps.params.songId){
-      this.setState({title: "", artist: "", lyrics: "", author_id: this.props.currentUser.id});
+      return;
     } else if (parseInt(newProps.params.songId) !== this.props.currentTrack.id){
       this.props.fetchSong(newProps.params.songId)
       .then(() => this.setState(this.props.currentTrack));
@@ -60,6 +61,7 @@ class TrackForm extends React.Component {
 
   handleSubmit(e){
     e.preventDefault();
+    this.props.clearErrors();
     let file = this.state.imageFile;
     let formData = new FormData();
     formData.append("song[title]", this.state.title);
@@ -77,7 +79,8 @@ class TrackForm extends React.Component {
     const { title, lyrics, artist } = this.state;
     const formText = this.props.formType === "new" ? "Add a New Song" : `Edit ${title}`;
     const submitText = this.props.formType === "new" ? "Add Song" : "Submit Edits";
-    const errors = this.props.errors.map(error => <li key= {error} className="error">{error}</li>);
+
+
 
     let img = "";
     if(this.state.imageFile){
@@ -85,26 +88,25 @@ class TrackForm extends React.Component {
     } else if (this.props.currentTrack && this.props.formType !== "new"){
       img = <img className="preview-image" src={this.props.currentTrack.image_url}/>;
     }
-
     return (
         <section className="new-song-form-container">
           <h1>{formText}</h1>
 
           <form className="new-song-form" onSubmit={this.handleSubmit}>
-            <ul>{errors}</ul>
-            <label>Song Title
-              <input className="input-field" onChange={this.update("title")} type="text" value={title}></input>
-            </label>
-            <label>Artist
-              <input className="input-field" onChange={this.update("artist")} type="text" value={artist}></input>
-            </label>
-            <label>Lyrics
-              <textarea onChange={this.update("lyrics")} value={lyrics}/>
-            </label>
-            <label>Artwork
-              <input type="file" onChange={this.uploadFile}></input>
+            <label htmlFor="title">Song Title</label>
+              <span className="errors">{this.props.errors.title[0]}</span>
+              <input id="title" className="input-field" onChange={this.update("title")} type="text" value={title}></input>
+            <label htmlFor="artist">Artist</label>
+              <span className="errors">{this.props.errors.artist[0]}</span>
+              <input
+                className="input-field" id="artist" onChange={this.update("artist")} type="text" value={artist}></input>
+              <label htmlFor="lyrics">Lyrics</label>
+              <span className="errors">{this.props.errors.lyrics[0]}</span>
+              <textarea id="lyrics" onChange={this.update("lyrics")} value={lyrics}/>
+            <label htmlFor="upload">Artwork </label>
+              <input id="upload"type="file" onChange={this.uploadFile}></input>
               {img}
-            </label>
+
             <input className="form-submit" type="submit" value={submitText}/>
           </form>
         </section>

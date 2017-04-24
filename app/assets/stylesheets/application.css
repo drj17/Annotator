@@ -38,3 +38,7 @@
 *:focus {
     outline: none;
 }
+
+a:hover {
+  cursor:pointer;
+}

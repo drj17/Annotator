@@ -21,9 +21,7 @@ body {
   border-bottom: 1px solid #CCCCCC;
 }
 
-.track-listing img {
-  display: none;
-}
+
 
 
 .track-rank {
@@ -55,6 +53,13 @@ body {
 
 .top span {
   font-size: 18px;
+}
+
+.track-listing img {
+  height: 35px;
+  width: 35px;
+  display: block;
+  align-self: center;
 }
 
 .top img {

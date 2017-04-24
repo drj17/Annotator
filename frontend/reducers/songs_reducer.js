@@ -9,7 +9,11 @@ import merge from 'lodash/merge';
 
 let defaultState = {
   tracks: [],
-  errors: [],
+  errors: {
+    title: "",
+    artist: "",
+    lyrics: ""
+  },
   currentTrack: {}
 };
 
@@ -33,7 +37,7 @@ const SongsReducer = (state = defaultState, action) => {
       return merge({}, state, { errors });
     case CLEAR_ERRORS:
       const clearedErrors = Object.assign({}, state);
-      clearedErrors.errors = [];
+      clearedErrors.errors = defaultState.errors;
       return clearedErrors;
     default:
       return state;

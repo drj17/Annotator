@@ -3,6 +3,7 @@
   font-size: 20px;
   font-weight: bold;
   margin-bottom: 20px;
+  margin-top: 20px;
 }
 
 
@@ -22,6 +23,7 @@
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin-bottom: 20px;
 }
 
 .new-song-form input {
@@ -29,7 +31,7 @@
   background-color: white;
   border: 2px solid #CCCCCC;
   padding: 2px;
-  margin: 15px 0px;
+  margin-bottom: 15px;
   margin-left: 15px;
 }
 
@@ -47,10 +49,11 @@
 .new-song-form textarea {
   background-color: white;
   padding: 15px;
-  margin: 15px;
   width: 60%;
   height: 400px;
-  border: 2px solid #F7F7F7;
+  border: 2px solid #CCCCCC;
+  margin-left: 15px;
+  margin-bottom: 20px;
 }
 
 .new-song-form .form-submit {
@@ -69,4 +72,16 @@
   margin-left: 15px;
   height: 150px;
   width: 150px;
+}
+
+.errors {
+  color: red;
+  // padding-top: 20px;
+  padding-left: 15px;
+}
+
+#upload {
+  padding: 5px;
+  display: flex;
+  justify-content: center;
 }
