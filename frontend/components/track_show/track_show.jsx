@@ -3,39 +3,29 @@ import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
 
 
+
 class TrackShow extends React.Component {
   constructor(props){
     super(props);
     this.getSelection = this.getSelection.bind(this);
     this.state = {
       annotationOpen: false,
-      annotationType: "new"
+      annotationType: "new",
+      currentAnnotation: this.props.currentAnnotation,
+      annotations: this.props.annotations
     };
+    this.selection = "";
 
     this.populateAnnotations = this.populateAnnotations.bind(this);
+    this.isValidAnnotation = this.isValidAnnotation.bind(this);
+    this.closeAnnotation = this.closeAnnotation.bind(this);
+    this.orderAnnotations = this.orderAnnotations.bind(this);
   }
 
   componentDidMount(){
-    this.props.fetchSong(this.props.trackId)
-              .then(() => this.populateAnnotations());
+    this.props.fetchSong(this.props.trackId);
 
   }
-
-  getSelection() {
-    let text = "";
-    let lyrics = document.getElementById("lyrics");
-    if (window.getSelection) {
-        let start = window.getSelection().focusOffset;
-        text = window.getSelection().toString();
-        let range = [start, start+text.length];
-        if(range[1] - range[0] > 0){
-          if(this.props.currentUser && window.getSelection().anchorNode.parentNode.nodeName !== "SPAN" ){
-            this.setState({annotationOpen: true, annotationType: "new"});
-          }
-        }
-    }
-  }
-
 
   componentWillReceiveProps(newProps){
     if(newProps.params.songId){
@@ -43,46 +33,119 @@ class TrackShow extends React.Component {
         this.props.fetchSong(newProps.params.songId)
                   .then(() => this.populateAnnotations());
       }
+
     }
   }
 
+  getSelection() {
+    let sel = document.getSelection();
+    let parent = document.getSelection().anchorNode.parentElement;
+    let start = document.getSelection().anchorOffset;
+    let end = start + document.getSelection().toString().length;
+
+    if(end < start){
+      let temp = end;
+      start = end;
+      end = start;
+    }
+
+    let offset = this.findOffset(parent);
+    let range = [start + offset, end + offset];
+    if(this.isValidAnnotation(range)){
+      this.setState({ annotationOpen: true, annotationType: "new"});
+    }
+    this.selection = range;
+  }
+
+  closeAnnotation(){
+    this.setState({annotationOpen: false});
+  }
+
+  findOffset(element){
+    let offset = 0;
+    while(element.previousSibling) {
+      offset += element.previousSibling.textContent.length;
+      element = element.previousSibling;
+
+    }
+     return offset;
+  }
+
+  orderAnnotations(){
+
+    let ordered =this.props.annotations.sort((a, b) => {
+      if(a.start_index < b.start_index){
+        return -1;
+      } else {
+        return 1;
+      }
+    });
+
+    return ordered;
+  }
   populateAnnotations() {
-    let lyrics = document.getElementById('lyrics');
+    let lyricsContainer = [];
     let offset = 0;
 
-    if(!lyrics || lyrics.innerHTML.includes("</span>")  || this.props.annotations.length === 0 ){
-      return;
+    let orderedAnnotations = this.orderAnnotations();
+    orderedAnnotations.forEach((annotation) => {
+      lyricsContainer.push(<span key={this.uniqueId()} className="normal">
+        {this.props.currentTrack.lyrics.slice(offset, annotation.start_index)}
+      </span>);
+      lyricsContainer.push(<span id={annotation.id}
+                                 key={this.uniqueId()}
+                                 className="annotated"
+                                 onClick={() => this.openAnnotation(annotation.id)}>
+        {this.props.currentTrack.lyrics.slice(annotation.start_index, annotation.end_index)}
+      </span>);
+      offset = annotation.end_index;
+
+    });
+
+    lyricsContainer.push(<span key={this.uniqueId()} className="normal">
+      {this.props.currentTrack.lyrics.slice(offset, this.props.currentTrack.lyrics.length)}
+    </span>);
+
+    return lyricsContainer;
+  }
+
+  openAnnotation(id){
+    this.props.fetchAnnotation(id).then(() => this.setState({
+                annotationOpen: true,
+                annotationType: "show",
+                currentAnnotation: this.props.currentAnnotation
+              }));
+
+  }
+
+  uniqueId() {
+    // return new Date().getTime();
+    return Math.random(1000);
+  }
+
+  isValidAnnotation(range){
+    let valid = true;
+    if(range[1] - range[0] <= 0){
+      valid = false;
     }
-      this.props.annotations.forEach(annotation => {
-        let text = lyrics.innerHTML;
-        var span = document.createElement('SPAN');
-        //grab text content to be replaced, grab text with offset;
-        span.textContent = lyrics.innerHTML.slice(annotation.start_index+offset, annotation.end_index+offset);
-        //replace inner html with new span element
-        lyrics.innerHTML = this.replaceAt(
-                                          text,
-                                          annotation.start_index + offset,
-                                          annotation.end_index + offset,
-                                          span.outerHTML
-                                        );
-        //indexes have changed due to span elements, offset by span length;
-        offset += span.outerHTML.length;
-      });
+    this.props.annotations.forEach(annotation => {
+      if(range[0] <= annotation.end_index && annotation.start_index <= range[1]){
+        valid = false;
+      }
+    });
+    return valid;
   }
-
-
-
-  replaceAt(text, start, end, content){
-    return text.substring(0, start) + content + text.substring(end);
-  }
-
 
 
   render(){
-    debugger
     let annotation = "";
     if(this.state.annotationOpen){
-      annotation = <AnnotationContainer annotationType={this.state.annotationType}/>;
+      annotation = <AnnotationContainer
+        annotationType={this.state.annotationType}
+        annotation={this.props.currentAnnotation}
+        selection={this.selection}
+        closeAnnotation={this.closeAnnotation}
+        />;
     }
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
@@ -119,14 +182,17 @@ class TrackShow extends React.Component {
             </section>
           </section>
         </section>
-        <section className="track-lyrics">
-          <p id="lyrics" onMouseUp={() => this.getSelection()}>{this.props.currentTrack.lyrics}</p>
+        <section className="track-body">
+            <section className="track-lyrics">
+              <p onMouseUp={() => this.getSelection()}>{this.populateAnnotations()}</p>
+            </section>
           <section className="track-annotations">{annotation}</section>
         </section>
       </section>
     );}
   }
 }
+
 
 
 export default TrackShow;

@@ -502,34 +502,3 @@ Dreaming", author_id: User.first.id)
 
 ivy.image = File.open('app/assets/images/blond.jpg')
 ivy.save!
-
-
-ivy_annotation = Annotation.create(
-  author_id: User.first.id,
-  song_id: Song.first.id,
-  description: "sample annotation",
-  start_index: 5,
-  end_index: 20,
-)
-dfgd = Annotation.create(
-  author_id: User.first.id,
-  song_id: Song.second.id,
-  description: "sample haha",
-  start_index: 5,
-  end_index: 22,
-)
-dd = Annotation.create(
-  author_id: User.first.id,
-  song_id: Song.second.id,
-  description: "wow",
-  start_index: 28,
-  end_index: 40,
-)
-
-tidal = Annotation.create(
-  author_id: User.first.id,
-  song_id: Song.first.id,
-  description: "sample annotation",
-  start_index: 30,
-  end_index: 50,
-)

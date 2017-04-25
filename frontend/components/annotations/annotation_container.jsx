@@ -2,13 +2,18 @@ import { connect } from 'react-redux';
 import {
   createAnnotation,
   updateAnnotation,
-  deleteAnnotation } from '../../actions/annotation_actions';
+  deleteAnnotation,
+  fetchAnnotations } from '../../actions/annotation_actions';
 import Annotation from './annotation';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    currentAnnotation: state.currentAnnotation,
-    annotationType: ownProps.annotationType
+    closeAnnotation: ownProps.closeAnnotation,
+    currentAnnotation: state.annotations.currentAnnotation,
+    currentTrack: state.songs.currentTrack,
+    annotationType: ownProps.annotationType,
+    currentUser: state.session.currentUser,
+    selection: ownProps.selection
   };
 };
 
@@ -16,7 +21,8 @@ const mapDispatchToProps = dispatch => {
   return {
     createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
     deleteAnnotation: (id) => dispatch(createAnnotation(id)),
-    updateAnnotation: (annotation) => dispatch(updateAnnotation)
+    updateAnnotation: (annotation) => dispatch(updateAnnotation),
+    fetchAnnotations: (id) => dispatch(fetchAnnotations(id))
   };
 };
 

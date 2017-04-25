@@ -1,3 +1,94 @@
 // Place all the styles related to the api/annotations controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+//
+// .show-annotation {
+//   border-left: 4px solid #99A7EE;
+//   font-size: 22px;
+// }
+
+.annotation p{
+
+  padding: 0px 10px;
+  font-size: 22px;
+  width: 100%;
+  font-weight: lighter;
+}
+
+.annotation {
+  margin-left: 20px;
+  border-left: 4px solid #99A7EE;
+}
+
+.create-button {
+  width: auto;
+  height: 30px;
+  border: 2px solid black;
+  padding: 3px;
+  margin-left: 10px;
+}
+
+
+.DraftEditor-editorContainer{
+
+}
+
+.public-DraftStyleDefault-block {
+  width: 100%;
+  height: inherit;
+  background-color: inherit;
+  padding: 5px;
+}
+
+.public-DraftStyleDefault-block:focus {
+  border: 2px solid #99A7EE;
+}
+
+.new-annotation-header {
+  text-align: center;
+  font-weight: lighter;
+  margin-bottom: 10px;
+}
+
+
+.text-editor {
+  padding: 10px;
+  width: 75%;
+  margin: auto;
+}
+
+.draft-field {
+  height: 150px;
+
+  background-color: #F5F5F5;
+}
+
+.show-annotation {
+  padding: 10px;
+}
+
+.toolbar {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.toolbar button {
+  padding: 0px 10px;
+}
+
+.annotation-submit {
+  margin: 15px 0px;
+  width: 90px;
+  height: 35px;
+  background-color: white;
+  border: 2px solid #0ECB27;
+  color: #0ECB27;
+  text-align: center;
+
+}
+
+.annotation-submit:hover {
+  background-color: #0ECB27;
+  color: white;
+  transition: .2s;
+}

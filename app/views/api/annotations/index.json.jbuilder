@@ -1,1 +1,1 @@
-json.array! @annotations, :start_index, :end_index
+json.array! @annotations, :id, :start_index, :end_index

@@ -5,7 +5,7 @@
 }
 
 .track-lyrics {
-  width: 60%;
+  width: 50%;
 
 }
 
@@ -87,38 +87,51 @@
 }
 
 .track-annotations {
-  width: 40%;
+  width: 45%;
+}
+
+.track-body {
+  padding: 15px;
+
+  width: 60%;
+  display: flex;
+  justify-content: space-between;
+  margin: auto;
+  background-color: white;
 }
 
 .track-lyrics {
-  padding: 15px;
   width: 60%;
-  display: flex;
-  justify-content: center;
-  margin: auto;
-}
-
-.track-lyrics p{
-  width: 50%;
-  margin: auto;
-  padding: 15px;
-  font-size: 20px;
+  // margin: auto;
+  // padding: 15px;
+  font-size: 22px;
   white-space: pre-wrap;
   background-color: white;
   line-height: 28px;
   font-weight: lighter;
 }
 
-.track-lyrics span{
+
+
+
+
+.annotated {
   font-size: 20px;
   line-height: 28px;
   font-weight: lighter;
   background-color: #E9E9E9;
 }
 
-.track-lyrics span:hover {
+.normal {
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: lighter;
+}
+
+.annotated:hover {
   background-color: yellow;
-  transition: .3s;
+  transition: .4s;
+  cursor: pointer;
 }
 
 .loader,
@@ -127,7 +140,9 @@
   width: 10em;
   height: 10em;
 }
+
 .loader {
+
   margin: 60px auto;
   font-size: 10px;
   position: relative;

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import { deleteSong, updateSong, fetchSong } from '../../actions/song_actions';
-import { fetchAnnotations } from '../../actions/annotation_actions';
+import { fetchAnnotations, fetchAnnotation } from '../../actions/annotation_actions';
 import TrackShow from './track_show';
 import React from 'react';
 import values from 'lodash/values';
@@ -12,7 +12,8 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     loading: state.loading.loading,
     trackId: ownProps.params.songId,
-    annotations: (state.annotations.annotations)
+    annotations: state.annotations.annotations,
+    currentAnnotation: state.annotations.currentAnnotation
   };
 };
 
@@ -21,7 +22,8 @@ const mapDispatchToProps = dispatch => {
   return {
     fetchSong: (id) => dispatch(fetchSong(id)),
     deleteSong: (id) => dispatch(deleteSong(id)),
-    fetchAnnotations: (id) => dispatch(fetchAnnotations(id))
+    fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
+    fetchAnnotation: (id) => dispatch(fetchAnnotation(id))
   };
 };
 
