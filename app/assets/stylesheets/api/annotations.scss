@@ -66,6 +66,7 @@
 
 .show-annotation {
   padding: 10px;
+  width: 80%
 }
 
 .toolbar {
@@ -94,6 +95,11 @@
   transition: .2s;
 }
 
+.annotation-controls {
+  display: flex;
+  justify-content: space-between;
+}
+
 .delete-button {
   padding: 5px;
   width: 90px;
@@ -108,4 +114,14 @@
   background-color: red;
   color: white;
   transition: .1s;
+}
+
+.edit-button {
+  margin-left: auto;
+  padding: 5px;
+  width: 90px;
+  height: 35px;
+  background-color: white;
+  border: 2px solid black;
+  text-align: center
 }

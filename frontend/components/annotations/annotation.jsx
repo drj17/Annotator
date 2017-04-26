@@ -63,12 +63,16 @@ class Annotation extends React.Component {
         </section>
       );
     } else {
-      return (
-        <section className="annotation new-annotation">
-          <button
+      let startAnnotationButton = <button className="create-button">Please Sign In To Annotate</button>;
+      if(this.props.currentUser){
+        startAnnotationButton = <button
             className="create-button"
             onClick={() => this.setState({formOpen: true})}
-            >Create Annotation</button>
+            >Create Annotation</button>;
+      }
+      return (
+        <section className="annotation new-annotation">
+          {startAnnotationButton}
         </section>
       );
     }
@@ -87,7 +91,7 @@ class Annotation extends React.Component {
   showAnnotation() {
     let deleteButton = "";
     let editButton = "";
-    if(this.props.currentUser.id === this.props.currentAnnotation.author_id){
+    if(this.props.currentUser && this.props.currentUser.id === this.props.currentAnnotation.author_id){
       deleteButton = <button className="delete-button" onClick={() => this.handleDelete()}>Delete</button>;
       editButton = <button className="edit-button" onClick={() => this.handleEdit()}>Edit</button>;
     }
@@ -97,8 +101,10 @@ class Annotation extends React.Component {
           editorState={this.state.editorState}
           readOnly={this.readOnly}
           />
-        {deleteButton}
-        {editButton}
+        <div className='annotation-controls'>
+          {deleteButton}
+          {editButton}
+        </div>
       </section>
     );
   }

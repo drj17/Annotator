@@ -157,8 +157,14 @@ class TrackShow extends React.Component {
       top: this.state.annotationPosition-380,
       right: '0px'
     };
-
     let annotation = "";
+    if(this.state.annotationOpen){
+       annotation = <AnnotationContainer
+        annotationType={this.state.annotationType}
+        annotation={this.props.currentAnnotation}
+        closeAnnotation={this.closeAnnotation}
+        />;
+    }
     if(this.state.annotationOpen && this.props.currentUser){
       annotation = <AnnotationContainer
         annotationType={this.state.annotationType}
@@ -168,10 +174,10 @@ class TrackShow extends React.Component {
         position={this.state.annotationPosition}
         />;
     }
-
-    if(!this.props.currentUser){
-      annotation = <h1>Please sign in to annotate</h1>;
-    }
+    //
+    // if(!this.props.currentUser){
+    //   annotation = <h1>Please sign in to annotate</h1>;
+    // }
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
     let editLink = "";

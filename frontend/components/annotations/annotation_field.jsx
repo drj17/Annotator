@@ -17,7 +17,6 @@ class AnnotationField extends React.Component {
   }
 
   componentDidMount(){
-    debugger
     if(this.props.formType === "edit"){
       let raw = convertFromRaw(JSON.parse(this.props.currentAnnotation.description));
       this.setState({
