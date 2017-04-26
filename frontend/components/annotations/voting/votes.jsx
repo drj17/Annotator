@@ -11,14 +11,14 @@ const Votes = (props) => {
   } else if (props.currentAnnotation.score < 0){
     scoreColor = "red";
   } else {
-    scoreColor = "green";
+    scoreColor = "#22C13E";
   }
 
   let symbol = props.currentAnnotation.score > 0 ? "+" : "";
 
   if(props.currentUser){
-    downvoteButton = <button onClick={() => handleVote(downvote)} ><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>;
-    upvoteButton = <button onClick={() => handleVote(upvote)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>;
+    downvoteButton = <button onClick={() => handleVote(downvote)} ><i className="fa fa-thumbs-down downvote" aria-hidden="true"></i></button>;
+    upvoteButton = <button onClick={() => handleVote(upvote)}><i className="fa fa-thumbs-up upvote" aria-hidden="true"></i></button>;
 
       let upvote = {
         user_id: props.currentUser.id,
