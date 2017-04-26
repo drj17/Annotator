@@ -22,7 +22,7 @@ const mapDispatchToProps = dispatch => {
   return {
     createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
     deleteAnnotation: (id) => dispatch(deleteAnnotation(id)),
-    updateAnnotation: (annotation) => dispatch(updateAnnotation),
+    updateAnnotation: (annotation) => dispatch(updateAnnotation(annotation)),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id))
   };
 };

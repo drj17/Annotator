@@ -12,7 +12,7 @@ class Annotation extends React.Component {
       position: this.props.position,
       formOpen: false,
       editorState: EditorState.createEmpty(),
-      readOnly: true
+      readOnly: true,
     };
 
     this.readOnly = "true";
@@ -27,7 +27,7 @@ class Annotation extends React.Component {
     if(this.props.currentAnnotation.id){
       let raw = convertFromRaw(JSON.parse(this.props.currentAnnotation.description));
       this.setState({
-        editorState: EditorState.createWithContent(raw)
+        editorState: EditorState.createWithContent(raw),
       });
     }
   }
@@ -36,24 +36,28 @@ class Annotation extends React.Component {
     if(newProps.currentAnnotation.id){
       let raw = convertFromRaw(JSON.parse(newProps.currentAnnotation.description));
       this.setState({
-        editorState: EditorState.createWithContent(raw)
+        editorState: EditorState.createWithContent(raw),
+        type: newProps.annotationType
       });
     }
   }
 
   newAnnotation() {
+
     if(this.state.formOpen){
       return(
         <section className="annotation new-annotation">
 
           <form>
             <AnnotationField
+              formType="new"
               user={this.props.currentUser}
               track={this.props.currentTrack}
               selection={this.props.selection}
               createAnnotation={this.props.createAnnotation}
               closeAnnotation={this.props.closeAnnotation}
               fetchAnnotations={this.props.fetchAnnotations}
+              updateAnnotation={this.props.updateAnnotation}
               />
           </form>
         </section>
@@ -76,11 +80,16 @@ class Annotation extends React.Component {
               .then(() => this.props.closeAnnotation());
   }
 
+  handleEdit() {
+    this.setState({type: "edit"});
+  }
+
   showAnnotation() {
     let deleteButton = "";
     let editButton = "";
     if(this.props.currentUser.id === this.props.currentAnnotation.author_id){
       deleteButton = <button className="delete-button" onClick={() => this.handleDelete()}>Delete</button>;
+      editButton = <button className="edit-button" onClick={() => this.handleEdit()}>Edit</button>;
     }
     return (
       <section className="annotation show-annotation">
@@ -89,6 +98,7 @@ class Annotation extends React.Component {
           readOnly={this.readOnly}
           />
         {deleteButton}
+        {editButton}
       </section>
     );
   }
@@ -100,10 +110,11 @@ class Annotation extends React.Component {
         <form>
           <AnnotationField
             formType="edit"
+            currentAnnotation={this.state.currentAnnotation}
             user={this.props.currentUser}
             track={this.props.currentTrack}
             selection={this.props.selection}
-            createAnnotation={this.props.createAnnotation}
+            updateAnnotation={this.props.updateAnnotation}
             closeAnnotation={this.props.closeAnnotation}
             fetchAnnotations={this.props.fetchAnnotations}
             />
@@ -113,10 +124,12 @@ class Annotation extends React.Component {
   }
 
   render(){
-    if(this.props.annotationType === "new"){
+    if(this.state.type === "new"){
       return this.newAnnotation();
-    } else {
+    } else if (this.state.type === "show"){
       return this.showAnnotation();
+    } else if (this.state.type === "edit"){
+      return this.editAnnotation();
     }
   }
 }

@@ -70,8 +70,8 @@ export const deleteAnnotation = (id) => dispatch => {
     .then(annotation => dispatch(removeAnnotation(annotation)),
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };
-export const updateAnnotation = (annotation, id) => dispatch => {
-  return AnnotationApiUtil.updateAnnotation(annotation, id)
+export const updateAnnotation = (annotation) => dispatch => {
+  return AnnotationApiUtil.updateAnnotation(annotation)
     .then(annotation => dispatch(receiveAnnotation(annotation)),
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };
