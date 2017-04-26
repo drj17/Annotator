@@ -10,8 +10,12 @@ class Api::SongsController < ApplicationController
   end
 
   def index
-    @songs = Song.all
-    render "/api/songs/index"
+    if params[:query]
+      @songs = Song.search_title_for(params[:query])
+    else
+      @songs = Song.all
+      render "/api/songs/index"
+    end
   end
 
   def show
@@ -43,6 +47,7 @@ class Api::SongsController < ApplicationController
   private
 
   def song_params
-    params.require(:song).permit(:title, :lyrics, :author_id, :artist, :image)
+    debugger
+    params.require(:song).permit(:title, :lyrics, :author_id, :artist, :image, :query)
   end
 end

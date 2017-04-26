@@ -3,6 +3,7 @@ import HeaderLoggedIn from './header_logged_in';
 import HeaderLoggedOut from './header_logged_out';
 import HeaderNavigation from './header_navigation';
 import { Link } from 'react-router';
+import SearchContainer from '../search/search_container';
 
 class Header extends React.Component {
   constructor(props){
@@ -16,7 +17,7 @@ class Header extends React.Component {
       return(
         <section>
         <section className="nav-header">
-          <h1 className="search">SEARCH</h1>
+            <SearchContainer />
           <Link to="/"><h1 className="logo">ANNOTATOR</h1></Link>
           <HeaderLoggedIn
             user={this.props.currentUser}
@@ -31,7 +32,9 @@ class Header extends React.Component {
       return (
         <section>
           <section className="nav-header">
-            <h1 className="search">SEARCH</h1>
+
+              <SearchContainer />
+
             <Link to="/"><h1 className="logo">ANNOTATOR</h1></Link>
             <HeaderLoggedOut
               login={this.props.login}
