@@ -4,7 +4,7 @@
 #
 #  id          :integer          not null, primary key
 #  author_id   :integer          not null
-#  score       :integer          not null
+#  score       :integer          default("0"), not null
 #  description :text             not null
 #  song_id     :integer          not null
 #  start_index :integer          not null

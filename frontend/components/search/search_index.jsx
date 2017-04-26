@@ -1,5 +1,6 @@
 import React from 'react';
 import SearchIndexItem from './search_index_item';
+import onClickOutside from 'react-onclickoutside';
 
 class SearchIndex extends React.Component {
   constructor(props){
@@ -13,6 +14,12 @@ class SearchIndex extends React.Component {
 
     this.update = this.update.bind(this);
     this.closeSearch = this.closeSearch.bind(this);
+  }
+  componentDidMount(){
+  }
+
+  handleClickOutside(){
+    this.closeSearch();
   }
 
   update(e){
@@ -49,7 +56,6 @@ class SearchIndex extends React.Component {
           type="text"
           value={this.state.query}/>
         <ul className={`search-result-list ${this.state.dropdown}`}
-            onBlur={() => this.closeSearch()}
           >
 
           {searchHeader}
@@ -61,4 +67,4 @@ class SearchIndex extends React.Component {
   }
 }
 
-export default SearchIndex;
+export default onClickOutside(SearchIndex);

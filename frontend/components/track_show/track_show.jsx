@@ -29,6 +29,9 @@ class TrackShow extends React.Component {
   }
 
   componentWillReceiveProps(newProps){
+    if(newProps.location !== this.props.location){
+      this.setState({annotationOpen: false});
+    }
     if(newProps.params.songId){
       if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
         this.props.fetchSong(newProps.params.songId)

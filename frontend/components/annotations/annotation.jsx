@@ -1,6 +1,7 @@
 import React from 'react';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import AnnotationField from './annotation_field';
+import VotesContainer from './voting/votes_container';
 
 class Annotation extends React.Component {
   constructor(props){
@@ -104,6 +105,7 @@ class Annotation extends React.Component {
           editorState={this.state.editorState}
           readOnly={this.readOnly}
           />
+        <VotesContainer />
         <div className='annotation-controls'>
           {deleteButton}
           {author}
@@ -120,7 +122,7 @@ class Annotation extends React.Component {
         <form>
           <AnnotationField
             formType="edit"
-            currentAnnotation={this.state.currentAnnotation}
+            currentAnnotation={this.props.currentAnnotation}
             user={this.props.currentUser}
             track={this.props.currentTrack}
             selection={this.props.selection}

@@ -40,7 +40,25 @@ class Api::AnnotationsController < ApplicationController
     end
   end
 
+  def upvote
+    vote(1)
+  end
+
+  def downvote
+    vote(-1)
+  end
+
   private
+
+  def vote(direction)
+    @annotation = Annotation.find(params[:id])
+    @vote = @annotation.votes.find_or_initialize_by(user: current_user)
+
+    unless @vote.update(value: direction)
+      render json @vote.errors.full_messages
+    end
+  end
+
 
   def annotation_params
     params.require(:annotation).permit(:author_id, :score, :description, :song_id, :start_index, :end_index)

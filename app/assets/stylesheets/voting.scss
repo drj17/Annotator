@@ -1,0 +1,14 @@
+.voting {
+  display: flex;
+  justify-content: space-between;
+  width: 30%;
+  margin: auto;
+}
+
+.upvote-active {
+  color: green;
+}
+
+.downvote-active {
+  color: red;
+}

@@ -20,6 +20,7 @@ class User < ApplicationRecord
 
   has_many :songs
   has_many :annotations
+  has_many :votes
 
   def self.find_by_credentials(username, password)
     user = User.find_by(username: username)
