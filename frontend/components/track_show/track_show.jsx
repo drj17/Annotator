@@ -39,17 +39,17 @@ class TrackShow extends React.Component {
   }
 
   getSelection(e) {
-    let tempText = document.getSelection().anchorNode.textContent;
-
     let parent = document.getSelection().anchorNode.parentElement;
     let start = document.getSelection().anchorOffset;
     let end = start + document.getSelection().toString().length;
     let yPos = e.pageY;
+
     if(end < start){
       let temp = end;
       start = end;
       end = start;
     }
+
 
     let offset = this.findOffset(parent);
     let range = [start + offset, end + offset];
@@ -99,7 +99,7 @@ class TrackShow extends React.Component {
       lyricsContainer.push(<span id={annotation.id}
                                  key={this.uniqueId()}
                                  className="annotated"
-                                 onClick={this.openAnnotation(annotation.id)}>
+                                 onMouseDown={this.openAnnotation(annotation.id)}>
         {this.props.currentTrack.lyrics.slice(annotation.start_index, annotation.end_index)}
       </span>);
       offset = annotation.end_index;
@@ -208,7 +208,7 @@ class TrackShow extends React.Component {
         </section>
         <section className="track-body">
             <section className="track-lyrics">
-              <p onMouseDown={() => this.closeAnnotation()} onMouseUp={this.getSelection}>{this.populateAnnotations()}</p>
+              <p onMouseUp={this.getSelection}>{this.populateAnnotations()}</p>
             </section>
           <section style={style} className="track-annotations">{annotation}</section>
         </section>
