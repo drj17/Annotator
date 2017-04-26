@@ -6,17 +6,19 @@ const Votes = (props) => {
   let downvoteButton = "";
   let scoreColor;
 
+  if(props.currentAnnotation.score === 0){
+    scoreColor = "black";
+  } else if (props.currentAnnotation.score < 0){
+    scoreColor = "red";
+  } else {
+    scoreColor = "green";
+  }
+
+  let symbol = props.currentAnnotation.score > 0 ? "+" : "";
+
   if(props.currentUser){
     downvoteButton = <button onClick={() => handleVote(downvote)} ><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>;
     upvoteButton = <button onClick={() => handleVote(upvote)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>;
-
-      if(props.currentAnnotation.score === 0){
-        scoreColor = "black";
-      } else if (props.currentAnnotation.score < 0){
-        scoreColor = "red";
-      } else {
-        scoreColor = "green";
-      }
 
       let upvote = {
         user_id: props.currentUser.id,
@@ -37,7 +39,7 @@ const Votes = (props) => {
   return (
     <div className="voting">
       {downvoteButton}
-      <span style={{color: scoreColor}}>IQ: {props.currentAnnotation.score}</span>
+      <span style={{color: scoreColor}}>IQ: {symbol}{props.currentAnnotation.score}</span>
       {upvoteButton}
     </div>
   );
