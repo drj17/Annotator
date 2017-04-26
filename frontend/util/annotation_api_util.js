@@ -27,10 +27,10 @@ export const deleteAnnotation = (id) => {
   });
 };
 
-export const updateAnnotation = (annotation) => {
+export const updateAnnotation = (annotation, vote) => {
   return $.ajax({
     method: 'patch',
     url: `api/annotations/${annotation.id}`,
-    data: { annotation }
+    data: { annotation: annotation, vote: vote }
   });
 };

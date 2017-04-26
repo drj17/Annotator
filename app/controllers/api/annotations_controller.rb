@@ -22,10 +22,20 @@ class Api::AnnotationsController < ApplicationController
   def update
     @annotation = Annotation.find(params[:id])
 
-    if @annotation.update_attributes(annotation_params)
-      render "/api/annotations/show"
+    if params[:vote]
+      @vote = Vote.new(params[:vote].permit(:user_id, :annotation_id, :value))
+      if @vote.save!
+        @user = User.find(@vote.user_id)
+        Vote.where('annotation_id = ? AND user_id = ? AND value != ?', @vote.annotation.id, @vote.user.id, @vote.value).destroy_all
+        @annotation.update_attributes(score: @annotation.user_votes)
+        render "/api/annotations/show"
+      end
     else
-      render json @annotation.errors.full_messages, status: 422
+      if @annotation.update_attributes(annotation_params)
+        render "/api/annotations/show"
+      else
+        render json @annotation.errors.full_messages, status: 422
+      end
     end
   end
 

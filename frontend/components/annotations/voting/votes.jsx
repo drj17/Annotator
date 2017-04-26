@@ -1,11 +1,44 @@
 import React from 'react';
 
 const Votes = (props) => {
+
+  let upvoteButton = "";
+  let downvoteButton = "";
+  let scoreColor;
+
+  if(props.currentUser){
+    downvoteButton = <button onClick={() => handleVote(downvote)} ><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>;
+    upvoteButton = <button onClick={() => handleVote(upvote)}><i className="fa fa-thumbs-up" aria-hidden="true"></i></button>;
+
+      if(props.currentAnnotation.score === 0){
+        scoreColor = "black";
+      } else if (props.currentAnnotation.score < 0){
+        scoreColor = "red";
+      } else {
+        scoreColor = "green";
+      }
+
+      let upvote = {
+        user_id: props.currentUser.id,
+        annotation_id: props.currentAnnotation.id,
+        value: 1
+      };
+      let downvote = {
+        user_id: props.currentUser.id,
+        annotation_id: props.currentAnnotation.id,
+        value: -1
+      };
+
+      const handleVote = (vote) => {
+        props.updateAnnotation(props.currentAnnotation, vote);
+      };
+  }
+
   return (
     <div className="voting">
-      <button><i className="fa fa-thumbs-down" aria-hidden="true"></i></button>
-      <span>+10</span>
-      <button><i className="fa fa-thumbs-up upvote-active" aria-hidden="true"></i></button>
+      {downvoteButton}
+      <span style={{color: scoreColor}}>IQ: {props.currentAnnotation.score}</span>
+      {upvoteButton}
     </div>
   );
 };
