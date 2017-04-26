@@ -91,9 +91,12 @@ class Annotation extends React.Component {
   showAnnotation() {
     let deleteButton = "";
     let editButton = "";
+    let author = "";
     if(this.props.currentUser && this.props.currentUser.id === this.props.currentAnnotation.author_id){
       deleteButton = <button className="delete-button" onClick={() => this.handleDelete()}>Delete</button>;
       editButton = <button className="edit-button" onClick={() => this.handleEdit()}>Edit</button>;
+    } else {
+      author = <span style={{fontStyle: "italic"}}>Submitted by: {this.props.currentAnnotation.author.username}</span>;
     }
     return (
       <section className="annotation show-annotation">
@@ -103,6 +106,7 @@ class Annotation extends React.Component {
           />
         <div className='annotation-controls'>
           {deleteButton}
+          {author}
           {editButton}
         </div>
       </section>

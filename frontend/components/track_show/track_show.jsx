@@ -150,11 +150,14 @@ class TrackShow extends React.Component {
 
 
   render(){
-
-
+    let top = this.state.annotationType === "new" ? 380 : 400;
+    // if(this.state.selection[1] - this.state.selection[0] > 150){
+    //   top += 200;
+    // }
+    //
     let style = {
       position: "absolute",
-      top: this.state.annotationPosition-380,
+      top: this.state.annotationPosition-top,
       right: '0px'
     };
     let annotation = "";

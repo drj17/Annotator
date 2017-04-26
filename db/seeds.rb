@@ -9,6 +9,8 @@ User.destroy_all
 Song.destroy_all
 Annotation.destroy_all
 User.create(username: "demo_user", password: "password")
+User.create(username: "david_janas", password: "appacademy")
+User.create(username: "kanye_west", password: "iamagod")
 
 tidal = Song.create(title: "Tidal", lyrics:
 "Awake, unfazed
@@ -202,7 +204,7 @@ Ain't no ho inside my DNA", artist: "Kendrick Lamar", author_id: User.first.id)
 dna.image = File.open('app/assets/images/damn.jpg')
 dna.save!
 
-aeroplane = Song.create(title: "In The Aeroplane Over the Sea", lyrics: "[Verse 1]
+aeroplane = Song.create(title: "In The Aeroplane Over The Sea", lyrics: "[Verse 1]
 What a beautiful face
 I have found in this place
 That is circling all round the sun
@@ -502,3 +504,134 @@ Dreaming", author_id: User.first.id)
 
 ivy.image = File.open('app/assets/images/blond.jpg')
 ivy.save!
+
+annotations = Annotation.create([
+    {
+      author_id: User.first.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"2kb2n\",\"text\":\"In this album-long ode to Anne Frank, he comments here upon how beautiful Anne was, even at such a young age, and how wonderful it is to share the same planet as she did. Even though the two were separated by decades, they both are humans on the same Earth, a fact that makes his connection to her even more real.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
+      start_index: 10,
+      end_index: 58,
+    },
+    {
+      id: 109,
+      author_id: User.second.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"282c4\",\"text\":\"His life and this relationship seem too good to be true, almost as if he was living in a romance movie.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
+      start_index: 94,
+      end_index: 147,
+    },
+    {
+      author_id: User.third.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"bk8m1\",\"text\":\"He recognizes that every moment is fleeting and that this amazing relationship can be gone at any time. He realizes that he needs to cherish it and appreciate it while it lasts.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
+      start_index: 148,
+      end_index: 253,
+    },
+    {
+      author_id: User.second.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"19rb5\",\"text\":\"The “royalty” in Kendrick’s DNA represents his pride as a black individual and his respect for his heritage. \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "DNA").id,
+      start_index: 10,
+      end_index: 36,
+    },
+    {
+      author_id: User.first.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"http://www.vatican.va/archive/ccc_css/archive/catechism/p122a3p2.htm\",\"rel\":\"nofollow\",\"url\":\"http://www.vatican.va/archive/ccc_css/archive/catechism/p122a3p2.htm\"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://jesusisajew.org/YESHUA.php\",\"rel\":\"nofollow\",\"url\":\"https://jesusisajew.org/YESHUA.php\"}},\"2\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/artists/Dj-khaled\",\"url\":\"https://genius.com/artists/Dj-khaled\"}},\"3\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/10139753\",\"url\":\"https://genius.com/10139753\"}}},\"blocks\":[{\"key\":\"aj6ti\",\"text\":\"Kendrick compares his birth to the Immaculate Conception of the Virgin Mary. Catholics believe that the Virgin Mary was free from sin since she had to give birth to Christ.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":35,\"length\":21,\"key\":0}],\"data\":{}},{\"key\":\"3r5h5\",\"text\":\"Yeshua (יֵשׁוּעַ) is Hebrew for Jesus. Kendrick discussed the return of Yeshua in his guest feature on DJ Khaled’s “Holy Key”\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":6,\"key\":1},{\"offset\":103,\"length\":9,\"key\":2},{\"offset\":115,\"length\":10,\"key\":3}],\"data\":{}}]}",
+      song_id: Song.find_by(title: "DNA").id,
+      start_index: 226,
+      end_index: 354,
+    },
+    {
+      author_id: User.third.id,
+      score: 0,
+      description:
+       "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/Kendrick-lamar-ronald-reagan-era-his-evils-lyrics\",\"url\":\"https://genius.com/Kendrick-lamar-ronald-reagan-era-his-evils-lyrics\"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"http://www.drugpolicy.org/blog/nancy-reagans-role-disastrous-war-drugs\",\"rel\":\"nofollow\",\"url\":\"http://www.drugpolicy.org/blog/nancy-reagans-role-disastrous-war-drugs\"}}},\"blocks\":[{\"key\":\"6p5p\",\"text\":\"Kendrick was born in 1987 during the tail end of the Ronald Reagan Era and witnessed the destruction that The War on Drugs brought upon his community. While Reagan was President, he passed aggressive legislation that saw the number of people behind bars for nonviolent drug law violations increase from 50,000 in 1980 to more than 400,000 by 1997.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":53,\"length\":17,\"key\":0},{\"offset\":289,\"length\":58,\"key\":1}],\"data\":{}}]}",
+      song_id: Song.find_by(title: "DNA").id,
+      start_index: 72,
+      end_index: 126,
+    },
+    {
+      author_id: User.third.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"btil2\",\"text\":\"The morning is just like any other morning, i.e. meaningless.  The singer longs for something out of the ordinary\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "Tidal").id,
+      start_index: 0,
+      end_index: 77,
+    },
+    {
+      author_id: User.first.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"7q2nf\",\"text\":\"Continuing with the theme of finding meaning in life, the singer wishes for something more than just going through the motions. \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "Tidal").id,
+      start_index: 124,
+      end_index: 250,
+    },
+    {
+      id: 107,
+      author_id: User.second.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"c239e\",\"text\":\"As humans we work until we are no longer able, usually near between the ages of 60 and 70.  Then we are locked away in retirement homes until we ultimately pass away\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "Tidal").id,
+      start_index: 437,
+      end_index: 494,
+    },
+    {
+      author_id: User.third.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"349do\",\"text\":\"Praying to nothing implies that the prayers are going unheard, and thus, unanswered.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"ad3s7\",\"text\":\"There is nothing left to say. The relationship has gone stale, and there isn’t even anything left to hope for.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "These Few Presidents").id,
+      start_index: 80,
+      end_index: 108,
+    },
+    {
+      author_id: User.first.id,
+      score: 0,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"8efi\",\"text\":\"These lines describe an artifact of your typical married/long-term couple: a kitchen towel (perhaps a wedding gift) with their names embroidered together, connected by an ampersand, as a kitschy symbol of their love. A domesticated relationship.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "These Few Presidents").id,
+      start_index: 109,
+      end_index: 180,
+    },
+    {
+      author_id: User.third.id,
+      score: 0,
+      description:
+       "{\"entityMap\":{},\"blocks\":[{\"key\":\"78i4e\",\"text\":\"It would’ve been as difficult for the addressed person to make it into heaven as it would’ve been to try to fly a kite in a bad storm.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"dgces\",\"text\":\"Clearly, the narrator doesn’t think of this individual as having been a particularly good          person.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"84hne\",\"text\":\"The ‘waiting’ part of the line might imply that the narrator thinks that he has been good enough to deserve heaven, though it might also mean that the addressed is simply waiting for his death\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[{\"offset\":73,\"length\":2,\"style\":\"ITALIC\"}],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "These Few Presidents").id,
+      start_index: 283,
+      end_index: 396,
+    },
+    {
+      author_id: User.first.id,
+      score: 0,
+      description:
+       "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/Kanye-west-jesus-walks-lyrics\",\"url\":\"https://genius.com/Kanye-west-jesus-walks-lyrics\"}}},\"blocks\":[{\"key\":\"8bfm9\",\"text\":\"Kanye calls out to God to rid him of the negative energy preventing him from reaching his full potential.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"am1jb\",\"text\":\"This could resemble Kanye’s inner-child calling out to a higher power. Kanye’s devotion to Christianity and Jesus Christ is mentioned throughout his discography, e.g: “Jesus Walks.”\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":167,\"length\":14,\"key\":0}],\"data\":{}}]}",
+      song_id: Song.find_by(title: "Ultralight Beam").id,
+      start_index: 39,
+      end_index: 434,
+    },
+    {
+      author_id: User.second.id,
+      score: 0,
+      description:
+       "{\"entityMap\":{},\"blocks\":[{\"key\":\"a993e\",\"text\":\"Frank describes a failed relationship. He was overwhelmed when his partner told him they loved him—he wasn’t emotionally prepared. Perhaps, this relationship blossomed from a long time friendship, and here the friend tells him that they intimately love him. It seems he too was once deeply in love earlier in the friendship and has since accepted the friendship as just that. The relationship “started from nothing,” then became more serious but they eventually separated all the same.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}},{\"key\":\"bq2ob\",\"text\":\"Although there’s enough negativity between Frank and his ex-lover to fuel a mutual hatred for one another, Frank still insists that the relationship was worthwhile.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "Ultralight Beam").id,
+      start_index: 9,
+      end_index: 290,
+    }
+  ])
