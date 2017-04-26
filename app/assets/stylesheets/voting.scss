@@ -5,10 +5,12 @@
   margin: auto;
 }
 
-// .upvote {
-//   color: #22C13E;
-// }
-//
-// .downvote {
-//   color: red;
-// }
+.upvote:hover {
+  color: #22C13E;
+  transition: .1s
+}
+
+.downvote:hover {
+  color: red;
+  transition: .1s
+}

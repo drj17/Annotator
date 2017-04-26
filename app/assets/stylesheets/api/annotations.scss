@@ -114,7 +114,7 @@
 .delete-button:hover {
   background-color: red;
   color: white;
-  transition: .1s;
+  transition: .2s;
 }
 
 .edit-button {
@@ -125,4 +125,9 @@
   background-color: white;
   border: 2px solid black;
   text-align: center
+}
+
+.edit-button:hover {
+  transition: .2s;
+  background-color: #CCCCCC;
 }
