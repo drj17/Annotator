@@ -38,6 +38,7 @@ class AnnotationField extends React.Component {
     this.props.closeAnnotation();
   }
   render() {
+
     return(
       <div className="text-editor">
         <h1 className = "new-annotation-header">Drop Some Knowledge</h1>

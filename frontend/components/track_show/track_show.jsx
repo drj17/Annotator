@@ -12,7 +12,9 @@ class TrackShow extends React.Component {
       annotationOpen: false,
       annotationType: "new",
       currentAnnotation: this.props.currentAnnotation,
-      annotations: this.props.annotations
+      annotations: this.props.annotations,
+      selection: [],
+      annotationPosition: ""
     };
     this.selection = "";
 
@@ -24,7 +26,6 @@ class TrackShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchSong(this.props.trackId);
-
   }
 
   componentWillReceiveProps(newProps){
@@ -37,12 +38,13 @@ class TrackShow extends React.Component {
     }
   }
 
-  getSelection() {
-    let sel = document.getSelection();
+  getSelection(e) {
+    let tempText = document.getSelection().anchorNode.textContent;
+
     let parent = document.getSelection().anchorNode.parentElement;
     let start = document.getSelection().anchorOffset;
     let end = start + document.getSelection().toString().length;
-
+    let yPos = e.pageY;
     if(end < start){
       let temp = end;
       start = end;
@@ -51,15 +53,18 @@ class TrackShow extends React.Component {
 
     let offset = this.findOffset(parent);
     let range = [start + offset, end + offset];
+
     if(this.isValidAnnotation(range)){
-      this.setState({ annotationOpen: true, annotationType: "new"});
+      this.setState({ annotationOpen: true, annotationType: "new", selection: range, annotationPosition: yPos});
     }
-    this.selection = range;
+
+
   }
 
   closeAnnotation(){
     this.setState({annotationOpen: false});
   }
+
 
   findOffset(element){
     let offset = 0;
@@ -72,8 +77,7 @@ class TrackShow extends React.Component {
   }
 
   orderAnnotations(){
-
-    let ordered =this.props.annotations.sort((a, b) => {
+    let ordered = this.props.annotations.sort((a, b) => {
       if(a.start_index < b.start_index){
         return -1;
       } else {
@@ -95,7 +99,7 @@ class TrackShow extends React.Component {
       lyricsContainer.push(<span id={annotation.id}
                                  key={this.uniqueId()}
                                  className="annotated"
-                                 onClick={() => this.openAnnotation(annotation.id)}>
+                                 onClick={this.openAnnotation(annotation.id)}>
         {this.props.currentTrack.lyrics.slice(annotation.start_index, annotation.end_index)}
       </span>);
       offset = annotation.end_index;
@@ -110,11 +114,18 @@ class TrackShow extends React.Component {
   }
 
   openAnnotation(id){
-    this.props.fetchAnnotation(id).then(() => this.setState({
-                annotationOpen: true,
-                annotationType: "show",
-                currentAnnotation: this.props.currentAnnotation
-              }));
+    return e => {
+      let yPos = e.pageY;
+      return (
+          this.props.fetchAnnotation(id).then(() => this.setState({
+          annotationOpen: true,
+          annotationType: "show",
+          currentAnnotation: this.props.currentAnnotation,
+          annotationPosition: yPos
+        }))
+      );
+    };
+
 
   }
 
@@ -137,15 +148,29 @@ class TrackShow extends React.Component {
   }
 
 
+
   render(){
+
+
+    let style = {
+      position: "absolute",
+      top: this.state.annotationPosition-380,
+      right: '0px'
+    };
+
     let annotation = "";
-    if(this.state.annotationOpen){
+    if(this.state.annotationOpen && this.props.currentUser){
       annotation = <AnnotationContainer
         annotationType={this.state.annotationType}
         annotation={this.props.currentAnnotation}
-        selection={this.selection}
+        selection={this.state.selection}
         closeAnnotation={this.closeAnnotation}
+        position={this.state.annotationPosition}
         />;
+    }
+
+    if(!this.props.currentUser){
+      annotation = <h1>Please sign in to annotate</h1>;
     }
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
@@ -157,7 +182,6 @@ class TrackShow extends React.Component {
             .then(() => hashHistory.push('/'))
           }>Delete Track</button>;
         }
-        // editLink = <Link to={`/edit_song/${this.props.currentTrack.id}`}>Edit Track</Link>;
     }
     let styles = {
       backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(' + imgUrl + ')'
@@ -184,9 +208,9 @@ class TrackShow extends React.Component {
         </section>
         <section className="track-body">
             <section className="track-lyrics">
-              <p onMouseUp={() => this.getSelection()}>{this.populateAnnotations()}</p>
+              <p onMouseDown={() => this.closeAnnotation()} onMouseUp={this.getSelection}>{this.populateAnnotations()}</p>
             </section>
-          <section className="track-annotations">{annotation}</section>
+          <section style={style} className="track-annotations">{annotation}</section>
         </section>
       </section>
     );}

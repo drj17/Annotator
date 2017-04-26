@@ -35,7 +35,8 @@
 
 .public-DraftStyleDefault-block {
   width: 100%;
-  height: inherit;
+  min-height: 100px;
+  height: 100%;
   background-color: inherit;
   padding: 5px;
 }
@@ -58,7 +59,7 @@
 }
 
 .draft-field {
-  height: 150px;
+  min-height: 150px;
 
   background-color: #F5F5F5;
 }
@@ -91,4 +92,20 @@
   background-color: #0ECB27;
   color: white;
   transition: .2s;
+}
+
+.delete-button {
+  padding: 5px;
+  width: 90px;
+  height: 35px;
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  text-align: center;
+}
+
+.delete-button:hover {
+  background-color: red;
+  color: white;
+  transition: .1s;
 }

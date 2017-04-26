@@ -13,14 +13,15 @@ const mapStateToProps = (state, ownProps) => {
     currentTrack: state.songs.currentTrack,
     annotationType: ownProps.annotationType,
     currentUser: state.session.currentUser,
-    selection: ownProps.selection
+    selection: ownProps.selection,
+    position: ownProps.position
   };
 };
 
 const mapDispatchToProps = dispatch => {
   return {
     createAnnotation: (annotation) => dispatch(createAnnotation(annotation)),
-    deleteAnnotation: (id) => dispatch(createAnnotation(id)),
+    deleteAnnotation: (id) => dispatch(deleteAnnotation(id)),
     updateAnnotation: (annotation) => dispatch(updateAnnotation),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id))
   };

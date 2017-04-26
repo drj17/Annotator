@@ -31,7 +31,7 @@ class Api::AnnotationsController < ApplicationController
 
   def destroy
     @annotation = Annotation.find(params[:id])
-
+    @song = Song.find(@annotation.song_id)
     if @annotation
       @annotation.destroy
       render "api/songs/show"

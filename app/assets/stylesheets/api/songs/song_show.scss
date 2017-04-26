@@ -93,6 +93,7 @@
 .track-body {
   padding: 15px;
 
+  position: relative;
   width: 60%;
   display: flex;
   justify-content: space-between;
@@ -120,6 +121,13 @@
   line-height: 28px;
   font-weight: lighter;
   background-color: #E9E9E9;
+}
+
+.potential-annotation {
+  background-color: yellow;
+  font-size: 20px;
+  line-height: 28px;
+  font-weight: lighter;
 }
 
 .normal {
