@@ -19,4 +19,9 @@ class Vote < ApplicationRecord
     foreign_key: :annotation_id,
     class_name: "Annotation"
 
+  def comment_ids
+    comments.map do |comment|
+      comment.id
+    end
+  end
 end

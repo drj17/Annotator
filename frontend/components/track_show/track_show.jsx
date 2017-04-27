@@ -25,7 +25,8 @@ class TrackShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchSong(this.props.trackId);
+    this.props.fetchSong(this.props.trackId)
+              .then(() => this.props.fetchSongComments(this.props.trackId));
   }
 
   componentWillReceiveProps(newProps){
@@ -33,15 +34,17 @@ class TrackShow extends React.Component {
       this.setState({annotationOpen: false});
     }
     if(newProps.params.songId){
-      if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
+      if(newProps.params.songId !== this.props.params.songId){
+
         this.props.fetchSong(newProps.params.songId)
-                  .then(() => this.populateAnnotations());
+                  .then(() => this.props.fetchSongComments(this.props.params.songId));
       }
 
     }
   }
 
   getSelection(e) {
+    debugger
     let parent = document.getSelection().anchorNode.parentElement;
     let start = document.getSelection().anchorOffset;
     let end = start + document.getSelection().toString().length;

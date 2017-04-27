@@ -1,5 +1,5 @@
 import {
-  RECEIVE_ALL_COMMENTS,
+  RECEIVE_COMMENTS,
   RECEIVE_COMMENT,
   REMOVE_COMMENT,
   RECEIVE_ERRORS,
@@ -8,7 +8,7 @@ import {
 import merge from 'lodash/merge';
 
 let defaultState = {
-  comments: [],
+  comments: {},
   errors: []
 };
 
@@ -16,11 +16,10 @@ const CommentsReducer = (state = defaultState, action) => {
   Object.freeze(state);
 
   switch(action.type){
-    case RECEIVE_ALL_COMMENTS:
-      let receiveAll = Object.assign({}, state);
-      let comments = receiveAll.comments.concat(action.comments);
-      receiveAll.comments = comments;
-      return receiveAll;
+    case RECEIVE_COMMENTS:
+      let receive = Object.assign({}, state);
+      receive.comments = merge(receive.comments, action.comments);
+      return receive;
     case RECEIVE_COMMENT:
       let receiveCommentState = Object.assign({}, state);
       receiveCommentState.comments.push(action.comment);

@@ -14,7 +14,7 @@ let defaultState = {
     artist: "",
     lyrics: ""
   },
-  currentTrack: {},
+  currentTrack: { comments: [] },
 };
 
 const SongsReducer = (state = defaultState, action) => {

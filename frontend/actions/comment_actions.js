@@ -1,6 +1,6 @@
 import * as CommentApiUtil from '../util/comment_api_util';
 
-export const RECEIVE_ALL_COMMENTS = "RECEIVE_ALL_COMMENTS";
+export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
 export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
@@ -8,7 +8,7 @@ export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 
 export const receiveAllComments = (comments) => {
   return {
-    type: RECEIVE_ALL_COMMENTS,
+    type: RECEIVE_COMMENTS,
     comments
   };
 };

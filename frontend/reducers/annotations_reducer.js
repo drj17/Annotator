@@ -9,7 +9,7 @@ import merge from 'lodash/merge';
 
 let defaultState = {
   annotations: [],
-  currentAnnotation: {}
+  currentAnnotation: {comments: []},
 };
 
 const AnnotationsReducer = (state = defaultState, action) => {

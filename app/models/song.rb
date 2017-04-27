@@ -33,7 +33,11 @@ class Song < ApplicationRecord
   has_many :comments, as: :commentable
 
 
-
+  def comment_ids
+    comments.map do |comment|
+      comment.id
+    end
+  end
 
 
 
