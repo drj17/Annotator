@@ -2,6 +2,7 @@ import React from 'react';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import AnnotationField from './annotation_field';
 import VotesContainer from './voting/votes_container';
+import CommentContainer from '../comments/comment_container';
 
 class Annotation extends React.Component {
   constructor(props){
@@ -26,6 +27,7 @@ class Annotation extends React.Component {
 
   componentDidMount(){
     if(this.props.currentAnnotation.id){
+      this.props.fetchAnnotationComments(this.props.currentAnnotation.id);
       let raw = convertFromRaw(JSON.parse(this.props.currentAnnotation.description));
       this.setState({
         editorState: EditorState.createWithContent(raw),
@@ -35,6 +37,7 @@ class Annotation extends React.Component {
 
   componentWillReceiveProps(newProps){
     if(newProps.currentAnnotation.id){
+
       let raw = convertFromRaw(JSON.parse(newProps.currentAnnotation.description));
       this.setState({
         editorState: EditorState.createWithContent(raw),
@@ -111,6 +114,12 @@ class Annotation extends React.Component {
           {author}
           {editButton}
         </div>
+        <CommentContainer
+           comments={this.props.comments}
+           commentableId={this.props.currentAnnotation.id}
+           commentableType="Annotation"
+           overRide="true"
+          />
       </section>
     );
   }

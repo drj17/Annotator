@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
+import CommentContainer from '../comments/comment_container';
 
 
 
@@ -26,8 +27,7 @@ class TrackShow extends React.Component {
 
   componentDidMount(){
     this.props.fetchSong(this.props.trackId)
-              .then(() => this.props.fetchSongComments(this.props.trackId))
-              .then(() => this.populateAnnotations());
+              .then(() => this.props.fetchSongComments(this.props.trackId));
   }
 
   componentWillReceiveProps(newProps){
@@ -38,8 +38,7 @@ class TrackShow extends React.Component {
       if(newProps.params.songId !== this.props.params.songId){
 
         this.props.fetchSong(newProps.params.songId)
-                  .then(() => this.props.fetchSongComments(this.props.params.songId))
-                  .then(() => this.populateAnnotations());
+                  .then(() => this.props.fetchSongComments(this.props.params.songId));
       }
 
     }
@@ -122,7 +121,6 @@ class TrackShow extends React.Component {
 
   openAnnotation(id){
     return e => {
-      debugger
       let yPos = e.pageY;
       return (
           this.props.fetchAnnotation(id).then(() => this.setState({
@@ -228,6 +226,11 @@ class TrackShow extends React.Component {
             </section>
           <section style={style} className="track-annotations">{annotation}</section>
         </section>
+        <CommentContainer
+          comments={this.props.comments}
+          commentableId={this.props.currentTrack.id}
+          commentableType="Song"
+           />
       </section>
     );}
   }

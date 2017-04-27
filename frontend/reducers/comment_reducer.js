@@ -21,9 +21,9 @@ const CommentsReducer = (state = defaultState, action) => {
       receive.comments = merge(receive.comments, action.comments);
       return receive;
     case RECEIVE_COMMENT:
-      let receiveCommentState = Object.assign({}, state);
-      receiveCommentState.comments.push(action.comment);
-      return receiveCommentState;
+        let receiveOne = Object.assign({}, state);
+        receiveOne.comments = merge(receiveOne.comments, {[action.comment.id]: action.comment});
+        return receiveOne;
     case REMOVE_COMMENT:
       let deleteState = Object.assign({}, state);
       deleteState.comments.filter(comment => comment.id === action.comment.id);
