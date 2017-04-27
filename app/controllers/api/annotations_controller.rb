@@ -15,17 +15,15 @@ class Api::AnnotationsController < ApplicationController
   end
 
   def show
-
-
-
     @annotation = Annotation.find(params[:id])
     @did_vote = false
     @direction = 0
-    if Vote.exists?(user_id: current_user.id, annotation_id: @annotation.id)
-      @user_vote = Vote.where(user_id: current_user.id, annotation_id: @annotation.id).first
-      @did_vote = true
-      @direction = @user_vote.value
-
+    if current_user
+      if Vote.exists?(user_id: current_user.id, annotation_id: @annotation.id)
+        @user_vote = Vote.where(user_id: current_user.id, annotation_id: @annotation.id).first
+        @did_vote = true
+        @direction = @user_vote.value
+      end
     end
     render "/api/annotations/show"
   end
@@ -37,6 +35,8 @@ class Api::AnnotationsController < ApplicationController
       @vote = Vote.new(params[:vote].permit(:user_id, :annotation_id, :value))
       if @vote.save!
         @user = User.find(@vote.user_id)
+        @did_vote = true
+        @direction = @vote.value
         Vote.where('annotation_id = ? AND user_id = ? AND value != ?', @vote.annotation.id, @vote.user.id, @vote.value).destroy_all
         @annotation.update_attributes(score: @annotation.user_votes)
         render "/api/annotations/show"

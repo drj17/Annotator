@@ -30,6 +30,7 @@ class Song < ApplicationRecord
     class_name: :User
 
   has_many :annotations
+  has_many :comments, as: :commentable
 
 
 

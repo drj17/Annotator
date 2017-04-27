@@ -15,14 +15,14 @@ const Votes = (props) => {
       downvoteStyle = {color: 'red'};
     }
   }
-
-  // if(props.currentAnnotation.score === 0){
-  //   scoreColor = "black";
-  // } else if (props.currentAnnotation.score < 0){
-  //   scoreColor = "red";
-  // } else {
-  //   scoreColor = "#22C13E";
-  // }
+  
+  if(props.currentAnnotation.score === 0){
+    scoreColor = "black";
+  } else if (props.currentAnnotation.score < 0){
+    scoreColor = "red";
+  } else {
+    scoreColor = "#22C13E";
+  }
 
   let symbol = props.currentAnnotation.score > 0 ? "+" : "";
 

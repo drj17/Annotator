@@ -21,6 +21,8 @@ class Annotation < ApplicationRecord
     foreign_key: :annotation_id,
     class_name: "Vote"
 
+  has_many :comments, as: :commentable
+  
   belongs_to :song
   belongs_to :author,
     primary_key: :id,

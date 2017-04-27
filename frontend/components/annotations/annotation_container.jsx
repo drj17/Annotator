@@ -5,6 +5,7 @@ import {
   deleteAnnotation,
   fetchAnnotations } from '../../actions/annotation_actions';
 import Annotation from './annotation';
+import { commentsByObject } from '../../reducers/selectors';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -14,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     annotationType: ownProps.annotationType,
     currentUser: state.session.currentUser,
     selection: ownProps.selection,
-    position: ownProps.position
+    position: ownProps.position,
+    comments: commentsByObject(state, "annotation")
   };
 };
 
