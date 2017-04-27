@@ -12,8 +12,4 @@ Rails.application.routes.draw do
     end
     resources :annotations, only: [:create, :show, :destroy, :update]
   end
-
-  # post 'api/annotations/:id/upvote', to: 'annotations#upvote'
-  # post 'api/annotations/:id/downvote', to: 'annotations#downvote'
-
 end

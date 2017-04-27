@@ -15,7 +15,18 @@ class Api::AnnotationsController < ApplicationController
   end
 
   def show
+
+
+
     @annotation = Annotation.find(params[:id])
+    @did_vote = false
+    @direction = 0
+    if Vote.exists?(user_id: current_user.id, annotation_id: @annotation.id)
+      @user_vote = Vote.where(user_id: current_user.id, annotation_id: @annotation.id).first
+      @did_vote = true
+      @direction = @user_vote.value
+
+    end
     render "/api/annotations/show"
   end
 

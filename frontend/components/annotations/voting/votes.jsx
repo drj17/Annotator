@@ -6,19 +6,43 @@ const Votes = (props) => {
   let downvoteButton = "";
   let scoreColor;
 
-  if(props.currentAnnotation.score === 0){
-    scoreColor = "black";
-  } else if (props.currentAnnotation.score < 0){
-    scoreColor = "red";
-  } else {
-    scoreColor = "#22C13E";
+  let downvoteStyle = {};
+  let upvoteStyle = {};
+  if(props.currentAnnotation.did_vote){
+    if(props.currentAnnotation.direction === 1){
+      upvoteStyle = {color: '#22C13E'};
+    } else if (props.currentAnnotation.direction === -1){
+      downvoteStyle = {color: 'red'};
+    }
   }
+
+  // if(props.currentAnnotation.score === 0){
+  //   scoreColor = "black";
+  // } else if (props.currentAnnotation.score < 0){
+  //   scoreColor = "red";
+  // } else {
+  //   scoreColor = "#22C13E";
+  // }
 
   let symbol = props.currentAnnotation.score > 0 ? "+" : "";
 
+  const setStyle = (direction) => {
+    if(direction === "upvote"){
+      upvoteStyle = {color: '#22C13E'};
+      downvoteStyle = {};
+    } else {
+      downvoteStyle = {color: 'red'};
+      upvoteStyle = {};
+    }
+  };
+
   if(props.currentUser){
-    downvoteButton = <button onClick={() => handleVote(downvote)} ><i className="fa fa-thumbs-down downvote" aria-hidden="true"></i></button>;
-    upvoteButton = <button onClick={() => handleVote(upvote)}><i className="fa fa-thumbs-up upvote" aria-hidden="true"></i></button>;
+    downvoteButton = <button onClick={() => {handleVote(downvote); setStyle('downvote');}} >
+      <i className="fa fa-thumbs-down downvote" style={downvoteStyle} aria-hidden="true"></i>
+      </button>;
+    upvoteButton = <button onClick={() => {handleVote(upvote); setStyle('upvote');}}>
+      <i className="fa fa-thumbs-up upvote" style={upvoteStyle} aria-hidden="true"></i>
+      </button>;
 
       let upvote = {
         user_id: props.currentUser.id,
@@ -39,7 +63,7 @@ const Votes = (props) => {
   return (
     <div className="voting">
       {downvoteButton}
-      <span style={{color: scoreColor}}>IQ: {symbol}{props.currentAnnotation.score}</span>
+      Upvote: <span style={{color: scoreColor}}>{symbol}{props.currentAnnotation.score}</span>
       {upvoteButton}
     </div>
   );
