@@ -1,10 +1,18 @@
 .voting {
   display: flex;
   justify-content: space-between;
-  width: 30%;
+  width: 50%;
   margin: auto;
+  margin-bottom: 10px;
 }
 
+.downvote {
+  margin-right: 10px;
+}
+
+.upvote {
+  margin-left: 10px;
+}
 .upvote:hover {
   color: #22C13E;
   transition: .1s

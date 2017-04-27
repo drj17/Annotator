@@ -15,7 +15,7 @@ const Votes = (props) => {
       downvoteStyle = {color: 'red'};
     }
   }
-  
+
   if(props.currentAnnotation.score === 0){
     scoreColor = "black";
   } else if (props.currentAnnotation.score < 0){
@@ -63,7 +63,7 @@ const Votes = (props) => {
   return (
     <div className="voting">
       {downvoteButton}
-      Upvote: <span style={{color: scoreColor}}>{symbol}{props.currentAnnotation.score}</span>
+      Upvote:<span style={{color: scoreColor, marginLeft: '5px'}}>{symbol}{props.currentAnnotation.score}</span>
       {upvoteButton}
     </div>
   );
