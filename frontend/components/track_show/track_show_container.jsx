@@ -4,6 +4,8 @@ import { fetchAnnotations, fetchAnnotation } from '../../actions/annotation_acti
 import TrackShow from './track_show';
 import React from 'react';
 import values from 'lodash/values';
+import { songComments } from '../../reducers/selectors';
+import { fetchSongComments } from '../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +15,8 @@ const mapStateToProps = (state, ownProps) => {
     loading: state.loading.loading,
     trackId: ownProps.params.songId,
     annotations: state.annotations.annotations,
-    currentAnnotation: state.annotations.currentAnnotation
+    currentAnnotation: state.annotations.currentAnnotation,
+    comments: songComments(state)
   };
 };
 
@@ -23,7 +26,8 @@ const mapDispatchToProps = dispatch => {
     fetchSong: (id) => dispatch(fetchSong(id)),
     deleteSong: (id) => dispatch(deleteSong(id)),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
-    fetchAnnotation: (id) => dispatch(fetchAnnotation(id))
+    fetchAnnotation: (id) => dispatch(fetchAnnotation(id)),
+    fetchSongComments: (id) => dispatch(fetchSongComments(id))
   };
 };
 

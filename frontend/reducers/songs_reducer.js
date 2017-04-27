@@ -14,13 +14,19 @@ let defaultState = {
     artist: "",
     lyrics: ""
   },
-  currentTrack: {},
+  currentTrack: { comments: [] },
 };
+
+import { RECEIVE_COMMENT } from '../actions/comment_actions';
 
 const SongsReducer = (state = defaultState, action) => {
 
   Object.freeze(state);
   switch(action.type){
+    case RECEIVE_COMMENT:
+      let receive = merge({}, state);
+      receive.currentTrack.comments.unshift(action.comment.id);
+      return receive;
     case RECEIVE_ALL_SONGS:
       const receiveAll = Object.assign({}, state);
       receiveAll.tracks = action.tracks;

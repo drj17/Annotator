@@ -37,4 +37,10 @@ class Api::CommentsController < ApplicationController
     end
     render 'api/comments/index'
   end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:commentable_id, :commentable_type, :author_id, :body)
+  end
 end

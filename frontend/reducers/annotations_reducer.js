@@ -5,16 +5,22 @@ import {
   RECEIVE_ALL_ANNOTATIONS,
   REMOVE_ANNOTATION
 } from '../actions/annotation_actions';
+
+import { RECEIVE_COMMENT } from '../actions/comment_actions';
 import merge from 'lodash/merge';
 
 let defaultState = {
   annotations: [],
-  currentAnnotation: {}
+  currentAnnotation: {comments: []},
 };
 
 const AnnotationsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type){
+    case RECEIVE_COMMENT:
+      let receive = merge({}, state);
+      receive.currentAnnotation.comments.unshift(action.comment.id);
+      return receive;
     case RECEIVE_ALL_ANNOTATIONS:
       const receiveAll = Object.assign({}, state);
       receiveAll.annotations = action.annotations;

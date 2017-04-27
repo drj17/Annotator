@@ -1,3 +1,68 @@
 // Place all the styles related to the api/comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.comments-container {
+  background-color: white;
+  width: 60%;
+  margin: auto;
+  padding-bottom: 40px;
+
+}
+
+.comments{
+
+  width: 50%;
+  background-color: #F7F7F7;
+  margin-left: 20px;
+    padding: 20px;
+}
+
+.comments h2 {
+  margin-bottom: 10px;
+}
+
+.comment-form {
+  display: flex;
+  flex-direction: column;
+}
+
+.comment-body {
+  border: 2px solid #CCCCCC;
+  background-color: white;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+
+.comment-body:focus {
+  border: 2px solid #99A7EE;
+}
+
+.comment-item {
+  border-top: 1px solid #99A7EE;
+  padding-left: 10px;
+}
+
+.comment-item:last-child{
+  border-bottom: 1px solid #99A7EE;
+}
+
+.comment-item h2 {
+  margin-top: 5px;
+  color: #222222;
+}
+
+.comment-item h3 {
+  margin: 15px 0px;
+  font-weight: lighter;
+}
+
+.annotation-comment {
+  width: 100%;
+  margin: 20px;
+}
+
+.annotation-comment .comments {
+  width: 90%
+}

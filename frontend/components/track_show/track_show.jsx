@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
+import CommentContainer from '../comments/comment_container';
 
 
 
@@ -25,7 +26,8 @@ class TrackShow extends React.Component {
   }
 
   componentDidMount(){
-    this.props.fetchSong(this.props.trackId);
+    this.props.fetchSong(this.props.trackId)
+              .then(() => this.props.fetchSongComments(this.props.trackId));
   }
 
   componentWillReceiveProps(newProps){
@@ -33,9 +35,10 @@ class TrackShow extends React.Component {
       this.setState({annotationOpen: false});
     }
     if(newProps.params.songId){
-      if(parseInt(newProps.params.songId) !== this.props.currentTrack.id){
+      if(newProps.params.songId !== this.props.params.songId){
+
         this.props.fetchSong(newProps.params.songId)
-                  .then(() => this.populateAnnotations());
+                  .then(() => this.props.fetchSongComments(this.props.params.songId));
       }
 
     }
@@ -100,9 +103,9 @@ class TrackShow extends React.Component {
         {this.props.currentTrack.lyrics.slice(offset, annotation.start_index)}
       </span>);
       lyricsContainer.push(<span id={annotation.id}
-                                 key={this.uniqueId()}
+                                 key={annotation.id}
                                  className="annotated"
-                                 onMouseDown={this.openAnnotation(annotation.id)}>
+                                 onClick={this.openAnnotation(annotation.id)}>
         {this.props.currentTrack.lyrics.slice(annotation.start_index, annotation.end_index)}
       </span>);
       offset = annotation.end_index;
@@ -157,10 +160,6 @@ class TrackShow extends React.Component {
     if(this.state.annotationPosition - top < 350){
       top = 360;
     }
-    // if(this.state.selection[1] - this.state.selection[0] > 150){
-    //   top += 200;
-    // }
-    //
     let style = {
       position: "absolute",
       top: this.state.annotationPosition-top,
@@ -227,6 +226,11 @@ class TrackShow extends React.Component {
             </section>
           <section style={style} className="track-annotations">{annotation}</section>
         </section>
+        <CommentContainer
+          comments={this.props.comments}
+          commentableId={this.props.currentTrack.id}
+          commentableType="Song"
+           />
       </section>
     );}
   }
