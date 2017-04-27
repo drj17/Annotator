@@ -11,7 +11,6 @@ class CommentIndex extends React.Component{
     this.annotationComment = "";
     this.update = this.update.bind(this);
     if(this.props.overRide){
-      debugger
       this.annotationComment = "annotation-comment";
     }
   }
@@ -43,7 +42,6 @@ class CommentIndex extends React.Component{
     }
 
     let form = "";
-    debugger
     if(this.props.currentUser){
       form = <form className="comment-form">
               <textarea className="comment-body" placeholder="Add A Comment" onChange={this.update} value={this.state.text}/>
