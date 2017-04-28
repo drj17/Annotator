@@ -66,3 +66,13 @@
 .annotation-comment .comments {
   width: 90%
 }
+
+.comment-controls {
+  display: flex;
+}
+
+.comment-controls button {
+  margin-right: 10px;
+  color: #9A9A9A;
+  text-decoration: underline;
+}

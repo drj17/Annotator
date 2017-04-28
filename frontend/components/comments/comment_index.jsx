@@ -38,7 +38,14 @@ class CommentIndex extends React.Component{
       sortedComments = this.props.comments.sort((a, b) => {
         return b.id - a.id;
       });
-      comments = sortedComments.map(comment => <CommentIndexItem key={comment.id} comment={comment}/>);
+      comments = sortedComments.map(comment =>
+        <CommentIndexItem
+          key={comment.id}
+          comment={comment}
+          currentUser={this.props.currentUser}
+          deleteComment={this.props.deleteComment}
+
+          />);
     }
 
     let form = "";

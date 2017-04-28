@@ -5,7 +5,7 @@ class Api::AnnotationsController < ApplicationController
     if @annotation.save
       render "/api/annotations/show"
     else
-      render json @annotation.errors.full_messages, status: 422
+      render json: @annotation.errors.full_messages, status: 422
     end
   end
 

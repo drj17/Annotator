@@ -26,7 +26,7 @@ const CommentsReducer = (state = defaultState, action) => {
         return receiveOne;
     case REMOVE_COMMENT:
       let deleteState = Object.assign({}, state);
-      deleteState.comments.filter(comment => comment.id === action.comment.id);
+      delete deleteState.comments[action.id];
       return deleteState;
     case RECEIVE_ERRORS:
       const errors = action.errors;

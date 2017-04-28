@@ -6,7 +6,7 @@ import {
   REMOVE_ANNOTATION
 } from '../actions/annotation_actions';
 
-import { RECEIVE_COMMENT } from '../actions/comment_actions';
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
 import merge from 'lodash/merge';
 
 let defaultState = {
@@ -21,6 +21,11 @@ const AnnotationsReducer = (state = defaultState, action) => {
       let receive = merge({}, state);
       receive.currentAnnotation.comments.unshift(action.comment.id);
       return receive;
+    case REMOVE_COMMENT:
+      let remove = merge({}, state);
+      remove.currentAnnotation.comments
+      = remove.currentAnnotation.comments.filter((id) => action.id);
+      return remove;
     case RECEIVE_ALL_ANNOTATIONS:
       const receiveAll = Object.assign({}, state);
       receiveAll.annotations = action.annotations;

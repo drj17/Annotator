@@ -94,115 +94,52 @@ Offering a bitter choice", artist: "Protest The Hero", author_id: User.first.id)
 tidal.image = File.open('app/assets/images/pacific_myth.jpg');
 tidal.save!
 
-dna = Song.create(title: "DNA", lyrics: "[Verse 1]
-I got, I got, I got, I got
-Loyalty, got royalty inside my DNA
-Cocaine quarter piece, got war and peace inside my DNA
-I got power, poison, pain and joy inside my DNA
-I got hustle though, ambition, flow, inside my DNA
-I was born like this, since one like this
-Immaculate conception
-I transform like this, perform like this
-Was Yeshua's new weapon
-I don't contemplate, I meditate, then off your fucking head
-This that put-the-kids-to-bed
-This that I got, I got, I got, I got
-Realness, I just kill shit 'cause it's in my DNA
-I got millions, I got riches buildin' in my DNA
-I got dark, I got evil, that rot inside my DNA
-I got off, I got troublesome, heart inside my DNA
-I just win again, then win again like Wimbledon, I serve
-Yeah, that's him again, the sound that engine in is like a bird
-You see fireworks and Corvette tire skrrt the boulevard
-I know how you work, I know just who you are
-See, you's a, you's a, you's a—
-Bitch, your hormones prolly switch inside your DNA
-Problem is, all that sucker shit inside your DNA
-Daddy prolly snitched, heritage inside your DNA
-Backbone don't exist, born outside a jellyfish, I gauge
-See, my pedigree most definitely don't tolerate the front
-Shit I've been through prolly offend you
-This is Paula's oldest son
-I know murder, conviction
-Burners, boosters, burglars, ballers, dead, redemption
-Scholars, fathers dead with kids
-And I wish I was fed forgiveness
-Yeah, yeah, yeah, yeah, soldier's DNA
-Born inside the beast
-My expertise checked out in second grade
-When I was 9, on-sale motel, we didn't have nowhere to stay
-At 29, I've done so well, hit cartwheel in my estate
-And I'm gon' shine like I'm supposed to
-Antisocial, extrovert
-And excellent mean the extra work
-And absentness what the fuck you heard
-And pessimists never struck my nerve
-And Nazareth gonna plead his case
-The reason my power's here on earth
-Salute the truth, when the prophet say
+god = Song.create(title: "33 \"GOD\"", artist: "Bon Iver", author_id: User.second.id, lyrics: "(When we leave this room it's gone)
+Is the company stalling?
+We had what we wanted: your eyes
+(When we leave this room it's gone)
+With no word from the former
+I'd be happy as hell, if you stayed for tea
+(I know so well that this is all there is)
+This is how we grow now, woman
+A child ignored
+These will just be places to me now
+The foreman is down
+(When we leave this room it's gone)
+We're rising the stairs
 
-[Bridge]
-I got loyalty, got royalty inside my DNA
-This is why I say that hip hop has done more damage to young African Americans than racism in recent years
-I got loyalty, got royalty inside my DNA
-I live a better life, I'm rollin' several dice, fuck your life
-I got loyalty, got royalty inside my DNA
-I live a better, fuck your life
-5, 4, 3, 2, 1
-This is my heritage, all I'm inheritin'
-Money and power, the mecca of marriages
+​i FIND GOD
+AND RELIGIONS, TOO...
 
-[Verse 2]
-Tell me somethin'
-You mothafuckas can't tell me nothin'
-I'd rather die than to listen to you
-My DNA not for imitation
-Your DNA an abomination
-This how it is when you're in the Matrix
-Dodgin' bullets, reapin' what you sow
-And stackin' up the footage, livin' on the go
-And sleepin' in a villa
-Sippin' from a Grammy and walkin' in the buildin'
-Diamond in the ceilin', marble on the floors
-Beach inside the window, peekin' out the window
-Baby in the pool, godfather goals
-Only Lord knows, I've been goin' hammer
-Dodgin' paparazzi, freakin' through the cameras
-Eat at Four Daughters, Brock wearin' sandals
-Yoga on a Monday, stretchin' to Nirvana
-Watchin' all the snakes, curvin' all the fakes
-Phone never on, I don't conversate
-I don't compromise, I just penetrate
-Sex, money, murder—these are the breaks
-These are the times, level number 9
-Look up in the sky, 10 is on the way
-Sentence on the way, killings on the way
-Motherfucker, I got winners on the way
-You ain't shit without a body on your belt
-You ain't shit without a ticket on your plate
-You ain't sick enough to pull it on yourself
-You ain't rich enough to hit the lot and skate
-Tell me when destruction gonna be my fate
-Gonna be your fate, gonna be our faith
-Peace to the world, let it rotate
-Sex, money, murder—our DNA
+Staying at the Ace Hotel
+If the calm would allow
+Then I would just be floating to you now
+It would make me pass to let it pass on
+I'm climbing the dash, that skin
 
-[Outro]
-DNA
-Gimme some ganja, gimme some ganja
-DNA
-Gimme some ganja
-Real nigga in my DNA
-Ain't no ho inside my DNA
-Drippin' gold inside my DNA
-Power shows in my DNA
-DNA
-Gimme some ganja, gimme some ganja
-Real nigga in my DNA
-Ain't no ho inside my DNA", artist: "Kendrick Lamar", author_id: User.first.id)
+(Here in this room, this narrow room where life began when we were young last night)
 
-dna.image = File.open('app/assets/images/damn.jpg')
-dna.save!
+Well we walked up on that bolt in the street
+After you tied me in in the driveway of the apartment of his bede
+Sent your sister home in a cab
+Said I woulda walked across any thousand lands
+(No not really if you can't)
+I didn't need you that night
+Not gonna need you anytime
+Was gonna take it as it goes
+I could go forward in the light
+Well I better fold my clothes
+
+(I’ll be looking through your eyes)
+All my goodness
+(I’ll be looking through your eyes)
+(I’ll be looking through your eyes)
+All my goodness to show
+(Why are you so far from saving me?)
+(Why are you so far from saving me?)")
+
+god.image = File.open('app/assets/images/million.jpg')
+god.save!
 
 aeroplane = Song.create(title: "In The Aeroplane Over The Sea", lyrics: "[Verse 1]
 What a beautiful face
@@ -533,33 +470,6 @@ annotations = Annotation.create([
       song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
       start_index: 148,
       end_index: 253,
-    },
-    {
-      author_id: User.second.id,
-      score: 0,
-      description:
-        "{\"entityMap\":{},\"blocks\":[{\"key\":\"19rb5\",\"text\":\"The “royalty” in Kendrick’s DNA represents his pride as a black individual and his respect for his heritage. \",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
-      song_id: Song.find_by(title: "DNA").id,
-      start_index: 10,
-      end_index: 36,
-    },
-    {
-      author_id: User.first.id,
-      score: 0,
-      description:
-        "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"http://www.vatican.va/archive/ccc_css/archive/catechism/p122a3p2.htm\",\"rel\":\"nofollow\",\"url\":\"http://www.vatican.va/archive/ccc_css/archive/catechism/p122a3p2.htm\"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://jesusisajew.org/YESHUA.php\",\"rel\":\"nofollow\",\"url\":\"https://jesusisajew.org/YESHUA.php\"}},\"2\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/artists/Dj-khaled\",\"url\":\"https://genius.com/artists/Dj-khaled\"}},\"3\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/10139753\",\"url\":\"https://genius.com/10139753\"}}},\"blocks\":[{\"key\":\"aj6ti\",\"text\":\"Kendrick compares his birth to the Immaculate Conception of the Virgin Mary. Catholics believe that the Virgin Mary was free from sin since she had to give birth to Christ.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":35,\"length\":21,\"key\":0}],\"data\":{}},{\"key\":\"3r5h5\",\"text\":\"Yeshua (יֵשׁוּעַ) is Hebrew for Jesus. Kendrick discussed the return of Yeshua in his guest feature on DJ Khaled’s “Holy Key”\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":0,\"length\":6,\"key\":1},{\"offset\":103,\"length\":9,\"key\":2},{\"offset\":115,\"length\":10,\"key\":3}],\"data\":{}}]}",
-      song_id: Song.find_by(title: "DNA").id,
-      start_index: 226,
-      end_index: 354,
-    },
-    {
-      author_id: User.third.id,
-      score: 0,
-      description:
-       "{\"entityMap\":{\"0\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"https://genius.com/Kendrick-lamar-ronald-reagan-era-his-evils-lyrics\",\"url\":\"https://genius.com/Kendrick-lamar-ronald-reagan-era-his-evils-lyrics\"}},\"1\":{\"type\":\"LINK\",\"mutability\":\"MUTABLE\",\"data\":{\"href\":\"http://www.drugpolicy.org/blog/nancy-reagans-role-disastrous-war-drugs\",\"rel\":\"nofollow\",\"url\":\"http://www.drugpolicy.org/blog/nancy-reagans-role-disastrous-war-drugs\"}}},\"blocks\":[{\"key\":\"6p5p\",\"text\":\"Kendrick was born in 1987 during the tail end of the Ronald Reagan Era and witnessed the destruction that The War on Drugs brought upon his community. While Reagan was President, he passed aggressive legislation that saw the number of people behind bars for nonviolent drug law violations increase from 50,000 in 1980 to more than 400,000 by 1997.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[{\"offset\":53,\"length\":17,\"key\":0},{\"offset\":289,\"length\":58,\"key\":1}],\"data\":{}}]}",
-      song_id: Song.find_by(title: "DNA").id,
-      start_index: 72,
-      end_index: 126,
     },
     {
       author_id: User.third.id,

@@ -17,7 +17,7 @@ let defaultState = {
   currentTrack: { comments: [] },
 };
 
-import { RECEIVE_COMMENT } from '../actions/comment_actions';
+import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
 
 const SongsReducer = (state = defaultState, action) => {
 
@@ -27,6 +27,11 @@ const SongsReducer = (state = defaultState, action) => {
       let receive = merge({}, state);
       receive.currentTrack.comments.unshift(action.comment.id);
       return receive;
+    case REMOVE_COMMENT:
+      let remove = merge({}, state);
+      remove.currentTrack.comments
+      = remove.currentTrack.comments.filter((id) => action.id);
+      return remove;
     case RECEIVE_ALL_SONGS:
       const receiveAll = Object.assign({}, state);
       receiveAll.tracks = action.tracks;

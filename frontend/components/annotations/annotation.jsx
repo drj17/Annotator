@@ -108,10 +108,11 @@ class Annotation extends React.Component {
           editorState={this.state.editorState}
           readOnly={this.readOnly}
           />
+                  {author}
         <VotesContainer />
         <div className='annotation-controls'>
           {deleteButton}
-          {author}
+
           {editButton}
         </div>
         <CommentContainer

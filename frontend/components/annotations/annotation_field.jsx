@@ -4,7 +4,9 @@ import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'dr
 class AnnotationField extends React.Component {
   constructor(props){
     super(props);
-
+    this.state = {
+      errors: ""
+    };
     this.state = {editorState: EditorState.createEmpty()};
 
 
@@ -14,6 +16,7 @@ class AnnotationField extends React.Component {
     this._onBoldClick = this._onBoldClick.bind(this);
     this._onItalicsClick = this._onItalicsClick.bind(this);
     this._onUnderlineClick = this._onUnderlineClick.bind(this);
+
   }
 
   componentDidMount(){
@@ -36,25 +39,30 @@ class AnnotationField extends React.Component {
   }
 
   handleSubmit() {
-
-    let raw = convertToRaw(this.state.editorState.getCurrentContent());
-    let string = JSON.stringify(raw);
-    if(this.props.formType === "new"){
-      this.props.createAnnotation({
-        author_id: this.props.user.id,
-        description: string,
-        song_id: this.props.track.id,
-        start_index: this.props.selection[0],
-        end_index: this.props.selection[1]
-      }).then(() => this.props.fetchAnnotations(this.props.track.id));
+    let text = this.state.editorState.getCurrentContent().getPlainText();
+    if(text.length === 0){
+       let error = <span className="annotation-error">Annotation Can't Be Blank</span>;
+        this.setState({errors: error});
     } else {
-      this.props.updateAnnotation({
-        id: this.props.currentAnnotation.id,
-        description: string
-      });
+      let raw = convertToRaw(this.state.editorState.getCurrentContent());
+      let string = JSON.stringify(raw);
+      if(this.props.formType === "new"){
+        this.props.createAnnotation({
+          author_id: this.props.user.id,
+          description: string,
+          song_id: this.props.track.id,
+          start_index: this.props.selection[0],
+          end_index: this.props.selection[1]
+        }).then(() => this.props.fetchAnnotations(this.props.track.id));
+      } else {
+        this.props.updateAnnotation({
+          id: this.props.currentAnnotation.id,
+          description: string
+        });
+      }
+      this.props.closeAnnotation();
     }
 
-    this.props.closeAnnotation();
   }
   render() {
     let header = this.props.formType === "new" ? "Drop Some Knowledge" : "Edit This Annotation";
@@ -67,6 +75,7 @@ class AnnotationField extends React.Component {
           <button onMouseDown={() => this._onItalicsClick()}><i className="fa fa-italic" aria-hidden="true"></i></button>
           <button onMouseDown={() => this._onUnderlineClick()}><i className="fa fa-underline" aria-hidden="true"></i></button>
         </div>
+        {this.state.errors}
         <div className="draft-field">
           <Editor
             editorState={this.state.editorState}
