@@ -121,6 +121,7 @@ class TrackShow extends React.Component {
 
   openAnnotation(id){
     return e => {
+      this.props.clearErrors();
       let yPos = e.pageY;
       return (
           this.props.fetchAnnotation(id).then(() => this.setState({

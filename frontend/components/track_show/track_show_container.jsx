@@ -28,6 +28,7 @@ const mapDispatchToProps = dispatch => {
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
     fetchAnnotation: (id) => dispatch(fetchAnnotation(id)),
     fetchSongComments: (id) => dispatch(fetchSongComments(id)),
+    clearErrors: () => dispatch(clearErrors())
   };
 };
 
