@@ -20,11 +20,13 @@ a greater presence.
 
 #### Viewing Songs
 
-![index page](http://imgur.com/8H1SCfA)
-![song show](http://imgur.com/qWB6qsh)
+![index page](http://i.imgur.com/8H1SCfA.png)
+![song show](http://i.imgur.com/qWB6qsh.jpg)
 
 Users can view song lyrics either by clicking the song on the homepage,
 or utilizing the search feature in the upper-left-hand corner of the page.
+
+![search](https://media.giphy.com/media/l0Iyi9zhbHZs5SyDC/giphy.gif)
 
 #### Adding Songs
 
@@ -44,7 +46,7 @@ edit, or delete annotations the user must be signed in.
 Lyrics that have associated annotations will show up with a grey highlighting.
 Users can click on these lyrics to reveal an annotation on the right hand side of the page.
 
-//img
+![view annotation](https://media.giphy.com/media/3ohzdYc0LXLWc8Er3q/giphy.gif)
 
 Users can vote on annotations using the thumbs-up or thumbs-down icons.  Users can also
 comment on annotations using the text-field below the annotation.  If the current user
@@ -56,6 +58,7 @@ Users can create annotations by selecting text that does not already include
 an annotation.  This will prompt the user to start creating an annotation if
 they are signed-in, otherwise, it will first prompt the user to login.
 
+![create annotation](https://media.giphy.com/media/l0IxZDgreuGPbdq4U/giphy.gif)
 
 #### Comments
 
