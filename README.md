@@ -73,3 +73,20 @@ messages let by others, newest first.
 Both songs and annotations have a text field for users to add their comments.
 On submission the comment will automatically be placed at the top of the comment
 list
+
+![comments](http://i.imgur.com/OspJwTZ.png)
+
+## Future Directions for the Project
+
+In addition to Annotators current features, there are more features in the works, including:
+
+### User Profiles
+
+Users will have profiles pages, where they can upload a profile picture and keep track of
+the songs and annotations they have submitted. Users will also have a score based on
+the total number of votes for their annotations
+
+### Song Sorting
+
+Genius sorts the songs on their homepage by the number of view over the last 24 hours.  The feature
+ensures a dynamic home page, and I plan on implementing it.
