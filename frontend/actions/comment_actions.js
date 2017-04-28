@@ -2,7 +2,7 @@ import * as CommentApiUtil from '../util/comment_api_util';
 
 export const RECEIVE_COMMENTS = "RECEIVE_COMMENTS";
 export const REMOVE_COMMENT = "REMOVE_COMMENT";
-export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
+export const RECEIVE_COMMENT_ERRORS = "RECEIVE_COMMENT_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const RECEIVE_COMMENT = "RECEIVE_COMMENT";
 
@@ -29,7 +29,8 @@ export const removeComment = (comment) => {
 
 export const receiveErrors = (errors) => {
   return {
-    type: RECEIVE_ERRORS
+    type: RECEIVE_COMMENT_ERRORS,
+    errors
   };
 };
 

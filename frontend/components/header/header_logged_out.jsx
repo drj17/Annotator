@@ -31,7 +31,9 @@ class headerLoggedOut extends React.Component {
     const user = this.state.user;
     if(this.state.modal.formType === "login"){
       this.props.login({user})
+        .then(() => this.props.clearErrors())
         .then(() => this.closeModal());
+
     } else {
       this.props.signup({user})
         .then(() => this.closeModal());
@@ -54,7 +56,6 @@ class headerLoggedOut extends React.Component {
 
   closeModal(){
     this.setState({modal: {open: false}});
-
   }
 
   componentWillMount() {

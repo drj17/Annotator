@@ -10,7 +10,7 @@ Song.destroy_all
 Annotation.destroy_all
 User.create(username: "demo_user", password: "password")
 User.create(username: "david_janas", password: "appacademy")
-User.create(username: "kanye_west", password: "iamagod")
+User.create(username: "aa_student", password: "iamagod")
 
 tidal = Song.create(title: "Tidal", lyrics:
 "Awake, unfazed
@@ -543,5 +543,29 @@ annotations = Annotation.create([
       song_id: Song.find_by(title: "Ivy").id,
       start_index: 9,
       end_index: 290,
+    },
+    {
+      author_id: User.third.id,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"3k3bc\",\"text\":\"The lyrics have both personal and group interpretations. In the personal sense, “your eyes” could refer to a lover’s eyes, with the partners enjoying the mutual adoration of gazing at one another. The group meaning: “we” is the singer and band, and “your” is the audience. The musicians are able to capture the attention of the audience for an exhilarating performance.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "33 \"GOD\"").id,
+      start_index: 61,
+      end_index: 129
+    },
+    {
+      author_id: User.first.id,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"93ppc\",\"text\":\"The album’s theme of duality is present in this song. The lines look at the two sides of spurned love – the rejected man-“child” and the rejecter – and the pains on both sides that force us to grow as individuals (even if the two have a fling or deep connection). This parallels the maturity from living life without prayers answered. It also parallels the growth in our perspective on music and its creation process – intuiting the presence of a song but not fully discovering its beauty or potential.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "33 \"GOD\"").id,
+      start_index: 246,
+      end_index: 292,
+    },
+    {
+      author_id: User.second.id,
+      description:
+        "{\"entityMap\":{},\"blocks\":[{\"key\":\"dhhgm\",\"text\":\"Taken literally this is the act of going upstairs together, seemingly for tea or a fling. The imagery appeals to the idea that friendships and relationships manifest a higher state of being, or reveal a way to connect on a higher existential level, perhaps toward a kind of transcendence or realization about us and each other.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+      song_id: Song.find_by(title: "33 \"GOD\"").id,
+      start_index: 385,
+      end_index: 408,
     }
   ])

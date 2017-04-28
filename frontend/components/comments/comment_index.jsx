@@ -4,7 +4,6 @@ import CommentIndexItem from './comment_index_item';
 class CommentIndex extends React.Component{
   constructor(props){
     super(props);
-
     this.state = {
       text: ""
     };
@@ -23,6 +22,7 @@ class CommentIndex extends React.Component{
       commentable_type: this.props.commentableType
       }
     });
+    this.props.clearErrors();
     this.setState({text: ""});
   }
 
@@ -60,6 +60,7 @@ class CommentIndex extends React.Component{
     return (
       <section className={`comments-container ${this.annotationComment}`} style={this.styles}>
         <section className="comments">
+          <span className="annotation-error">{this.props.errors}</span>
           {form}
           <h2>Comments: </h2>
         <h1>{comments}</h1>

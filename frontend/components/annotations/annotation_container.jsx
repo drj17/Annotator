@@ -17,7 +17,7 @@ const mapStateToProps = (state, ownProps) => {
     currentUser: state.session.currentUser,
     selection: ownProps.selection,
     position: ownProps.position,
-    comments: annotationComments(state)
+    comments: annotationComments(state),
   };
 };
 
@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
     deleteAnnotation: (id) => dispatch(deleteAnnotation(id)),
     updateAnnotation: (annotation, vote) => dispatch(updateAnnotation(annotation, vote)),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
-    fetchAnnotationComments: (id) => dispatch(fetchAnnotationComments(id))
+    fetchAnnotationComments: (id) => dispatch(fetchAnnotationComments(id)),
   };
 };
 

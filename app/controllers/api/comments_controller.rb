@@ -5,17 +5,16 @@ class Api::CommentsController < ApplicationController
     if @comment.save
       render '/api/comments/show'
     else
-      render json: @comment.errors, state: 422
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 
   def update
     @comment = Comment.find(params:id)
-
     if @comment.update_attributes(comment_params)
       render '/api/comments/show'
     else
-      render json: @comment.errors, state: 422
+      render json: @comment.errors.full_messages, status: 422
     end
   end
 
@@ -24,6 +23,7 @@ class Api::CommentsController < ApplicationController
 
     if @comment
       @comment.destroy
+      render 'api/comments/show'
     else
       render json: ["No such comment"], status: 404
     end

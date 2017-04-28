@@ -23,8 +23,7 @@ const AnnotationsReducer = (state = defaultState, action) => {
       return receive;
     case REMOVE_COMMENT:
       let remove = merge({}, state);
-      remove.currentAnnotation.comments
-      = remove.currentAnnotation.comments.filter((id) => action.id);
+      remove.currentAnnotation.comments = remove.currentAnnotation.comments.filter((id) => id !== action.comment.id);
       return remove;
     case RECEIVE_ALL_ANNOTATIONS:
       const receiveAll = Object.assign({}, state);

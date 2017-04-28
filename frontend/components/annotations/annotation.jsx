@@ -37,7 +37,6 @@ class Annotation extends React.Component {
 
   componentWillReceiveProps(newProps){
     if(newProps.currentAnnotation.id){
-
       let raw = convertFromRaw(JSON.parse(newProps.currentAnnotation.description));
       this.setState({
         editorState: EditorState.createWithContent(raw),
@@ -100,7 +99,7 @@ class Annotation extends React.Component {
       deleteButton = <button className="delete-button" onClick={() => this.handleDelete()}>Delete</button>;
       editButton = <button className="edit-button" onClick={() => this.handleEdit()}>Edit</button>;
     } else {
-      author = <span style={{fontStyle: "italic"}}>Submitted by: {this.props.currentAnnotation.author.username}</span>;
+      author = <span style={{fontStyle: "italic", color: "#9A9A9A"}}>Submitted by: {this.props.currentAnnotation.author.username}</span>;
     }
     return (
       <section className="annotation show-annotation">

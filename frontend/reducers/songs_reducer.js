@@ -30,7 +30,7 @@ const SongsReducer = (state = defaultState, action) => {
     case REMOVE_COMMENT:
       let remove = merge({}, state);
       remove.currentTrack.comments
-      = remove.currentTrack.comments.filter((id) => action.id);
+      = remove.currentTrack.comments.filter((id) => id !== action.comment.id);
       return remove;
     case RECEIVE_ALL_SONGS:
       const receiveAll = Object.assign({}, state);

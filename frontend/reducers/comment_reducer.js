@@ -2,7 +2,7 @@ import {
   RECEIVE_COMMENTS,
   RECEIVE_COMMENT,
   REMOVE_COMMENT,
-  RECEIVE_ERRORS,
+  RECEIVE_COMMENT_ERRORS,
   CLEAR_ERRORS,
 } from '../actions/comment_actions';
 import merge from 'lodash/merge';
@@ -28,7 +28,7 @@ const CommentsReducer = (state = defaultState, action) => {
       let deleteState = Object.assign({}, state);
       delete deleteState.comments[action.id];
       return deleteState;
-    case RECEIVE_ERRORS:
+    case RECEIVE_COMMENT_ERRORS:
       const errors = action.errors;
       return merge({}, state, { errors });
     case CLEAR_ERRORS:

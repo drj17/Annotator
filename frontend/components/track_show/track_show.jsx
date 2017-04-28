@@ -156,9 +156,9 @@ class TrackShow extends React.Component {
 
 
   render(){
-    let top = this.state.annotationType === "new" ? 380 : 400;
-    if(this.state.annotationPosition - top < 350){
-      top = 360;
+    let top = this.state.annotationType === "new" ? 360 : 400;
+    if(this.state.annotationPosition - top < 0){
+      top = 370;
     }
     let style = {
       position: "absolute",

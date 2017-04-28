@@ -75,8 +75,8 @@ button {
 .auth-section {
   display: flex;
   justify-content: flex-end;
-  align-items: center;
   width: 300px;
+  height: 100%
 
 
 }
@@ -107,14 +107,15 @@ button {
 }
 
 .nav-button:hover {
-  border-bottom: 3px solid rgb(236, 53, 100);
+  border-bottom: 5px solid rgb(236, 53, 100);
   transition: .3s;
 
 }
 
 .nav-button {
   padding-top: 3px;
-  border-bottom: 3px solid #FFFF64;
+  border-bottom: 5px solid #FFFF64;
+  font-size: 14px;
 }
 
 .modal-link {

@@ -5,7 +5,7 @@ import TrackShow from './track_show';
 import React from 'react';
 import values from 'lodash/values';
 import { songComments } from '../../reducers/selectors';
-import { fetchSongComments } from '../../actions/comment_actions';
+import { fetchSongComments, clearErrors } from '../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -27,7 +27,7 @@ const mapDispatchToProps = dispatch => {
     deleteSong: (id) => dispatch(deleteSong(id)),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
     fetchAnnotation: (id) => dispatch(fetchAnnotation(id)),
-    fetchSongComments: (id) => dispatch(fetchSongComments(id))
+    fetchSongComments: (id) => dispatch(fetchSongComments(id)),
   };
 };
 
