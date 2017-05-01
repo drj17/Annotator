@@ -3,17 +3,20 @@ import {
   createAnnotation,
   updateAnnotation,
   deleteAnnotation,
-  fetchAnnotations } from '../../actions/annotation_actions';
+  fetchAnnotations,
+  changeAnnotationType,
+  openAnnotation,
+  closeAnnotation
+} from '../../actions/annotation_actions';
 import Annotation from './annotation';
 import { annotationComments } from '../../reducers/selectors';
 import { fetchAnnotationComments } from '../../actions/comment_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
-    closeAnnotation: ownProps.closeAnnotation,
     currentAnnotation: state.annotations.currentAnnotation,
     currentTrack: state.songs.currentTrack,
-    annotationType: ownProps.annotationType,
+    annotationType: state.annotations.annotationType,
     currentUser: state.session.currentUser,
     selection: ownProps.selection,
     position: ownProps.position,
@@ -28,6 +31,9 @@ const mapDispatchToProps = dispatch => {
     updateAnnotation: (annotation, vote) => dispatch(updateAnnotation(annotation, vote)),
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
     fetchAnnotationComments: (id) => dispatch(fetchAnnotationComments(id)),
+    changeAnnotationType: (annotationType) => dispatch(changeAnnotationType(annotationType)),
+    openAnnotation: () => dispatch(openAnnotation()),
+    closeAnnotation: () => dispatch(closeAnnotation())
   };
 };
 

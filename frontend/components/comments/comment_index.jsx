@@ -9,12 +9,14 @@ class CommentIndex extends React.Component{
     };
     this.annotationComment = "";
     this.update = this.update.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     if(this.props.overRide){
       this.annotationComment = "annotation-comment";
     }
   }
 
-  handleSubmit(){
+  handleSubmit(e){
+    e.preventDefault();
     this.props.createComment({comment:{
       body: this.state.text,
       author_id: this.props.currentUser.id,
@@ -52,7 +54,7 @@ class CommentIndex extends React.Component{
     if(this.props.currentUser){
       form = <form className="comment-form">
               <textarea className="comment-body" placeholder="Add A Comment" onChange={this.update} value={this.state.text}/>
-              <button className="annotation-submit" onClick={() => this.handleSubmit()}>Submit</button>
+              <button className="annotation-submit" onClick={this.handleSubmit}>Submit</button>
             </form>;
     }
 

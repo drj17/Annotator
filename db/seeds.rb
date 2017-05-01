@@ -8,6 +8,8 @@
 User.destroy_all
 Song.destroy_all
 Annotation.destroy_all
+Comment.destroy_all
+
 User.create(username: "demo_user", password: "password")
 User.create(username: "david_janas", password: "appacademy")
 User.create(username: "aa_student", password: "iamagod")

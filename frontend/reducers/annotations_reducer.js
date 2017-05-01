@@ -3,7 +3,10 @@ import {
   CLEAR_ERRORS,
   RECEIVE_ANNOTATION,
   RECEIVE_ALL_ANNOTATIONS,
-  REMOVE_ANNOTATION
+  REMOVE_ANNOTATION,
+  OPEN_ANNOTATION,
+  CLOSE_ANNOTATION,
+  CHANGE_ANNOTATION_TYPE
 } from '../actions/annotation_actions';
 
 import { RECEIVE_COMMENT, REMOVE_COMMENT } from '../actions/comment_actions';
@@ -12,11 +15,26 @@ import merge from 'lodash/merge';
 let defaultState = {
   annotations: [],
   currentAnnotation: {comments: []},
+  open: false,
+  annotationType: "show"
 };
 
 const AnnotationsReducer = (state = defaultState, action) => {
   Object.freeze(state);
   switch(action.type){
+    case CHANGE_ANNOTATION_TYPE:
+      let changeState = merge({}, state);
+      changeState.annotationType = action.annotationType;
+      return changeState;
+    case CLOSE_ANNOTATION:
+      let closeState = merge({}, state);
+      closeState.open = false;
+      return closeState;
+    case OPEN_ANNOTATION:
+      let openState = merge({}, state);
+      openState.open = true;
+      openState.annotationType = "show";
+      return openState;
     case RECEIVE_COMMENT:
       let receive = merge({}, state);
       receive.currentAnnotation.comments.unshift(action.comment.id);

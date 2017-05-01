@@ -7,6 +7,27 @@ export const RECEIVE_ERRORS = "RECEIVE_ERRORS";
 export const CLEAR_ERRORS = "CLEAR_ERRORS";
 export const START_LOADING_ANNOTATION = "START_LOADING_ANNOTATION";
 export const FINISH_LOADING_ANNOTATIONS = "FINISH_LOADING_ANNOTATIONS";
+export const OPEN_ANNOTATION = "OPEN_ANNOTATION";
+export const CLOSE_ANNOTATION = "CLOSE_ANNOTATION";
+export const CHANGE_ANNOTATION_TYPE = "CHANGE_ANNOTATION_TYPE";
+
+export const changeAnnotationType = (annotationType) => {
+  return {
+    type: CHANGE_ANNOTATION_TYPE,
+    annotationType
+  };
+};
+
+export const openAnnotation = () => {
+  return {
+    type: OPEN_ANNOTATION
+  };
+};
+export const closeAnnotation = () => {
+  return {
+    type: CLOSE_ANNOTATION
+  };
+};
 
 const receiveAllAnnotations = (annotations) => {
   return {

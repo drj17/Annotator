@@ -88,7 +88,7 @@ class Annotation extends React.Component {
   }
 
   handleEdit() {
-    this.setState({type: "edit"});
+    this.props.changeAnnotationType("edit");
   }
 
   showAnnotation() {
@@ -145,11 +145,11 @@ class Annotation extends React.Component {
   }
 
   render(){
-    if(this.state.type === "new"){
+        if(this.props.annotationType === "new"){
       return this.newAnnotation();
-    } else if (this.state.type === "show"){
+    } else if (this.props.annotationType === "show"){
       return this.showAnnotation();
-    } else if (this.state.type === "edit"){
+    } else if (this.props.annotationType === "edit"){
       return this.editAnnotation();
     }
   }

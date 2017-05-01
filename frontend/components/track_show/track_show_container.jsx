@@ -1,6 +1,10 @@
 import { connect } from 'react-redux';
 import { deleteSong, updateSong, fetchSong } from '../../actions/song_actions';
-import { fetchAnnotations, fetchAnnotation } from '../../actions/annotation_actions';
+import { fetchAnnotations,
+         fetchAnnotation,
+         openAnnotation,
+         closeAnnotation,
+         changeAnnotationType } from '../../actions/annotation_actions';
 import TrackShow from './track_show';
 import React from 'react';
 import values from 'lodash/values';
@@ -16,7 +20,8 @@ const mapStateToProps = (state, ownProps) => {
     trackId: ownProps.params.songId,
     annotations: state.annotations.annotations,
     currentAnnotation: state.annotations.currentAnnotation,
-    comments: songComments(state)
+    comments: songComments(state),
+    open: state.annotations.open
   };
 };
 
@@ -28,7 +33,10 @@ const mapDispatchToProps = dispatch => {
     fetchAnnotations: (id) => dispatch(fetchAnnotations(id)),
     fetchAnnotation: (id) => dispatch(fetchAnnotation(id)),
     fetchSongComments: (id) => dispatch(fetchSongComments(id)),
-    clearErrors: () => dispatch(clearErrors())
+    closeAnnotation: () => dispatch(closeAnnotation()),
+    openAnnotation: () => dispatch(openAnnotation()),
+    clearErrors: () => dispatch(clearErrors()),
+    changeAnnotationType: (type) => dispatch(changeAnnotationType(type))
   };
 };
 

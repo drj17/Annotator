@@ -15,8 +15,6 @@ class SearchIndex extends React.Component {
     this.update = this.update.bind(this);
     this.closeSearch = this.closeSearch.bind(this);
   }
-  componentDidMount(){
-  }
 
   handleClickOutside(){
     this.closeSearch();

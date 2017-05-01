@@ -10,8 +10,6 @@ class TrackShow extends React.Component {
     super(props);
     this.getSelection = this.getSelection.bind(this);
     this.state = {
-      annotationOpen: false,
-      annotationType: "new",
       currentAnnotation: this.props.currentAnnotation,
       annotations: this.props.annotations,
       selection: [],
@@ -21,13 +19,16 @@ class TrackShow extends React.Component {
 
     this.populateAnnotations = this.populateAnnotations.bind(this);
     this.isValidAnnotation = this.isValidAnnotation.bind(this);
-    this.closeAnnotation = this.closeAnnotation.bind(this);
     this.orderAnnotations = this.orderAnnotations.bind(this);
   }
 
   componentDidMount(){
     this.props.fetchSong(this.props.trackId)
               .then(() => this.props.fetchSongComments(this.props.trackId));
+  }
+
+  componentWillUnmount(){
+    this.props.closeAnnotation();
   }
 
   componentWillReceiveProps(newProps){
@@ -61,14 +62,12 @@ class TrackShow extends React.Component {
     let range = [start + offset, end + offset];
 
     if(this.isValidAnnotation(range)){
-      this.setState({ annotationOpen: true, annotationType: "new", selection: range, annotationPosition: yPos});
+      this.props.openAnnotation();
+      this.props.changeAnnotationType("new");
+      this.setState({selection: range, annotationPosition: yPos});
     }
 
 
-  }
-
-  closeAnnotation(){
-    this.setState({annotationOpen: false});
   }
 
 
@@ -121,12 +120,13 @@ class TrackShow extends React.Component {
 
   openAnnotation(id){
     return e => {
+
       this.props.clearErrors();
       let yPos = e.pageY;
       return (
-          this.props.fetchAnnotation(id).then(() => this.setState({
-          annotationOpen: true,
-          annotationType: "show",
+          this.props.fetchAnnotation(id)
+          .then(() => this.props.openAnnotation())
+          .then(() => this.setState({
           currentAnnotation: this.props.currentAnnotation,
           annotationPosition: yPos
         }))
@@ -167,26 +167,20 @@ class TrackShow extends React.Component {
       right: '0px'
     };
     let annotation = "";
-    if(this.state.annotationOpen){
+    if(this.props.open){
        annotation = <AnnotationContainer
         annotationType={this.state.annotationType}
         annotation={this.props.currentAnnotation}
-        closeAnnotation={this.closeAnnotation}
         />;
     }
-    if(this.state.annotationOpen && this.props.currentUser){
+    if(this.props.open && this.props.currentUser){
       annotation = <AnnotationContainer
         annotationType={this.state.annotationType}
         annotation={this.props.currentAnnotation}
         selection={this.state.selection}
-        closeAnnotation={this.closeAnnotation}
         position={this.state.annotationPosition}
         />;
     }
-    //
-    // if(!this.props.currentUser){
-    //   annotation = <h1>Please sign in to annotate</h1>;
-    // }
     let imgUrl = this.props.currentTrack.image_url;
     let deleteButton = "";
     let editLink = "";
