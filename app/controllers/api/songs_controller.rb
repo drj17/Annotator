@@ -13,7 +13,7 @@ class Api::SongsController < ApplicationController
     if params[:query]
       @songs = Song.search_title_for(params[:query]).limit(5)
     else
-      @songs = Song.all.limit(10)
+      @songs = Song.all
       render "/api/songs/index"
     end
   end

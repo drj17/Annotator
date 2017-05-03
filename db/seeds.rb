@@ -444,6 +444,192 @@ Dreaming", author_id: User.first.id)
 ivy.image = File.open('app/assets/images/blond.jpg')
 ivy.save!
 
+dramamine = Song.new(artist: "Modest Mouse", title: "Dramamine", author_id: User.second.id, lyrics:
+"[Verse 1]
+Travelling swallowing Dramamine
+Feeling spaced breathing out Listerine
+I'd said what I'd said that I'd tell ya
+And that you'd killed the better part of me
+If you could just milk it for everything
+I've said what I'd said and you know what I mean
+But I still can't focus on anything
+We kiss on the mouth but still cough down our sleeves
+
+[Verse 2]
+Travelling swallowing Dramamine
+Look at your face like you're killed in a dream
+And you think you've figured out everything
+I think I know my geography pretty damn well
+You say what you need so you'll get more
+If you could just milk it for everything
+I've said what I said and you know what I mean
+But I can't still focus on anything")
+
+dramamine.image = File.open('app/assets/images/dramamine.jpg')
+dramamine.save!
+
+welldressed = Song.new(artist: "Hop Along", title: "Well Dressed", author_id: User.third.id, lyrics:
+"[Verse 1]
+Well-dressed, but walking
+In the wrong direction
+Louisiana
+My disordered road always led straight back into you
+
+[Hook 1]
+Ha ha ha, goes the train
+I wanted to leave but here I am again
+Louisiana!
+I don't remember
+I don't remember ever shaking hands with
+You-know-who
+
+[Verse 2]
+When I was alive
+I lived despite the law
+Now the law has buried me many, many times
+It’s built a freeway all around my bed
+I saw it once open its great mouth wide
+But it was so full of afflicted houses and buildings
+I can't remember what it was saying
+
+[Bridge]
+Well-dressed
+Well, some of us are, that is
+The ones who know how, that is
+Some of us are, that is
+The ones who know how, that is, that is, that is, that is
+
+[Verse 3]
+I read about you and came home
+To find my mother
+Staring deep into the dark dark web
+She started begging me not to
+Give my social security number to anybody else
+There goes the sound of the freeway
+
+[Hook 2]
+Ha ha ha ha ha goes the train
+Ha ha ha ha ha goes the train
+Well-dressed, but walking
+Walking
+I don't wanna go back, no no"
+)
+
+welldressed.image = File.open('app/assets/images/dressed.jpg')
+welldressed.save!
+
+easily = Song.new(artist: "Grimes", title: "Easily", author_id: User.second.id, lyrics:
+ "[Verse 1]
+Fly through the night, fly like everyone I know
+Like everyone, I've been conceited
+Fly through the night, doesn't matter where you go
+When you leave, I feel so defeated
+
+[Verse 2]
+Oh, you don't know where you're from
+And you got nowhere to go?
+Don't taunt me with your story, cause I've got my own
+Never better, just less immediate
+You come and go, but I love you so (so)
+
+[Chorus]
+Easily, I'm the sweetest damn thing you ever saw
+Easily, suddenly, you don't know me at all
+Easily, three years later and now you wanna call
+Easily-y-y-y yeah yeah yeah yeah
+
+Easily (so, you)
+Easily (so, you)
+Easily (so, you)
+Easily-y-y-y
+
+[Breakdown]
+(Oh, no-no-no-no-no)
+
+[Chorus]
+Easily, I'm the sweetest damn thing you ever saw
+Easily, suddenly, you don't know me at all
+Easily, three years later and now you wanna call
+Easily-y-y-y")
+
+easily.image = File.open('app/assets/images/easily.jpg')
+easily.save!
+
+way = Song.create(artist: "Red Hot Chili Peppers", title: "By The Way", author_id: User.first.id, lyrics:
+"[Chorus]
+Standing in line to see the show tonight
+And there's a light on, heavy glow
+By the way I tried to say
+I'd be there waiting for
+Dani the girl is singing songs to me
+Beneath the marquee
+Overload
+
+[Verse 1]
+Steak knife, card shark
+Con job, boot cut
+Skin that flick, she's such a little DJ
+To get there quick by street but not the freeway
+Turn that trick to make a little leeway
+Beat that nic but not the way that we play
+Dogtown, blood bath
+Rib cage, soft tail
+
+[Chorus]
+Standing in line to see the show tonight
+And there's a light on, heavy glow
+By the way I tried to say
+I'd be there waiting for
+
+[Verse 2]
+Black jack, dope dick
+Pawn shop, quick pick
+Kiss that dyke, I know you want to hold one
+Not on strike but I'm about to bowl one
+Bite that mic, I know you never stole one
+Girls that like a story, so I told one
+Song bird, main line
+Cash back, hard top
+
+[Chorus]
+Standing in line to see the show tonight
+And there's a light on, heavy glow
+By the way I tried to say
+I'd be there waiting for
+Dani the girl is singing songs to me
+Beneath the marquee
+Oversalt
+By the way I tried to say
+I'd be there waiting for
+
+[Bridge]
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah, guess you never meant it
+Ooh, ah
+
+[Chorus]
+Standing in line to see the show tonight
+And there's a light on, heavy glow
+By the way I tried to say
+I'd be there waiting for
+Dani the girl is singing songs to me
+Beneath the marquee
+Of her soul
+By the way I tried to say
+I know you from before
+Standing in line to see the show tonight
+And there's a light on, heavy glow
+By the way I tried to say
+I'd be there waiting for")
+
+way.image = File.open('app/assets/images/way.png')
+way.save!
+
 annotations = Annotation.create([
     {
       author_id: User.first.id,
