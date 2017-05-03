@@ -650,15 +650,15 @@ annotations = Annotation.create([
       start_index: 94,
       end_index: 147,
     },
-    {
-      author_id: User.third.id,
-      score: 0,
-      description:
-        "{\"entityMap\":{},\"blocks\":[{\"key\":\"bk8m1\",\"text\":\"He recognizes that every moment is fleeting and that this amazing relationship can be gone at any time. He realizes that he needs to cherish it and appreciate it while it lasts.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
-      song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
-      start_index: 148,
-      end_index: 253,
-    },
+    # {
+    #   author_id: User.third.id,
+    #   score: 0,
+    #   description:
+    #     "{\"entityMap\":{},\"blocks\":[{\"key\":\"bk8m1\",\"text\":\"He recognizes that every moment is fleeting and that this amazing relationship can be gone at any time. He realizes that he needs to cherish it and appreciate it while it lasts.\",\"type\":\"unstyled\",\"depth\":0,\"inlineStyleRanges\":[],\"entityRanges\":[],\"data\":{}}]}",
+    #   song_id: Song.find_by(title: "In The Aeroplane Over The Sea").id,
+    #   start_index: 148,
+    #   end_index: 253,
+    # },
     {
       author_id: User.third.id,
       score: 0,
