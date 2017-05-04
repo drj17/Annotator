@@ -8,12 +8,11 @@ class headerLoggedOut extends React.Component {
     super(props);
     this.state = {
       user: {username: "", password: ""},
-      modal: {open: false, formType: "login"},
     };
     this.update = this.update.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.openModal = this.openModal.bind(this);
-    this.closeModal = this.closeModal.bind(this);
+    // this.openModal = this.openModal.bind(this);
+    // this.props.closeModal = this.closeModal.bind(this);
     this.loginDemo = this.loginDemo.bind(this);
   }
 
@@ -29,33 +28,34 @@ class headerLoggedOut extends React.Component {
   handleSubmit(e) {
     e.preventDefault();
     const user = this.state.user;
-    if(this.state.modal.formType === "login"){
+    if(this.props.loginModalType === "login"){
       this.props.login({user})
         .then(() => this.props.clearErrors())
-        .then(() => this.closeModal());
+        .then(() => this.props.closeModal());
 
     } else {
       this.props.signup({user})
-        .then(() => this.closeModal());
+        .then(() => this.props.closeModal());
     }
   }
 
   loginDemo(e) {
     e.preventDefault();
 
-    this.props.login({user: {username: "demo_user", password: "password"}});
+    this.props.login({user: {username: "demo_user", password: "password"}})
+              .then(() => this.props.closeModal());
   }
 
-  openModal(formType){
+  openModal(type){
     return e => {
       e.preventDefault();
-      this.setState({modal: {open: true, formType: formType}});
+      if(type === "login"){
+        this.props.openLoginModal();
+      } else {
+        this.props.openSignupModal();
+      }
       this.props.clearErrors();
     };
-  }
-
-  closeModal(){
-    this.setState({modal: {open: false}});
   }
 
   componentWillMount() {
@@ -73,8 +73,7 @@ class headerLoggedOut extends React.Component {
     let oppositeModal;
     let buttonText;
     let linkText;
-
-    if (this.state.modal.formType === "login"){
+    if (this.props.loginModalType=== "login"){
       formText = "Log in to";
       oppositeModal = "signup";
       buttonText = "Log in";
@@ -91,8 +90,8 @@ class headerLoggedOut extends React.Component {
         <button className="nav-button" onClick={this.openModal("login")}>LOG IN</button>
         <button className="nav-button" onClick={this.openModal("signup")}>SIGN UP</button>
           <Modal
-             isOpen={this.state.modal.open}
-             onRequestClose={this.closeModal}
+             isOpen={this.props.loginModalOpen}
+             onRequestClose={this.props.closeModal}
              contentLabel="Log In Modal"
              className="login-modal"
            >
