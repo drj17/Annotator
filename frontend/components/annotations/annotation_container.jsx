@@ -11,6 +11,7 @@ import {
 import Annotation from './annotation';
 import { annotationComments } from '../../reducers/selectors';
 import { fetchAnnotationComments } from '../../actions/comment_actions';
+import { openLoginModal } from '../../actions/login_modal_actions';
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -33,7 +34,8 @@ const mapDispatchToProps = dispatch => {
     fetchAnnotationComments: (id) => dispatch(fetchAnnotationComments(id)),
     changeAnnotationType: (annotationType) => dispatch(changeAnnotationType(annotationType)),
     openAnnotation: () => dispatch(openAnnotation()),
-    closeAnnotation: () => dispatch(closeAnnotation())
+    closeAnnotation: () => dispatch(closeAnnotation()),
+    openLoginModal: () => dispatch(openLoginModal())
   };
 };
 

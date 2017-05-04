@@ -40,7 +40,13 @@ class Header extends React.Component {
               login={this.props.login}
               signup={this.props.signup}
               errors={this.props.errors}
+              closeModal={this.props.closeModal}
+              openLoginModal={this.props.openLoginModal}
+              openSignupModal={this.props.openSignupModal}
+              loginModalType={this.props.loginModalType}
+              toggleModal={this.props.toggleModal}
               clearErrors={this.props.clearErrors}
+              loginModalOpen={this.props.loginModalOpen}
             />
           </section>
           <HeaderNavigation user={this.props.currentUser}/>

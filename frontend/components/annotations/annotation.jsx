@@ -66,7 +66,10 @@ class Annotation extends React.Component {
         </section>
       );
     } else {
-      let startAnnotationButton = <button className="create-button">Please Sign In To Annotate</button>;
+      let startAnnotationButton = <button
+         className="create-button"
+         onClick={() => this.props.openLoginModal()}
+         >Please Sign In To Annotate</button>;
       if(this.props.currentUser){
         startAnnotationButton = <button
             className="create-button"
