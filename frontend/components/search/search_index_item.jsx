@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link, hashHistory } from 'react-router';
 
-const SearchIndexItem = ({ track, closeSearch }) => {
+const SearchIndexItem = ({ track, closeSearch, closeAnnotation }) => {
   return (
-    <section className="search-item" onClick={() => hashHistory.push(`/songs/${track.id}`)} >
+    <section className="search-item" onClick={() => {hashHistory.push(`/songs/${track.id}`); closeAnnotation();}} >
       <Link onClick={closeSearch} to={`/songs/${track.id}`} >
         <img className="search-thumbnail" src={track.image_url}/>
         <section className="search-track-info">

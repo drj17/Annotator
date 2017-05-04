@@ -38,7 +38,12 @@ class SearchIndex extends React.Component {
     let searchResults = "";
     let searchHeader = "";
     if(this.props.results.length > 0){
-      searchResults = this.props.results.map(track => <SearchIndexItem key={track.id} track={track} closeSearch={this.closeSearch} />);
+      searchResults = this.props.results.map(track => <SearchIndexItem
+         key={track.id}
+         track={track}
+         closeSearch={this.closeSearch}
+         closeAnnotation={this.props.closeAnnotation}
+          />);
       searchHeader = <h1 className="search-header">Search Results</h1>;
     } else if(this.state.query.length > 0){
       searchResults = <span className="no-results">No Results :(</span>;
