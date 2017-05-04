@@ -4,8 +4,8 @@ import { signup, login, logout, clearErrors } from '../../actions/session_action
 import {
   openLoginModal,
   openSignupModal,
-  closeModal,
-  toggleModal } from '../../actions/login_modal_actions';
+  closeModal
+  } from '../../actions/login_modal_actions';
 import Header from './header';
 
 const mapStateToProps = state => {
@@ -26,7 +26,6 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     openLoginModal: () => dispatch(openLoginModal()),
     openSignupModal: () => dispatch(openSignupModal()),
     closeModal: () => dispatch(closeModal()),
-    toggleModal: () => dispatch(toggleModal())
   };
 };
 

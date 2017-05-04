@@ -44,7 +44,6 @@ class Header extends React.Component {
               openLoginModal={this.props.openLoginModal}
               openSignupModal={this.props.openSignupModal}
               loginModalType={this.props.loginModalType}
-              toggleModal={this.props.toggleModal}
               clearErrors={this.props.clearErrors}
               loginModalOpen={this.props.loginModalOpen}
             />
