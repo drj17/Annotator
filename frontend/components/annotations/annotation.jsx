@@ -102,7 +102,7 @@ class Annotation extends React.Component {
       deleteButton = <button className="delete-button" onClick={() => this.handleDelete()}>Delete</button>;
       editButton = <button className="edit-button" onClick={() => this.handleEdit()}>Edit</button>;
     } else {
-      author = <span style={{fontStyle: "italic", color: "#9A9A9A"}}>Submitted by: {this.props.currentAnnotation.author.username}</span>;
+      author = <span style={{fontStyle: "italic", color: "#9A9A9A"}}>Submitted by: {this.props.currentAnnotation.author}</span>;
     }
     return (
       <section className="annotation show-annotation">
