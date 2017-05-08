@@ -33,9 +33,9 @@
 
 }
 
-.public-DraftStyleDefault-block {
+.public-DraftEditor-content {
   width: 100%;
-  min-height: 100px;
+  min-height: 150px;
   height: 100%;
   background-color: inherit;
   padding: 5px;
@@ -75,9 +75,11 @@
   justify-content: flex-start;
 }
 
-.toolbar button {
-  padding: 0px 10px;
+.toolbar span {
+  margin: 0px 10px;
+  cursor: pointer;
 }
+
 
 .annotation-submit {
   margin: 15px 0px;

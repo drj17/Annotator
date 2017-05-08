@@ -1,5 +1,7 @@
 import React from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
+import 'draft-js/dist/Draft.css';
+
 // import { createAnnotation } from '../../actions/annotation_actions';
 class AnnotationField extends React.Component {
   constructor(props){
@@ -71,9 +73,9 @@ class AnnotationField extends React.Component {
       <div className="text-editor">
         <h1 className = "new-annotation-header">{header}</h1>
         <div className="toolbar">
-          <button onMouseDown={() => this._onBoldClick()}><i className="fa fa-bold" aria-hidden="true"></i></button>
-          <button onMouseDown={() => this._onItalicsClick()}><i className="fa fa-italic" aria-hidden="true"></i></button>
-          <button onMouseDown={() => this._onUnderlineClick()}><i className="fa fa-underline" aria-hidden="true"></i></button>
+          <span onMouseDown={() => this._onBoldClick()}><i className="fa fa-bold" aria-hidden="true"></i></span>
+          <span onMouseDown={() => this._onItalicsClick()}><i className="fa fa-italic" aria-hidden="true"></i></span>
+          <span onMouseDown={() => this._onUnderlineClick()}><i className="fa fa-underline" aria-hidden="true"></i></span>
         </div>
         {this.state.errors}
         <div className="draft-field">
