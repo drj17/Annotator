@@ -1,4 +1,5 @@
 import React from 'react';
+import onClickOutside from 'react-onclickoutside';
 import { Editor, EditorState, convertFromRaw } from 'draft-js';
 import AnnotationField from './annotation_field';
 import VotesContainer from './voting/votes_container';
@@ -23,6 +24,10 @@ class Annotation extends React.Component {
     this.newAnnotation = this.newAnnotation.bind(this);
     this.showAnnotation = this.showAnnotation.bind(this);
 
+  }
+
+  handleClickOutside() {
+    this.props.closeAnnotation();
   }
 
   componentDidMount(){
@@ -158,4 +163,4 @@ class Annotation extends React.Component {
   }
 }
 
-export default Annotation;
+export default onClickOutside(Annotation);

@@ -113,6 +113,17 @@
   text-align: center;
 }
 
+.cancel-button {
+  padding: 5px;
+  width: 90px;
+  height: 35px;
+  background-color: white;
+  border: 2px solid red;
+  color: red;
+  text-align: center;
+  margin: 15px 0px;
+}
+
 .delete-button:hover {
   background-color: red;
   color: white;

@@ -84,7 +84,10 @@ class AnnotationField extends React.Component {
             onChange={this.onChange}
             />
         </div>
-        <button className="annotation-submit" onClick={()=>this.handleSubmit()}>SAVE</button>
+        <div className="annotation-controls">
+          <button className="annotation-submit" onClick={()=>this.handleSubmit()}>SAVE</button>
+          <button className="cancel-button" onClick={() => this.props.closeAnnotation()}>CANCEL</button>
+        </div>
       </div>
     );
   }
