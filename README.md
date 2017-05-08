@@ -1,6 +1,6 @@
 # Annotator
 
-[Annotator Live Demo](https://annotator-aa.herokuapp.com/#/)
+[Annotator Live Demo](http://annotator.me)
 
 Annotator is a full-stack web application inspired by Genius. It allows
 users to add annotations to lyrics and view other users explanations.
