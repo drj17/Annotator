@@ -7,3 +7,15 @@ export const findOffset = (element) => {
   }
    return offset;
 };
+
+export const orderAnnotations = (annotations) => {
+  let ordered = annotations.sort((a, b) => {
+    if(a.start_index < b.start_index){
+      return -1;
+    } else {
+      return 1;
+    }
+  });
+
+  return ordered;
+};

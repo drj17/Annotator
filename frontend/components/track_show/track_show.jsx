@@ -2,7 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
 import CommentContainer from '../comments/comment_container';
-import { findOffset } from '../../util/annotations_util';
+import { findOffset, orderAnnotations } from '../../util/annotations_util';
 
 
 
@@ -20,7 +20,6 @@ class TrackShow extends React.Component {
 
     this.populateAnnotations = this.populateAnnotations.bind(this);
     this.isValidAnnotation = this.isValidAnnotation.bind(this);
-    this.orderAnnotations = this.orderAnnotations.bind(this);
   }
 
   componentDidMount(){
@@ -57,7 +56,6 @@ class TrackShow extends React.Component {
       end = start;
     }
 
-
     let offset = findOffset(parent);
     let range = [start + offset, end + offset];
 
@@ -70,22 +68,12 @@ class TrackShow extends React.Component {
 
   }
 
-  orderAnnotations(){
-    let ordered = this.props.annotations.sort((a, b) => {
-      if(a.start_index < b.start_index){
-        return -1;
-      } else {
-        return 1;
-      }
-    });
 
-    return ordered;
-  }
   populateAnnotations() {
     let lyricsContainer = [];
     let offset = 0;
+    let orderedAnnotations = orderAnnotations(this.props.annotations);
 
-    let orderedAnnotations = this.orderAnnotations();
     orderedAnnotations.forEach((annotation) => {
       lyricsContainer.push(<span key={this.uniqueId()} className="normal">
         {this.props.currentTrack.lyrics.slice(offset, annotation.start_index)}
