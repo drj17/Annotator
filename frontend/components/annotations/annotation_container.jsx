@@ -22,6 +22,7 @@ const mapStateToProps = (state, ownProps) => {
     selection: ownProps.selection,
     position: ownProps.position,
     comments: annotationComments(state),
+    loginOpen: state.loginModal.open
   };
 };
 

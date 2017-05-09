@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
 import CommentContainer from '../comments/comment_container';
+import { findOffset } from '../../util/annotations_util';
 
 
 
@@ -41,7 +42,6 @@ class TrackShow extends React.Component {
         this.props.fetchSong(newProps.params.songId)
                   .then(() => this.props.fetchSongComments(this.props.params.songId));
       }
-
     }
   }
 
@@ -58,7 +58,7 @@ class TrackShow extends React.Component {
     }
 
 
-    let offset = this.findOffset(parent);
+    let offset = findOffset(parent);
     let range = [start + offset, end + offset];
 
     if(this.isValidAnnotation(range)){
@@ -68,17 +68,6 @@ class TrackShow extends React.Component {
     }
 
 
-  }
-
-
-  findOffset(element){
-    let offset = 0;
-    while(element.previousSibling) {
-      offset += element.previousSibling.textContent.length;
-      element = element.previousSibling;
-
-    }
-     return offset;
   }
 
   orderAnnotations(){
@@ -137,8 +126,7 @@ class TrackShow extends React.Component {
   }
 
   uniqueId() {
-    // return new Date().getTime();
-    return Math.random(1000);
+    return Math.random(10000);
   }
 
   isValidAnnotation(range){

@@ -27,7 +27,9 @@ class Annotation extends React.Component {
   }
 
   handleClickOutside() {
-    this.props.closeAnnotation();
+    if(!this.props.loginOpen){
+      this.props.closeAnnotation();
+    }
   }
 
   componentDidMount(){
