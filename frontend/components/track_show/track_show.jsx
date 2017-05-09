@@ -2,7 +2,11 @@ import React from 'react';
 import { Link, hashHistory } from 'react-router';
 import AnnotationContainer from '../annotations/annotation_container';
 import CommentContainer from '../comments/comment_container';
-import { findOffset, orderAnnotations } from '../../util/annotations_util';
+import { findOffset,
+         orderAnnotations,
+         isValidAnnotation,
+         uniqueId
+       } from '../../util/annotations_util';
 
 
 
@@ -19,7 +23,6 @@ class TrackShow extends React.Component {
     this.selection = "";
 
     this.populateAnnotations = this.populateAnnotations.bind(this);
-    this.isValidAnnotation = this.isValidAnnotation.bind(this);
   }
 
   componentDidMount(){
@@ -59,13 +62,11 @@ class TrackShow extends React.Component {
     let offset = findOffset(parent);
     let range = [start + offset, end + offset];
 
-    if(this.isValidAnnotation(range)){
+    if(isValidAnnotation(range, this.props.annotations)){
       this.props.openAnnotation();
       this.props.changeAnnotationType("new");
       this.setState({selection: range, annotationPosition: yPos});
     }
-
-
   }
 
 
@@ -75,7 +76,7 @@ class TrackShow extends React.Component {
     let orderedAnnotations = orderAnnotations(this.props.annotations);
 
     orderedAnnotations.forEach((annotation) => {
-      lyricsContainer.push(<span key={this.uniqueId()} className="normal">
+      lyricsContainer.push(<span key={uniqueId()} className="normal">
         {this.props.currentTrack.lyrics.slice(offset, annotation.start_index)}
       </span>);
       lyricsContainer.push(<span id={annotation.id}
@@ -88,7 +89,7 @@ class TrackShow extends React.Component {
 
     });
 
-    lyricsContainer.push(<span key={this.uniqueId()} className="normal">
+    lyricsContainer.push(<span key={uniqueId()} className="normal">
       {this.props.currentTrack.lyrics.slice(offset, this.props.currentTrack.lyrics.length)}
     </span>);
 
@@ -112,25 +113,6 @@ class TrackShow extends React.Component {
 
 
   }
-
-  uniqueId() {
-    return Math.random(10000);
-  }
-
-  isValidAnnotation(range){
-    let valid = true;
-    if(range[1] - range[0] <= 0){
-      valid = false;
-    }
-    this.props.annotations.forEach(annotation => {
-      if(range[0] <= annotation.end_index && annotation.start_index <= range[1]){
-        valid = false;
-      }
-    });
-    return valid;
-  }
-
-
 
   render(){
     let top = this.state.annotationType === "new" ? 360 : 400;
@@ -206,7 +188,5 @@ class TrackShow extends React.Component {
     );}
   }
 }
-
-
 
 export default TrackShow;

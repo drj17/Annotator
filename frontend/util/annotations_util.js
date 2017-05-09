@@ -19,3 +19,20 @@ export const orderAnnotations = (annotations) => {
 
   return ordered;
 };
+
+export const isValidAnnotation = (range, annotations) => {
+  let valid = true;
+  if(range[1] - range[0] <= 0){
+    valid = false;
+  }
+  annotations.forEach(annotation => {
+    if(range[0] <= annotation.end_index && annotation.start_index <= range[1]){
+      valid = false;
+    }
+  });
+  return valid;
+};
+
+export const uniqueId = () => {
+  return Math.random(10000);
+};
