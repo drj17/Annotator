@@ -72,6 +72,7 @@ export const updateSong = (track, id) => dispatch => {
           errors => dispatch(receiveErrors(errors.responseJSON)));
 };
 export const createSong = (track) => dispatch => {
+  dispatch(startLoadingSong());
   return SongApiUtil.createSong(track)
     .then(track => dispatch(receiveSong(track)),
           errors => dispatch(receiveErrors(errors.responseJSON)));

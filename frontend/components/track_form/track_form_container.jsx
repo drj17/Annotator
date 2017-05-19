@@ -9,6 +9,7 @@ const mapStateToProps = (state, ownProps) => {
   }
 
   return {
+    loading: state.loading.loading,
     currentUser: state.session.currentUser,
     errors: state.songs.errors,
     songId: ownProps.params.songId,
