@@ -22,7 +22,7 @@ class Song < ApplicationRecord
   validates_uniqueness_of :title, scope: :artist
   has_attached_file :image, default_url: "pacific_myth.jpg"
   validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
-  pg_search_scope :search_title_for, against: :title, using: { tsearch: { any_word: true, prefix: true } }
+  pg_search_scope :search_title_for, against: [:title, :artist], using: { tsearch: { any_word: true, prefix: true } }
 
   belongs_to :author,
     primary_key: :id,

@@ -68,7 +68,7 @@ class SearchIndex extends React.Component {
           className="search-bar"
           id="search-bar"
           onChange={this.update}
-          placeholder="Search"
+          placeholder="Search Songs and Artists"
           type="text"
           value={this.state.query}/>
         <ul className={`search-result-list ${this.state.dropdown}`}
