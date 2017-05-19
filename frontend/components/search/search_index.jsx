@@ -1,6 +1,7 @@
 import React from 'react';
 import SearchIndexItem from './search_index_item';
 import onClickOutside from 'react-onclickoutside';
+import { hashHistory } from 'react-router';
 
 class SearchIndex extends React.Component {
   constructor(props){
@@ -8,12 +9,13 @@ class SearchIndex extends React.Component {
 
     this.state = {
       query: "",
-      results: this.props.results,
+      results: props.results,
       dropdown: "hidden"
     };
 
     this.update = this.update.bind(this);
     this.closeSearch = this.closeSearch.bind(this);
+    this.toggleDropdown = this.toggleDropdown.bind(this);
   }
 
   handleClickOutside(){
@@ -33,6 +35,16 @@ class SearchIndex extends React.Component {
 
   toggleDropdown(){
     this.setState({dropdown: "visible"});
+    let that = this;
+    document.addEventListener('keypress', (e) => {
+      if(e.code === "Enter" && that.props.results.length > 0){
+        hashHistory.push(`/songs/${that.props.results[0].id}`);
+        that.setState({query: ""});
+        that.props.clearResults();
+        that.closeSearch();
+        document.getElementById('search-bar').blur();
+      }
+    });
   }
   render(){
     let searchResults = "";
@@ -54,6 +66,7 @@ class SearchIndex extends React.Component {
         <input
           onClick={() => this.toggleDropdown()}
           className="search-bar"
+          id="search-bar"
           onChange={this.update}
           placeholder="Search"
           type="text"
