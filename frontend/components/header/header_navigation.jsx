@@ -15,6 +15,8 @@ class HeaderNavigation extends React.Component {
     return(
       <section className="header-navigation">
         <section className="nav-links">
+          <a target="_blank" className="nav-icon" href="http://github.com/drj17"><i className="fa fa-github" aria-hidden="true"></i></a>
+          <a target="_blank" className="nav-icon" href="https://www.linkedin.com/in/david-janas-661325125/"><i className="fa fa-linkedin" aria-hidden="true"></i></a>
           {homeLink}
           {newSongLink}
         </section>

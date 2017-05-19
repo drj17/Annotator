@@ -142,7 +142,22 @@ button {
   align-items: center;
 }
 
+.nav-links > *:hover {
+  color: #FFFF64;
+  transition: .3s;
+}
+
 .header-navigation a + a:before {
   content: " | ";
   padding-left: 5px;
+  font-size: 16px;
+}
+
+.nav-icon {
+  text-align: center;
+  padding-bottom: 1px;
+}
+
+.nav-icon i {
+  font-size: 20px;
 }
