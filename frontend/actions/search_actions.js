@@ -6,7 +6,9 @@ export const CLEAR_RESULTS = "CLEAR_RESULTS";
 const receiveSearchResults = (results) => {
   return {
     type: RECEIVE_SEARCH_RESULTS,
-    results
+    songs: results.songs,
+    songTitles: results.song_titles,
+    songArtists: results.song_artists
   };
 };
 

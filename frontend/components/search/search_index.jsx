@@ -47,18 +47,33 @@ class SearchIndex extends React.Component {
     });
   }
   render(){
-    let searchResults = "";
-    let searchHeader = "";
-    if(this.props.results.length > 0){
-      searchResults = this.props.results.map(track => <SearchIndexItem
+    let searchResultsArtists = "";
+    let searchResultsTitles = "";
+    let searchHeaderArtists = "";
+    let searchHeaderTitles = "";
+    let artists = this.props.results.songArtists;
+    let titles = this.props.results.songTitles;
+    if(artists.length > 0 || titles.length > 0){
+      if(artists.length > 0){
+        searchResultsArtists = artists.map(track => <SearchIndexItem
          key={track.id}
          track={track}
          closeSearch={this.closeSearch}
          closeAnnotation={this.props.closeAnnotation}
           />);
-      searchHeader = <h1 className="search-header">Search Results</h1>;
+          searchHeaderArtists = <h2>Artists</h2>;
+        }
+        if(titles.length > 0){
+          searchResultsTitles = titles.map(track => <SearchIndexItem
+            key={track.id}
+            track={track}
+            closeSearch={this.closeSearch}
+            closeAnnotation={this.props.closeAnnotation}
+            />);
+          searchHeaderTitles = <h2>Titles</h2>;
+        }
     } else if(this.state.query.length > 0){
-      searchResults = <span className="no-results">No Results :(</span>;
+      searchResultsArtists = <span className="no-results">No Results :(</span>;
     }
 
     return (
@@ -71,11 +86,11 @@ class SearchIndex extends React.Component {
           placeholder="Search Songs and Artists"
           type="text"
           value={this.state.query}/>
-        <ul className={`search-result-list ${this.state.dropdown}`}
-          >
-
-          {searchHeader}
-          {searchResults}
+        <ul className={`search-result-list ${this.state.dropdown}`}>
+          {searchHeaderTitles}
+          {searchResultsTitles}
+          {searchHeaderArtists}
+          {searchResultsArtists}
         </ul>
       </div>
 

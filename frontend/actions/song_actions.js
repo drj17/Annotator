@@ -11,7 +11,7 @@ export const START_LOADING_SONG = "START_LOADING_SONG";
 const receiveAllSongs = (tracks) => {
   return {
     type: RECEIVE_ALL_SONGS,
-    tracks
+    tracks: tracks.songs
   };
 };
 
