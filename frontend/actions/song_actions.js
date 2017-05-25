@@ -62,6 +62,7 @@ export const fetchSong = (id) => dispatch => {
     .then(() => dispatch(finishLoadingAnnotations()));
 };
 export const deleteSong = (id) => dispatch => {
+  dispatch(startLoadingSong());
   return SongApiUtil.deleteSong(id)
     .then(track => dispatch(removeSong(track)),
           errors => dispatch(receiveErrors(errors.responseJSON)));
