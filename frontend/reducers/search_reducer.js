@@ -1,4 +1,4 @@
-import { RECEIVE_SEARCH_RESULTS, CLEAR_RESULTS } from '../actions/search_actions';
+ import { RECEIVE_SEARCH_RESULTS, CLEAR_RESULTS } from '../actions/search_actions';
 
 let defaultState = {
   "songTitles": [],
