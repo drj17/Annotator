@@ -2,7 +2,6 @@ import React from 'react';
 import { Editor, EditorState, RichUtils, convertToRaw, convertFromRaw } from 'draft-js';
 import 'draft-js/dist/Draft.css';
 
-// import { createAnnotation } from '../../actions/annotation_actions';
 class AnnotationField extends React.Component {
   constructor(props){
     super(props);
